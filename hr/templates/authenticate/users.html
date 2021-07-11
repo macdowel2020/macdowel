@@ -1,0 +1,431 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    {% if view == "staff" %}
+                        <h1 class="m-0 text-dark">Staff</h1>
+                    {% else %}
+                        <h1 class="m-0 text-dark"><a href="/staff/">Staffs</a></h1>
+                    {% endif %}
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Staff</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    {% if view == "staff" %}
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <button type="button" class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-info"><i
+                            class="fa fa-users"></i> Add New
+                    </button>
+                </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+                                   aria-describedby="example1_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                        colspan="1"
+                                        aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending"
+                                        style="width: 277px;">#
+                                    </th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                        colspan="1"
+                                        aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending"
+                                        style="width: 277px;">Name
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending" style="width: 352px;">
+                                        Project
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 314px;">
+                                        Role
+                                    </th>
+
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 314px;">
+                                        Department
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Engine version: activate to sort column ascending"
+                                        style="width: 238px;">Contact
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="CSS grade: activate to sort column ascending" style="width: 173px;">
+                                        Action
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for u in staffs %}
+                                    <tr role="row" class="odd">
+                                        <td class="sorting_1">{{ forloop.counter }}</td>
+                                        <td><a href="/staff/?email={{ u.user.email }}">
+                                            {% if u.user.first_name %}{{ u.user.first_name |capfirst }} -
+                                                {{ u.user.last_name |capfirst }}{% else %}
+                                                {{ u.user.username |capfirst }}{% endif %}
+                                        </a></td>
+                                        <td>{% if u.project %}{{ u.project }} {% else %}NIL{% endif %}</td>
+                                        <td>{% if u.role %}{{ u.role }} {% else %}NIL{% endif %}</td>
+                                        <td>{% if u.department %}{{ u.department }} {% else %}NIL{% endif %}</td>
+                                        <td>{{ u.contact }}</td>
+                                        <td>
+                                            <a href="/staff/?email={{ u.user.email }}"
+                                               class="btn  btn-outline-info btn-sm">Detail</a>
+                                            <button type="button" class="btn  btn-outline-danger btn-sm">Delete</button>
+
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">#</th>
+                                    <th rowspan="1" colspan="1">Name</th>
+                                    <th rowspan="1" colspan="1">Project</th>
+                                    <th rowspan="1" colspan="1">Role</th>
+                                    <th rowspan="1" colspan="1">Department</th>
+                                    <th rowspan="1" colspan="1">Contact</th>
+                                    <th rowspan="1" colspan="1">Action</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+
+
+        {#        MODALS     #}
+
+        {#        SAMPLE MODAL    #}
+        {# <div class="modal fade" id="modal-info">#}
+        {#        <div class="modal-dialog modal-lg">#}
+        {#          <div class="modal-content bg-info">#}
+        {#            <div class="modal-header">#}
+        {#              <h4 class="modal-title">Info Modal</h4>#}
+        {#              <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+        {#                <span aria-hidden="true">&times;</span>#}
+        {#              </button>#}
+        {#            </div>#}
+        {#            <div class="modal-body">#}
+        {#              <p>One fine body&hellip;</p>#}
+        {#            </div>#}
+        {#            <div class="modal-footer justify-content-between">#}
+        {#              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>#}
+        {#              <button type="button" class="btn btn-outline-light">Save changes</button>#}
+        {#            </div>#}
+        {#          </div>#}
+        {#          <!-- /.modal-content -->#}
+        {#        </div>#}
+        {#        <!-- /.modal-dialog -->#}
+        {#      </div>#}
+
+        <div class="modal fade" id="modal-info">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content bg-info">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Mac Donald Employee</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <form action="/staff/" method="post" enctype="multipart/form-data" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="first_name">First Name*</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name"
+                                       placeholder="Enter First Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last_name">Last Name*</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name"
+                                       placeholder="Enter Last Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="username">User Name*</label>
+                                <input type="text" class="form-control" id="username" name="username"
+                                       placeholder="Enter User Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                       placeholder="Enter Email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Project</label>
+                                <select class="form-control" name="project_code">
+                                    <option>Select Option</option>
+                                    {% for p in projects %}
+                                        <option value="{{ p.code }}">{{ p.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Department</label>
+                                <select class="form-control" name="dept_code">
+                                    <option>Select Option</option>
+                                    {% for p in departments %}
+                                        <option value="{{ p.code }}">{{ p.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Access Role *</label>
+                                <select class="form-control" name="role_code">
+                                    <option>Select Option</option>
+                                    {% for p in roles %}
+                                        <option value="{{ p.code }}">{{ p.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact">Contact Number*</label>
+                                <input type="text" class="form-control" id="contact" name="contact"
+                                       placeholder="Enter Contact" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address*</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                       placeholder="Enter Address" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nin">National ID*</label>
+                                <input type="text" class="form-control" id="nin" name="nin"
+                                       placeholder="Enter National ID Number" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Gender *</label>
+                                <select class="form-control" name="gender">
+                                    <option>Select Option</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dob">Date of Birth*</label>
+                                <input type="date" class="form-control" id="dob" name="dob"
+                                       placeholder="Enter Date of Birth" required>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-light">Save Information</button>
+                        </div>
+                    </form>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+
+
+    {% else %}
+        {#      DETAILS PAGE#}
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+                        <div class="card card-success card-outline ">
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="{% static 'assets/dist/img/user4-128x128.jpg' %}"
+                                         alt="User profile picture">
+                                </div>
+
+                                <h3 class="profile-username text-center">{% if profile.user.first_name %}
+                                    {{ profile.user.first_name }} {{ profile.user.last_name }}{% else %}
+                                    {{ profile.user.username |capfirst }}{% endif %}</h3>
+
+                                <p class="text-muted text-center">{{ profile.department.name }} Department</p>
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- About Me Box -->
+                        <div class="card card-primary">
+                            <div class="card-header bg-success">
+                                <h3 class="card-title">About Employee</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <strong><i class="fa fa-book mr-1"></i> National ID</strong>
+
+                                <p class="text-muted">
+                                    {{ profile.nin }}
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="fa fa-map-marker mr-1"></i> Location</strong>
+
+                                <p class="text-muted">{{ profile.address }}</p>
+
+                                <hr>
+                                <strong><i class="fa fa-user mr-1"></i> Account Status</strong>
+
+                                <p class="text-muted">{{ profile.staff_status }}</p>
+
+
+                                <hr>
+
+                                <strong><i class="fa fa-file-text-o mr-1"></i> Project</strong>
+
+                                <p class="text-muted">{{ profile.project.name }}</p>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item"><a class="nav-link active show" href="#activity"
+                                                            data-toggle="tab">Staff Projects</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#settings"
+                                                            data-toggle="tab">Update Staff Profile</a></li>
+                                </ul>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane active show" id="activity">
+
+                                        <!-- /.post -->
+                                    </div>
+
+
+                                    <div class="tab-pane" id="settings">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" id="inputName"
+                                                           placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" id="inputEmail"
+                                                           placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputName2" class="col-sm-2 control-label">Name</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputName2"
+                                                           placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputExperience"
+                                                       class="col-sm-2 control-label">Experience</label>
+
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" id="inputExperience"
+                                                              placeholder="Experience"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputSkills"
+                                                           placeholder="Skills">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"> I agree to the <a href="#">terms and
+                                                            conditions</a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+
+    {% endif %}
+
+
+{% endblock %}
