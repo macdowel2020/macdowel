@@ -231,3 +231,11 @@ def delete_expenditure(request):
         print(str(p))
         messages.error(request, 'An Error Occurred')
         return HttpResponseRedirect('/')
+
+def delete_income(request):
+    try:
+        code = request.GET["code"]
+    except Exception as p:
+        print(str(p))
+        messages.error(request, 'An Error Occurred')
+        return HttpResponseRedirect('/')

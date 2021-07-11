@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><a href="/farms/">Farms</a></h1>
+                    <h1 class="m-0 text-dark"><a href="/farms/">FARMS</a></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Projects</li>
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
+                        <li class="breadcrumb-item active">PROJECTS</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -692,7 +692,7 @@
                       autocomplete="off">
                     {% csrf_token %}
                     <div class="modal-body">
-                        <input type="text" class="form-control" id="code" name="code" value="{{ project.code }}">
+                        <input type="text" class="form-control" id="code" name="code" value="{{ project.code }}" hidden>
                         <div class="form-group">
                             <label for="item">Item *</label>
                             <input type="text" class="form-control" id="item" name="item"
@@ -734,7 +734,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content bg-info">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{ project.name }} Expenditure</h4>
+                    <h4 class="modal-title">{{ project.name |upper}} EXPENDITURE</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -743,7 +743,7 @@
                       autocomplete="off">
                     {% csrf_token %}
                     <div class="modal-body">
-                        <input type="text" class="form-control" id="code" name="code" value="{{ project.code }}">
+                        <input type="text" class="form-control" id="code" name="code" value="{{ project.code }}" hidden>
                         <div class="form-group">
                             <label for="item">Item *</label>
                             <input type="text" class="form-control" id="item" name="item"

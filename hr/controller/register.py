@@ -30,7 +30,7 @@ def profile(request):
                 gender = request.POST["gender"]
 
                 dob = request.POST["dob"]
-                password = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
+                password = request.POST["password"]
 
                 if request.user.is_staff:
 
@@ -41,7 +41,9 @@ def profile(request):
                                                         first_name=first_name,
                                                         last_name=last_name,
                                                         email=email,
-                                                        password=password)
+                                                        password=password,
+                                                        is_staff=True
+                                                        )
                         # Project
                         project = Project.objects.get(code__contains=project_code)
                         # Department

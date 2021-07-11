@@ -8,15 +8,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     {% if view == "staff" %}
-                        <h1 class="m-0 text-dark">Staff</h1>
+                        <h1 class="m-0 text-dark">STAFF</h1>
                     {% else %}
-                        <h1 class="m-0 text-dark"><a href="/staff/">Staffs</a></h1>
+                        <h1 class="m-0 text-dark"><a href="/staff/">STAFF</a></h1>
                     {% endif %}
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Staff</li>
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
+                        <li class="breadcrumb-item active">STAFF</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -29,7 +29,7 @@
             <div class="card-header">
                 <h3 class="card-title">
                     <button type="button" class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-info"><i
-                            class="fa fa-users"></i> Add New
+                            class="fa fa-users"></i> ADD NEW
                     </button>
                 </h3>
             </div>
@@ -97,7 +97,8 @@
                                         <td>
                                             <a href="/staff/?email={{ u.user.email }}"
                                                class="btn  btn-outline-info btn-sm">Detail</a>
-                                            <button type="button" class="btn  btn-outline-danger btn-sm">Delete</button>
+                                            <a href="#" type="button" class="btn  btn-outline-danger btn-sm"
+                                               onclick="return confirm('Are you sure you want to delete this Vehicle?');">Delete</a>
 
                                         </td>
                                     </tr>
@@ -154,7 +155,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content bg-info">
                     <div class="modal-header">
-                        <h4 class="modal-title">Mac Donald Employee</h4>
+                        <h4 class="modal-title">MAC DOWEL EMPLOYEE</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -181,6 +182,13 @@
                                 <input type="text" class="form-control" id="username" name="username"
                                        placeholder="Enter User Name" required>
                             </div>
+
+                         <div class="form-group">
+                                <label for="password">Password*</label>
+                                <input type="text" class="form-control" id="password" name="password"
+                                       placeholder="Enter Password" required>
+                            </div>
+
 
                             <div class="form-group">
                                 <label for="email">Email*</label>
@@ -325,6 +333,12 @@
                                 <strong><i class="fa fa-file-text-o mr-1"></i> Project</strong>
 
                                 <p class="text-muted">{{ profile.project.name }}</p>
+
+
+                                <hr>
+                                <strong><i class="fa fa-user mr-1"></i> User Name</strong>
+
+                                <p class="text-muted">{{ profile.user.username }}</p>
                             </div>
                             <!-- /.card-body -->
                         </div>
