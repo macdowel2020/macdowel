@@ -96,10 +96,10 @@
                                             <td>{{ u.address }}</td>
                                             <td style="text-align: right">
 
-                                                <a {% if u.category == 'Farm' %}
-                                                    href="/farm_detail/?code={{ u.code }}"
+                                                <a {% if u.category == 'Rent' %}
+                                                    href="/#/?code={{ u.code }}"
                                                 {% else %}
-                                                    href="/project_detail/?code={{ u.code }}"
+                                                    href="/farm_detail/?code={{ u.code }}"
                                                 {% endif %}
 
                                                     class="btn  btn-outline-info btn-sm"><i class="fa fa-eye"></i>

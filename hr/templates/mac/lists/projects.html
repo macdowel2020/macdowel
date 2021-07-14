@@ -9,13 +9,13 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0 text-dark"><a href="/staff_projects/"
-                                                     style="color: #0b0b0b!important;">Projects</a></h1>
+                                                     style="color: #0b0b0b!important;">PROJECTS</a></h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/staff_projects/" style="color: #1b1e21">Projects</a>
+                            <li class="breadcrumb-item"><a href="/staff_projects/" style="color: #1b1e21">PROJECTS</a>
                             </li>
-                            <li class="breadcrumb-item active">Farms</li>
+                            <li class="breadcrumb-item active">DASHBOARD</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -87,10 +87,12 @@
                                                 <td style="text-align: right">
                                                     <a href="/farm_detail/?code={{ u.code }}"
                                                        class="btn  btn-info btn-sm"><i class="fa fa-eye"></i> Detail</a>
+                                                    {% if request.user.is_superuser %}
                                                     <a href="/delete_project/?code={{ u.code }}"
                                                        class="btn  btn-danger btn-sm"
                                                        onclick="return confirm('Are you sure you want to delete this Project?');">
                                                         <i class="fa fa-trash-o"></i> Delete</a>
+                                                    {% endif %}
                                                 </td>
                                             </tr>
                                         {% endfor %}
@@ -166,10 +168,14 @@
 
                         </div>
                         <!-- /.card-body -->
+                        {% if request.user.is_superuser %}
                         <div class="card-footer" style="background-color: #ff8b26; color: #ffffff">
+
                             <button type="reset" class="btn btn-danger float-left">CANCEL</button>
                             <button type="submit" class="btn btn-success float-right">ADD NOW</button>
+
                         </div>
+                          {% endif %}
                         <!-- /.card-footer -->
                     </form>
 

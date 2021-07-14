@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd4a225-3349-4ab7-969a-7116b85ee92c" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hr/templates/mac/details/farm_detail.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MAC_DONALD/settings.py" afterPath="$PROJECT_DIR$/MAC_DONALD/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/controller/farms.py" afterPath="$PROJECT_DIR$/hr/controller/farms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/controller/register.py" afterPath="$PROJECT_DIR$/hr/controller/register.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/models.py" afterPath="$PROJECT_DIR$/hr/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/authenticate/users.html" afterPath="$PROJECT_DIR$/hr/templates/authenticate/users.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/mac/details/farm_detail.html" afterPath="$PROJECT_DIR$/hr/templates/mac/details/farm_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/mac/lists/farms.html" afterPath="$PROJECT_DIR$/hr/templates/mac/lists/farms.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/controller/machinery.py" afterPath="$PROJECT_DIR$/hr/controller/machinery.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/mac/staff_projects.html" afterPath="$PROJECT_DIR$/hr/templates/mac/staff_projects.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/urls.py" afterPath="$PROJECT_DIR$/hr/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base/base.html" afterPath="$PROJECT_DIR$/templates/base/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base/sidebar.html" afterPath="$PROJECT_DIR$/templates/base/sidebar.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hr/templates/mac/details/farm_report.html" afterPath="$PROJECT_DIR$/hr/templates/mac/details/p_detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hr/templates/mac/lists/farms.html" afterPath="$PROJECT_DIR$/hr/templates/mac/lists/projects.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hr/templates/mac/machinery.html" afterPath="$PROJECT_DIR$/hr/templates/mac/lists/machinery.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,49 +29,31 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="farm_report.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hr/templates/mac/details/farm_report.html">
+      <file leaf-file-name="projects.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hr/templates/mac/lists/projects.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="833" column="66" lean-forward="false" selection-start-line="833" selection-start-column="66" selection-end-line="833" selection-end-column="66" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#!!top" expanded="false" />
-                <element signature="n#div#4;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hr/models.py">
+      <file leaf-file-name="machinery.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hr/templates/mac/lists/machinery.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="103" column="15" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="344">
+              <caret line="90" column="59" lean-forward="true" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="farms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hr/controller/farms.py">
+      <file leaf-file-name="p_detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hr/templates/mac/details/p_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="354" column="26" lean-forward="true" selection-start-line="354" selection-start-column="26" selection-end-line="354" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hr/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="26" />
+            <state relative-caret-position="188">
+              <caret line="911" column="141" lean-forward="true" selection-start-line="911" selection-start-column="71" selection-end-line="911" selection-end-column="141" />
               <folding />
             </state>
           </provider>
@@ -105,17 +85,14 @@
         <option value="$PROJECT_DIR$/hr/templates/mac/projectdetail.html" />
         <option value="$PROJECT_DIR$/hr/templates/dashboard.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/machinary.html" />
-        <option value="$PROJECT_DIR$/hr/controller/machinery.py" />
         <option value="$PROJECT_DIR$/hr/controller/land.py" />
         <option value="$PROJECT_DIR$/hr/templates/mac/farms.html" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/machinery.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/land.html" />
         <option value="$PROJECT_DIR$/templates/base/header.html" />
         <option value="$PROJECT_DIR$/hr/static/assets/plugins/bootstrap/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/hr/static/assets/dist/css/adminlte.css" />
         <option value="$PROJECT_DIR$/hr/static/assets/plugins/bootstrap/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/hr/admin.py" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/staff_projects.html" />
         <option value="$PROJECT_DIR$/hr/templates/authenticate/login.html" />
         <option value="$PROJECT_DIR$/MAC_DONALD/settings.py" />
         <option value="$PROJECT_DIR$/templates/base/sidebar.html" />
@@ -125,9 +102,16 @@
         <option value="$PROJECT_DIR$/hr/templates/mac/lists/farms.html" />
         <option value="$PROJECT_DIR$/hr/models.py" />
         <option value="$PROJECT_DIR$/templates/base/base.html" />
-        <option value="$PROJECT_DIR$/hr/urls.py" />
-        <option value="$PROJECT_DIR$/hr/controller/farms.py" />
         <option value="$PROJECT_DIR$/hr/templates/mac/details/farm_report.html" />
+        <option value="$PROJECT_DIR$/hr/templates/mac/machinery.html" />
+        <option value="$PROJECT_DIR$/hr/templates/mac/details/machinary_details.html" />
+        <option value="$PROJECT_DIR$/hr/controller/machinery.py" />
+        <option value="$PROJECT_DIR$/hr/controller/farms.py" />
+        <option value="$PROJECT_DIR$/hr/urls.py" />
+        <option value="$PROJECT_DIR$/hr/templates/mac/staff_projects.html" />
+        <option value="$PROJECT_DIR$/hr/templates/mac/details/p_detail.html" />
+        <option value="$PROJECT_DIR$/hr/templates/mac/lists/machinery.html" />
+        <option value="$PROJECT_DIR$/hr/templates/mac/lists/projects.html" />
       </list>
     </option>
   </component>
@@ -216,20 +200,6 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="base">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="macdowel">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="media">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -369,13 +339,14 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PROJECTS\MACDOWELONLINE\macdowel\hr\templates\mac\lists" />
+      <recent name="E:\PROJECTS\MAC_DONALD\hr\templates\mac\lists" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\PROJECTS\MAC_DONALD\hr" />
       <recent name="E:\PROJECTS\MAC_DONALD\hr\templates" />
       <recent name="E:\PROJECTS\MAC_DONALD\hr\templates\authenticate" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\PROJECTS\MAC_DONALD\hr\templates\mac\lists" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -662,13 +633,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hr/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hr/controller/projects.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -802,31 +766,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/controller/machinery.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/mac/machinery.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hr/templates/mac/projectdetail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/controller/projects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="56" column="12" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -915,14 +858,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/templates/authenticate/register.html" />
-    <entry file="file://$PROJECT_DIR$/hr/templates/mac/staff_projects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-744">
-          <caret line="136" column="59" lean-forward="true" selection-start-line="136" selection-start-column="59" selection-end-line="136" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base/sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -979,14 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/mac/lists/farms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="170" column="84" lean-forward="false" selection-start-line="170" selection-start-column="84" selection-end-line="170" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -995,43 +922,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/urls.py">
+    <entry file="file://$PROJECT_DIR$/hr/templates/mac/details/machinary_details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="26" />
+        <state relative-caret-position="272">
+          <caret line="16" column="72" lean-forward="true" selection-start-line="16" selection-start-column="72" selection-end-line="16" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/models.py">
+    <entry file="file://$PROJECT_DIR$/hr/controller/projects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="103" column="15" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="15" />
+        <state relative-caret-position="-744">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/controller/machinery.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="46" column="77" lean-forward="true" selection-start-line="46" selection-start-column="77" selection-end-line="46" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#13#0" expanded="false" />
+            <element signature="e#391#1853#0" expanded="false" />
+            <element signature="e#2478#2510#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/controller/farms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="354" column="26" lean-forward="true" selection-start-line="354" selection-start-column="26" selection-end-line="354" selection-end-column="26" />
+        <state relative-caret-position="238">
+          <caret line="50" column="64" lean-forward="false" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="64" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/mac/details/farm_report.html">
+    <entry file="file://$PROJECT_DIR$/hr/templates/mac/staff_projects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="833" column="66" lean-forward="false" selection-start-line="833" selection-start-column="66" selection-end-line="833" selection-end-column="66" />
+        <state relative-caret-position="238">
+          <caret line="98" column="80" lean-forward="true" selection-start-line="98" selection-start-column="80" selection-end-line="98" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#p#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#4;n#!!top" expanded="false" />
+            <element signature="e#0#13#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/mac/details/p_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="911" column="141" lean-forward="true" selection-start-line="911" selection-start-column="71" selection-end-line="911" selection-end-column="141" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/mac/lists/machinery.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="90" column="59" lean-forward="true" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/mac/lists/projects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -31,20 +31,21 @@ urlpatterns = [
     path('staff_projects/', projects.staff_projects, name='staff_projects'),
     path('project_detail/', projects.projectDtetail, name='project_detail'),
 
-    #     FARMS
-    path('farms/', farms.farms, name='farms'),
-    path('farm_detail/', farms.farm_detail, name='farm_detail'),
-    path('add_farm_income/', farms.farm_income, name='add_farm_income'),
+    #     PROJECT DETAILS
+
+    path('farm_detail/', farms.p_detail, name='farm_detail'),
+    path('add_farm_income/', farms.income, name='add_farm_income'),
     path('request_expenditure/', farms.request_expenditure, name='request_expenditure'),
     path('approve_request/', farms.approve_request, name='approve_request'),
     path('reject_request/', farms.reject_request, name='reject_request'),
     path('delete_expenditure/', farms.delete_expenditure, name='delete_expenditure'),
     path('update_project_photo/', farms.update_project_photo, name='update_project_photo'),
-    path('farm_inventory/', farms.farm_inventory, name='farm_inventory'),
+    path('farm_inventory/', farms.inventory, name='farm_inventory'),
     path('delete_inventory/', farms.delete_inventory, name='delete_inventory'),
 
-    #     MACHINERY
+    #     PROJECTS
     path('machines/', machinery.machines, name='machines'),
+    path('farms/', farms.farms, name='farms'),
 
     #     LAND
     path('land/', land.land, name='land'),

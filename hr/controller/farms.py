@@ -50,7 +50,7 @@ def farms(request):
             try:
                 projects = Project.objects.all().filter(category='Farm')
                 print('worked')
-                return render(request, 'mac/lists/farms.html', {'projects': projects})
+                return render(request, 'mac/lists/projects.html', {'projects': projects})
             except Exception as p:
                 print('here')
                 projects = Project.objects.all()
@@ -61,7 +61,7 @@ def farms(request):
         return HttpResponseRedirect('/')
 
 
-def farm_detail(request):
+def p_detail(request):
     if request.user.is_authenticated:
         try:
             total = 0
@@ -108,7 +108,7 @@ def farm_detail(request):
                 loss = 0
             else:
                 loss = total - approved_total
-            return render(request, 'mac/details/farm_report.html', {'project': project, 'incomes': incomes,
+            return render(request, 'mac/details/p_detail.html', {'project': project, 'incomes': incomes,
                                                                     'total': total,
                                                                     'pending_expenditures': pending_expenditures,
                                                                     'pending_total': pending_total,
@@ -128,7 +128,7 @@ def farm_detail(request):
         return HttpResponseRedirect('/')
 
 
-def farm_income(request):
+def income(request):
     if request.user.is_authenticated:
         try:
             # Get the Staff
@@ -295,7 +295,7 @@ def update_project_photo(incoming):
         return HttpResponseRedirect('/')
 
 
-def farm_inventory(request):
+def inventory(request):
     if request.user.is_authenticated:
         try:
             # Get the Staff

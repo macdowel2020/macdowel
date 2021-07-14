@@ -9,8 +9,18 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><a href="/farms/">ALL FARMS</a></h1>
+                    {% if project.category == 'Farm' %}
+                        <h1 class="m-0 text-dark"><a href="/farms/">FARMS</a></h1>
+                    {% elif project.category == 'Machinery' %}
+                        <h1 class="m-0 text-dark"><a href="/farms/">MACHINES</a></h1>
+
+                    {% elif project.category == 'Machinery' %}
+                        <h1 class="m-0 text-dark"><a href="/farms/">LAND</a></h1>
+
+                    {% endif %}
                 </div><!-- /.col -->
+
+
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">HOME</a></li>
@@ -37,11 +47,12 @@
                                              alt="Photo" style=" box-shadow: 0 8px 6px -6px black;">
                                         <label for="registration_number">{{ project.name |upper }} PROJECT</label>
 
-
-                                        <button class="btn btn-success btn-block" data-toggle="modal"
-                                                style=" box-shadow: 0 8px 6px -6px black;"
-                                                data-target="#modal_project_photo">UPLOAD PROJECT PICTURE
-                                        </button>
+                                        {% if request.user.is_superuser %}
+                                            <button class="btn btn-success btn-block" data-toggle="modal"
+                                                    style=" box-shadow: 0 8px 6px -6px black;"
+                                                    data-target="#modal_project_photo">UPLOAD PROJECT PICTURE
+                                            </button>
+                                        {% endif %}
                                     </div>
 
                                     <div class="col-sm-9">
@@ -297,14 +308,21 @@
                                                         <td>{{ u.staff.user.username |capfirst }}</td>
                                                         <td>{{ u.amount |intcomma }}/=</td>
                                                         <td style="text-align: right">
-                                                            {#                                                            <a href="/#/?code={{ u.code }}"#}
-                                                            {#                                                               class="btn  btn-info btn-sm"><i class="fa fa-eye"></i>#}
-                                                            {#                                                                Receipt</a>#}
-                                                            <a href="#"
-                                                               class="btn  btn-outline-danger btn-block btn-sm"
-                                                               onclick="return confirm('Are you sure you want to delete this Transaction?');"
-                                                            > <i
-                                                                    class="fa fa-trash-o"></i> Delete</a>
+
+                                                            {% if request.user.is_superuser %}
+                                                                <a href="#"
+                                                                   class="btn  btn-outline-danger btn-block btn-sm"
+                                                                   onclick="return confirm('Are you sure you want to delete this Transaction?');"
+                                                                > <i
+                                                                        class="fa fa-trash-o"></i> Delete</a>
+                                                            {% else %}
+                                                                <a href="#"
+                                                                   class="btn  btn-outline-danger btn-block btn-sm disabled"
+                                                                   onclick="return confirm('Are you sure you want to delete this Transaction?');"
+                                                                > <i
+                                                                        class="fa fa-trash-o"></i> Delete</a>
+
+                                                            {% endif %}
                                                         </td>
                                                     </tr>
                                                 {% endfor %}
@@ -455,27 +473,38 @@
                                                                               style="padding: 5px!important;">Pending</span>
                                                                     </td>
                                                                     <td style="text-align: right">
-                                                                        <a href="/approve_request/?code={{ u.code }}"
-                                                                           class="btn  btn-success btn-sm"
-                                                                           onclick="return confirm('Confirm to Perform this action?');"
-                                                                        ><i
-                                                                                class="fa fa-check"></i> Approve
-                                                                        </a>
-                                                                        {#                                                                        <a href="/reject_request/?code={{ u.code }}"#}
-                                                                        {#                                                                           class="btn  btn-danger btn-sm"> <i#}
-                                                                        {#                                                                                class="fa fa-ban"></i> Reject </a>#}
+                                                                        {% if request.user.is_superuser %}
+                                                                            <a href="/approve_request/?code={{ u.code }}"
+                                                                               class="btn  btn-success btn-sm"
+                                                                               onclick="return confirm('Confirm to Perform this action?');"
+                                                                            ><i
+                                                                                    class="fa fa-check"></i> Approve
+                                                                            </a>
+                                                                        {% else %}
+                                                                            <a href="/approve_request/?code={{ u.code }}"
+                                                                               class="btn  btn-success btn-sm disabled"
+                                                                               onclick="return confirm('Confirm to Perform this action?');"
+                                                                            ><i
+                                                                                    class="fa fa-check"></i> Approve
+                                                                            </a>
+                                                                        {% endif %}
+
+                                                                        {% if request.user.is_superuser %}
+
+                                                                            <button data-toggle="modal"
+                                                                                    data-target="#modal-reject"
+                                                                                    class="btn  btn-danger btn-sm"
+
+                                                                                    onclick="document.getElementById('ex_code').value='{{ u.code }}';
+                                                                                            {#                                                                                document.getElementById('ex_reason').value='{{ c.balance }}'#}
+                                                                                            "
+                                                                            ><i
+                                                                                    class="fa fa-ban"></i> Reject
+                                                                            </button>
+                                                                        {% else %}
 
 
-                                                                        <button data-toggle="modal"
-                                                                                data-target="#modal-reject"
-                                                                                class="btn  btn-danger btn-sm"
-
-                                                                                onclick="document.getElementById('ex_code').value='{{ u.code }}';
-                                                                                        {#                                                                                document.getElementById('ex_reason').value='{{ c.balance }}'#}
-                                                                                        "
-                                                                        ><i
-                                                                                class="fa fa-ban"></i> Reject
-                                                                        </button>
+                                                                        {% endif %}
 
 
                                                                     </td>
@@ -598,16 +627,19 @@
                                                                            class="btn  btn-info btn-block btn-sm"><i
                                                                                 class="fa fa-file-archive-o"></i> Report
                                                                         </a>
-                                                                        <button data-toggle="modal"
-                                                                                data-target="#modal-reject"
-                                                                                class="btn  btn-danger btn-block btn-sm"
 
-                                                                                onclick="document.getElementById('ex_code').value='{{ u.code }}';
-                                                                                        {#                                                                                document.getElementById('ex_reason').value='{{ c.balance }}'#}
-                                                                                        "
-                                                                        ><i
-                                                                                class="fa fa-ban"></i> Reject
-                                                                        </button>
+                                                                        {% if request.user.is_superuser %}
+                                                                            <button data-toggle="modal"
+                                                                                    data-target="#modal-reject"
+                                                                                    class="btn  btn-danger btn-block btn-sm"
+
+                                                                                    onclick="document.getElementById('ex_code').value='{{ u.code }}';
+                                                                                            {#                                                                                document.getElementById('ex_reason').value='{{ c.balance }}'#}
+                                                                                            "
+                                                                            ><i
+                                                                                    class="fa fa-ban"></i> Reject
+                                                                            </button>
+                                                                        {% endif %}
                                                                     </td>
                                                                 </tr>
                                                             {% endfor %}
@@ -727,12 +759,23 @@
                                                                               style="padding: 5px!important;">Rejected</span>
                                                                     </td>
                                                                     <td style="text-align: right">
+                                                                        {% if request.user.is_superuser %}
 
-                                                                        <a href="/delete_expenditure/?code={{ u.code }}"
-                                                                           class="btn  btn-outline-danger btn-sm"
-                                                                           onclick="return confirm('This Can not be Reverted. Are you sure you want to delete Permanently?');"
-                                                                        > <i
-                                                                                class="fa fa-trash-o"></i> Delete</a>
+                                                                            <a href="/delete_expenditure/?code={{ u.code }}"
+                                                                               class="btn  btn-outline-danger btn-sm"
+                                                                               onclick="return confirm('This Can not be Reverted. Are you sure you want to delete Permanently?');"
+                                                                            > <i
+                                                                                    class="fa fa-trash-o"></i>
+                                                                                Delete</a>
+                                                                        {% else %}
+                                                                            <a href="/delete_expenditure/?code={{ u.code }}"
+                                                                               class="btn  btn-outline-danger btn-sm disabled"
+                                                                               onclick="return confirm('This Can not be Reverted. Are you sure you want to delete Permanently?');"
+                                                                            > <i
+                                                                                    class="fa fa-trash-o"></i>
+                                                                                Delete</a>
+
+                                                                        {% endif %}
                                                                     </td>
                                                                 </tr>
                                                             {% endfor %}
@@ -808,7 +851,7 @@
                                                         style="width: 20%;"> ITEM
                                                     </th>
 
-                                                       <th class="sorting_asc" tabindex="0" aria-controls="example1"
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="example1"
                                                         rowspan="1"
                                                         colspan="1"
                                                         aria-sort="ascending"
@@ -860,14 +903,16 @@
                                                             <td>{{ u.item }}</td>
                                                             <td>{{ u.description }}</td>
                                                             <td>{{ u.qty }}</td>
-                                                            <td>{{ u.unit_price | intcomma}}</td>
-                                                            <td>{{ u.total_price |intcomma}}</td>
+                                                            <td>{{ u.unit_price | intcomma }}</td>
+                                                            <td>{{ u.total_price |intcomma }}</td>
                                                             <td style="text-align: right">
-                                                                <a href="/delete_inventory/?code={{ u.code }}"
-                                                                   class="btn  btn-outline-danger btn-block btn-sm"
-                                                                   onclick="return confirm('Are you sure you want to Remove this Item?');"
-                                                                > <i
-                                                                        class="fa fa-trash-o"></i> Remove</a>
+                                                                {% if request.user.is_superuser %}
+                                                                    <a href="/delete_inventory/?code={{ u.code }}"
+                                                                       class="btn  btn-outline-danger btn-block btn-sm"
+                                                                       onclick="return confirm('Are you sure you want to Remove this Item?');"
+                                                                    > <i
+                                                                            class="fa fa-trash-o"></i> Remove</a>
+                                                                {% endif %}
                                                             </td>
                                                         </tr>
                                                     {% endfor %}
@@ -900,118 +945,129 @@
                         </div>
                     </div>
 
-                    <div class="card m-b-30">
-                        <div class="card-body"><h5 class="header-title pb-3"><b>PROJECT STAFF</b></h5>
-                            <div class="general-label">
+                    {% if request.user.is_superuser %}
+                        <div class="card m-b-30">
+                            <div class="card-body"><h5 class="header-title pb-3"><b>PROJECT STAFF</b></h5>
+                                <div class="general-label">
 
-                                <div class="row">
+                                    <div class="row">
 
-                                    <div class="col-sm-12">
-                                        <h1>
-                                            {#                                            <button type="button" class="btn btn-success btn-sm"#}
-                                            {#                                                    style="background-color: #007baa!important;" data-toggle="modal"#}
-                                            {#                                                    data-target="#modal-income"><i class="fa fa-users"></i> ADD INCOME#}
-                                            {#                                            </button>#}
-                                        </h1>
                                         <div class="col-sm-12">
-                                            <table id="example1" class="table table-bordered table-striped dataTable"
-                                                   role="grid"
-                                                   aria-describedby="example1_info">
-                                                <thead style="background-color: #b9c2af">
-                                                <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="example1"
-                                                        rowspan="1"
-                                                        colspan="1"
-                                                        aria-sort="ascending"
-                                                        aria-label="Rendering engine: activate to sort column descending"
-                                                        style="width: 20%;"> JOINED ON
-                                                    </th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="example1"
-                                                        rowspan="1"
-                                                        colspan="1"
-                                                        aria-sort="ascending"
-                                                        aria-label="Rendering engine: activate to sort column descending"
-                                                        style="width: 20%;"> STAFF NAME
-                                                    </th>
+                                            <h1>
+                                                {#                                            <button type="button" class="btn btn-success btn-sm"#}
+                                                {#                                                    style="background-color: #007baa!important;" data-toggle="modal"#}
+                                                {#                                                    data-target="#modal-income"><i class="fa fa-users"></i> ADD INCOME#}
+                                                {#                                            </button>#}
+                                            </h1>
+                                            <div class="col-sm-12">
+                                                <table id="example1"
+                                                       class="table table-bordered table-striped dataTable"
+                                                       role="grid"
+                                                       aria-describedby="example1_info">
+                                                    <thead style="background-color: #b9c2af">
+                                                    <tr role="row">
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1"
+                                                            rowspan="1"
+                                                            colspan="1"
+                                                            aria-sort="ascending"
+                                                            aria-label="Rendering engine: activate to sort column descending"
+                                                            style="width: 20%;"> JOINED ON
+                                                        </th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1"
+                                                            rowspan="1"
+                                                            colspan="1"
+                                                            aria-sort="ascending"
+                                                            aria-label="Rendering engine: activate to sort column descending"
+                                                            style="width: 20%;"> STAFF NAME
+                                                        </th>
 
 
-                                                    <th class="sorting" tabindex="0" aria-controls="example1"
-                                                        rowspan="1"
-                                                        colspan="1"
-                                                        aria-label="Platform(s): activate to sort column ascending"
-                                                        style="width: 20%;">
-                                                        CONTACT
-                                                    </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="example1"
+                                                            rowspan="1"
+                                                            colspan="1"
+                                                            aria-label="Platform(s): activate to sort column ascending"
+                                                            style="width: 20%;">
+                                                            CONTACT
+                                                        </th>
 
 
-                                                    <th class="sorting" tabindex="0" aria-controls="example1"
-                                                        rowspan="1"
-                                                        colspan="1"
-                                                        aria-label="CSS grade: activate to sort column ascending"
-                                                        style="width: 10%;">
-                                                        EMAIL
-                                                    </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="example1"
+                                                            rowspan="1"
+                                                            colspan="1"
+                                                            aria-label="CSS grade: activate to sort column ascending"
+                                                            style="width: 10%;">
+                                                            EMAIL
+                                                        </th>
 
-                                                    <th class="sorting" tabindex="0" aria-controls="example1"
-                                                        rowspan="1"
-                                                        colspan="1"
-                                                        aria-label="Platform(s): activate to sort column ascending"
-                                                        style="width: 10%">
-                                                        DEPARTMENT
-                                                    </th>
+                                                        <th class="sorting" tabindex="0" aria-controls="example1"
+                                                            rowspan="1"
+                                                            colspan="1"
+                                                            aria-label="Platform(s): activate to sort column ascending"
+                                                            style="width: 10%">
+                                                            DEPARTMENT
+                                                        </th>
 
-                                                    <th class="sorting" tabindex="0" aria-controls="example1"
-                                                        rowspan="1"
-                                                        colspan="1"
-                                                        aria-label="CSS grade: activate to sort column ascending"
-                                                        style="width: 30%;">
-                                                        ACTION
-                                                    </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                {% for u in staff %}
-                                                    <tr role="row" class="odd">
-
-                                                        <td>{{ u.joined_on }}</td>
-                                                        <td><b>{% if u.user.first_name %}{{ u.user.first_name }}
-                                                            {{ u.user.last_name }}
-                                                        {% else %} {{ u.user.username |upper }} {% endif %}</b></td>
-                                                        <td>{{ u.contact }}</td>
-                                                        <td>{{ u.user.email }}</td>
-                                                        <td>{{ u.department.name }}</td>
-                                                        <td style="text-align: right">
-                                                            <a href="#"
-                                                               class="btn  btn-outline-danger btn-block btn-sm"
-                                                               onclick="return confirm('Are you sure you want to Remove this Staff?');"
-                                                            > <i
-                                                                    class="fa fa-trash-o"></i> Remove</a>
-                                                        </td>
+                                                        <th class="sorting" tabindex="0" aria-controls="example1"
+                                                            rowspan="1"
+                                                            colspan="1"
+                                                            aria-label="CSS grade: activate to sort column ascending"
+                                                            style="width: 30%;">
+                                                            ACTION
+                                                        </th>
                                                     </tr>
-                                                {% endfor %}
+                                                    </thead>
+                                                    <tbody>
 
-                                                </tbody>
-                                                <tfoot>
-                                                <tr style="background-color: #b9c2af">
-                                                    <th rowspan="1" colspan="1">JOINED ON</th>
-                                                    <th rowspan="1" colspan="1">STAFF NAME</th>
-                                                    <th rowspan="1" colspan="1">CONTACT</th>
-                                                    <th rowspan="1" colspan="1">EMAIL</th>
-                                                    <th rowspan="1" colspan="1">DEPARTMENT</th>
-                                                    <th rowspan="1" colspan="1">ACTION</th>
-                                                </tr>
-                                                </tfoot>
-                                            </table>
+                                                    {% for u in staff %}
+                                                        <tr role="row" class="odd">
+
+                                                            <td>{{ u.joined_on }}</td>
+                                                            <td><b>{% if u.user.first_name %}{{ u.user.first_name }}
+                                                                {{ u.user.last_name }}
+                                                            {% else %} {{ u.user.username |upper }} {% endif %}</b></td>
+                                                            <td>{{ u.contact }}</td>
+                                                            <td>{{ u.user.email }}</td>
+                                                            <td>{{ u.department.name }}</td>
+                                                            <td style="text-align: right">
+                                                                {% if request.user.is_superuser %}
+                                                                    <a href="#"
+                                                                       class="btn  btn-outline-danger btn-block btn-sm"
+                                                                       onclick="return confirm('Are you sure you want to Remove this Staff?');"
+                                                                    > <i
+                                                                            class="fa fa-trash-o"></i> Remove</a>
+                                                                {% else %}
+                                                                    <a href="#"
+                                                                       class="btn  btn-outline-danger btn-block btn-sm disabled"
+                                                                       onclick="return confirm('Are you sure you want to Remove this Staff?');"
+                                                                    > <i
+                                                                            class="fa fa-trash-o"></i> Remove</a>
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+
+                                                    </tbody>
+                                                    <tfoot>
+                                                    <tr style="background-color: #b9c2af">
+                                                        <th rowspan="1" colspan="1">JOINED ON</th>
+                                                        <th rowspan="1" colspan="1">STAFF NAME</th>
+                                                        <th rowspan="1" colspan="1">CONTACT</th>
+                                                        <th rowspan="1" colspan="1">EMAIL</th>
+                                                        <th rowspan="1" colspan="1">DEPARTMENT</th>
+                                                        <th rowspan="1" colspan="1">ACTION</th>
+                                                    </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+
                                         </div>
-
                                     </div>
+
+
                                 </div>
-
-
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -1039,9 +1095,9 @@
                     <div class="modal-body">
                         <input type="text" class="form-control" id="code" name="code" value="{{ project.code }}" hidden>
                         <div class="form-group">
-                            <label for="item">ITEM *</label>
+                            <label for="item">SHORT DESCRIPTION *</label>
                             <input type="text" class="form-control" id="item" name="item"
-                                   placeholder="Enter Item" required>
+                                   placeholder="Enter short description for income" required>
                         </div>
                         <div class="form-group">
                             <label for="amount">AMOUNT *</label>
@@ -1295,12 +1351,12 @@
                 var total = 0;
                 var qty = $(".qty").val();
                 var unit_price = $(".unit_price").val();
-                console.log('xxxxx',qty, unit_price);
+                console.log('xxxxx', qty, unit_price);
                 console.log('xxxxx', parseFloat(qty) * parseFloat(unit_price));
 
                 if (!isNaN(parseInt($(this).val()))) {
                     total = parseFloat(qty) * parseFloat(unit_price);
-                    console.log('my total',total );
+                    console.log('my total', total);
                     $(".total").val(total);
                 }
 
