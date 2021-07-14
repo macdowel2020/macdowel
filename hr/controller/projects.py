@@ -23,6 +23,8 @@ def staff_projects(request):
                 contact = request.POST["contact"]
                 address = request.POST["address"]
                 category = request.POST["category"]
+                registration_number = request.POST["registration_number"]
+                chassis = request.POST["chassis"]
                 if pro_name not in ds and pro_name != 'Select Option':
                     Project.objects.create(
                         code=''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6)),
@@ -30,7 +32,9 @@ def staff_projects(request):
                         email=email,
                         contact=contact,
                         address=address,
-                        category=category
+                        category=category,
+                        registration_number=registration_number,
+                        chassis=chassis
                     )
                     # record action
                     AuditTrail.objects.create(user=request.user, project=staff.project,

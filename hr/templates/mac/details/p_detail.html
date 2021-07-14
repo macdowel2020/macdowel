@@ -12,7 +12,7 @@
                     {% if project.category == 'Farm' %}
                         <h1 class="m-0 text-dark"><a href="/farms/">FARMS</a></h1>
                     {% elif project.category == 'Machinery' %}
-                        <h1 class="m-0 text-dark"><a href="/farms/">MACHINES</a></h1>
+                        <h1 class="m-0 text-dark"><a href="/machines/">MACHINES</a></h1>
 
                     {% elif project.category == 'Machinery' %}
                         <h1 class="m-0 text-dark"><a href="/farms/">LAND</a></h1>
@@ -38,7 +38,7 @@
                 <div class="col-12">
                     <div class="card m-b-30">
                         <div class="card-body"><h5 class="header-title pb-3" style="text-align: center">
-                            <b>{{ project.name |upper }} PROJECT DETAILS {{ project.code }}</b></h5>
+                            <b>{{ project.name |upper }} PROJECT DETAILS</b></h5>
                             <div class="general-label">
                                 <div class="row">
 
@@ -54,7 +54,6 @@
                                             </button>
                                         {% endif %}
                                     </div>
-
                                     <div class="col-sm-9">
                                         <div class="row">
                                             <div class="col-sm-6">
@@ -97,29 +96,26 @@
                                                     LOCATION</label>
                                                     <input type="text" id="registration_number"
                                                            name="registration_number"
-                                                           value="{{ project.address }}"
+                                                           value="{{ project.address |upper}}"
                                                            placeholder="Enter Registration Number" required="required"
                                                            disabled="disabled" class="form-control"></div>
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <div class="form-group"><label for="registration_number">PROJECT
-                                                    COMPLETION
-                                                    STATUS</label>
+                                                <div class="form-group"><label for="registration_number">SERIAL NUMBER
+                                                    </label>
                                                     <input type="text" id="registration_number"
                                                            name="registration_number"
-                                                           value="{{ profile.staff_status }}"
+                                                           value="MACDOWEL-{{ project.code}}"
                                                            required="required"
                                                            disabled="disabled" class="form-control"></div>
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <div class="form-group"><label for="registration_number">PROJECT
-                                                    COMPLETION
-                                                    STATUS</label>
+                                                <div class="form-group"><label for="registration_number">CATEGORY</label>
                                                     <input type="text" id="registration_number"
                                                            name="registration_number"
-                                                           value="{{ profile.staff_status }}"
+                                                           value="{{ project.category |upper }}"
                                                            required="required"
                                                            disabled="disabled" class="form-control"></div>
                                             </div>
@@ -535,7 +531,7 @@
                                                     <div class="tab-pane" id="timeline">
 
 
-                                                        <table id="example1"
+                                                        <table id="example6"
                                                                class="table table-bordered table-striped dataTable"
                                                                role="grid"
                                                                aria-describedby="example1_info">
@@ -652,12 +648,10 @@
                                                                 <th rowspan="1" colspan="1">DESCRIPTION</th>
                                                                 <th rowspan="1" colspan="1">STAFF</th>
 
-                                                                <th rowspan="1" colspan="1">
 
-                                                                </th>
-                                                                <th rowspan="1" colspan="1"
-                                                                    style="background-color: #939393"><span
-                                                                        style="color: white;">TOTAL:</span>
+                                                                <th rowspan="1" colspan="2"
+                                                                    style="background-color: #939393; text-align: center!important;"><span
+                                                                        style="color: white;">TOTAL: </span>
                                                                     <b style="color: #fff1ff!important; font-size: 20px!important;">{{ approved_total|intcomma }}/=</b>
                                                                 </th>
                                                                 <th rowspan="1" colspan="1">ACTION</th>
@@ -824,14 +818,18 @@
                                 <div class="row">
 
                                     <div class="col-sm-12">
-                                        <button type="button" class="btn btn-success btn-sm"
+                                    <h3>
+                                         <button type="button" class="btn btn-success btn-sm title"
                                                 style="background-color: #4eaa24!important;  box-shadow: 0 8px 6px -6px black;"
                                                 data-toggle="modal"
                                                 data-target="#modal-inventory"><i class="fa fa-cart-arrow-down"></i> ADD
                                             ITEM
                                         </button>
+                                    </h3>
+
+
                                         <div class="col-sm-12">
-                                            <table id="example1" class="table table-bordered table-striped dataTable"
+                                            <table id="example7" class="table table-bordered table-striped dataTable"
                                                    role="grid"
                                                    aria-describedby="example1_info">
                                                 <thead style="background-color: #b9c2af">
@@ -1178,7 +1176,6 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-
 
     <!-- Modal -->
     <div class="modal fade" id="modal_project_photo" tabindex="-1" role="dialog"

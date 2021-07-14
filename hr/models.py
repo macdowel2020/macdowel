@@ -16,6 +16,8 @@ class Project(models.Model):
     address = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
     image = models.ImageField(upload_to="projects/", default="logo.jpg")
+    registration_number = models.CharField(max_length=255, null=True, blank=True)
+    chassis = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.name

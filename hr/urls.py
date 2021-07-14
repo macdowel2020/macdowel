@@ -44,7 +44,11 @@ urlpatterns = [
     path('delete_inventory/', farms.delete_inventory, name='delete_inventory'),
 
     #     PROJECTS
+    # MACHINES
     path('machines/', machinery.machines, name='machines'),
+    path('delete_machine/', machinery.delete_machine, name='delete_machine'),
+
+    # FARMS
     path('farms/', farms.farms, name='farms'),
 
     #     LAND

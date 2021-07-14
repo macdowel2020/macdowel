@@ -4,202 +4,199 @@
 {% block content %}
     <!-- Content Header (Page header) -->
     <style>
-    li a{
-        color: black;
-    }
+        li a {
+            color: black;
+        }
     </style>
-    <div style="background-color: #c6e8c7">
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    {% if view == "detail" %}
-                        <h1 class="m-0 text-dark">Project</h1>
-                    {% else %}
-                        <h1 class="m-0 text-dark"><a href="/staff_projects/">PROJECTS</a></h1>
-                    {% endif %}
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right" style="color: black">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="/land/">Land</a></li>
-                        <li class="breadcrumb-item active"><a href="/farms/">Farm</a></li>
-                        <li class="breadcrumb-item active"><a href="/machines/">Machinery</a></li>
-                        <li class="breadcrumb-item active"><a href="/">Apartments</a></li>
-                        <li class="breadcrumb-item active"><a href="/">Rentals</a></li>
-                        <li class="breadcrumb-item active"><a href="/">Poultry</a></li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <div class="row">
-        <div class="col-md-9">
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        {#                    <button type="button" class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-info"><i#}
-                        {#                            class="fa fa-users"></i> Add New#}
-                        {#                    </button>#}
-                    </h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
-                                       aria-describedby="example1_info">
-                                    <thead style="background-color: #afc270">
-                                    <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1"
-                                            aria-sort="ascending"
-                                            aria-label="Rendering engine: activate to sort column descending"
-                                            style="width: 10%;">#
-                                        </th>
-
-
-                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 40%;">
-                                            Project
-                                        </th>
-
-                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 20%;">
-                                            Location
-                                        </th>
-
-
-                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1"
-                                            aria-label="CSS grade: activate to sort column ascending"
-                                            style="width: 20%;">
-                                            Action
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    {% for u in projects %}
-                                        <tr role="row" class="odd">
-
-                                            <td>{{ forloop.counter }}</td>
-                                            <td>{{ u.name }}</td>
-                                            <td>{{ u.address }}</td>
-                                            <td style="text-align: right">
-
-                                                <a {% if u.category == 'Rent' %}
-                                                    href="/#/?code={{ u.code }}"
-                                                {% else %}
-                                                    href="/farm_detail/?code={{ u.code }}"
-                                                {% endif %}
-
-                                                    class="btn  btn-outline-info btn-sm"><i class="fa fa-eye"></i>
-                                                    Detail</a>
-                                                <a href="#" class="btn  btn-outline-danger btn-sm"> <i
-                                                        class="fa fa-trash-o"></i> Delete</a>
-
-
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-
-                                    </tbody>
-                                    <tfoot>
-                                    <tr style="background-color: #17a2b8; color: white">
-                                        <th rowspan="1" colspan="1">#</th>
-                                        <th rowspan="1" colspan="1">Project</th>
-                                        <th rowspan="1" colspan="1">Location</th>
-                                        <th rowspan="1" colspan="1">Action</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
+ <div class="container_fluid m-2">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        {% if view == "detail" %}
+                            <h1 class="m-0 text-dark">Project</h1>
+                        {% else %}
+                            <h1 class="m-0 text-dark"><a href="/staff_projects/">PROJECTS</a></h1>
+                        {% endif %}
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right" style="color: black">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="/land/">Land</a></li>
+                            <li class="breadcrumb-item active"><a href="/farms/">Farm</a></li>
+                            <li class="breadcrumb-item active"><a href="/machines/">Machinery</a></li>
+                            <li class="breadcrumb-item active"><a href="/">Apartments</a></li>
+                            <li class="breadcrumb-item active"><a href="/">Rentals</a></li>
+                            <li class="breadcrumb-item active"><a href="/">Poultry</a></li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
+        <!-- /.content-header -->
 
-        <div class="col-md-3">
-            <div class="card card-info">
-                <div class="card-header" style="background-color: #ff8b26; color: #ffffff">
-                    <h3 class="card-title">ADD PROJECT</h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form class="form-horizontal" method="post" action="/machines/">
-                    {% csrf_token %}
-                    <div class="card-body" style="background-color: #afc270">
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <label for="name" class="control-label">Project Name</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                       placeholder="Enter Project">
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            {#                    <button type="button" class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-info"><i#}
+                            {#                            class="fa fa-users"></i> Add New#}
+                            {#                    </button>#}
+                        </h3>
+                    </div>
+
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+
+
+                                    <div class="row">
+
+                                        {% for project in  projects %}
+
+                                            <div class="col-md-3">
+                                                <!-- Profile Image -->
+                                                <div class="card card-success card-outline">
+                                                    <div class="card-body box-profile">
+                                                        <div class="text-center">
+                                                            <img class="img-fluid rounded" src="{{ project.image.url }}"
+                                                                 alt="Photo" style=" box-shadow: 0 8px 6px -6px black;">
+                                                        </div>
+
+                                                        <h3 class="profile-username text-center"><label
+                                                                for="registration_number">{{ project.name |upper }}</label>
+                                                        </h3>
+
+                                                        <p class="text-muted text-center"
+                                                           style="color: black!important;">{{ project.email }}</p>
+
+                                                        <ul class="list-group list-group-unbordered mb-3">
+                                                            <li class="list-group-item">
+                                                                <b>LOCATION</b> <a
+                                                                    class="float-right">{{ project.address |upper }}</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>CONTACT</b> <a
+                                                                    class="float-right">{{ project.contact }}</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>CATEGORY</b> <a
+                                                                    class="float-right">{{ project.category | upper }}</a>
+                                                            </li>
+                                                        </ul>
+
+                                                        <a {% if u.category == 'Rent' %}
+                                                            href="/#/?code={{ project.code }}"
+                                                        {% else %}
+                                                            href="/farm_detail/?code={{ project.code }}"
+                                                        {% endif %}
+                                                            class="btn btn-success btn-block"
+                                                            style=" box-shadow: 0 8px 6px -6px black; background-color: #89ac4d!important;"><i
+                                                                class="fa fa-eye"></i> <b>VIEW
+                                                            DETAILS</b></a>
+
+                                                        {% if request.user.is_superuser %}
+                                                            <a href="/delete_project/?code={{ project.code }}"
+                                                               class="btn btn-danger btn-block"
+                                                               style=" box-shadow: 0 8px 6px -6px black; background-color: red!important;"
+                                                               onclick="return confirm('Are you sure you want to Remove Record?');"
+                                                            ><i class="fa fa-trash-o"></i> <b>DELETE</b></a>
+                                                        {% endif %}
+
+                                                    </div>
+                                                    <!-- /.card-body -->
+                                                </div>
+                                                <!-- /.card -->
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+
+                                </div>
                             </div>
+
                         </div>
-
-                        <div class="form-group">
-                            <label>Project Category*</label>
-                            <select class="form-control" name="category" required style="background-color: #71a64d; color: white">
-                                <option>Select Option</option>
-                                <option value="Land">Land</option>
-                                <option value="Apartment">Apartment</option>
-                                <option value="Rentals">Rentals</option>
-                                <option value="Machinery">Machinery</option>
-                                <option value="Farm">Farm</option>
-                                <option value="Poultry">Poultry</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <label for="email" class="control-label">Project Email</label>
-                                <input type="text" class="form-control" id="email" name="email"
-                                       placeholder="Enter Project Email">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <label for="contact" class="control-label">Project Contact Number</label>
-                                <input type="text" class="form-control" id="contact" name="contact"
-                                       placeholder="Enter Project Contact">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <label for="address" class="control-label">Project Location</label>
-                                <input type="text" class="form-control" id="address" name="address"
-                                       placeholder="Enter Project Location">
-                            </div>
-                        </div>
-
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer" style="background-color: #ff8b26; color: #ffffff">
-                        <button type="submit" class="btn btn-info">Add New</button>
-                        <button type="reset" class="btn btn-default float-right">Cancel</button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-info">
+                    <div class="card-header" style="background-color: #ff8b26; color: #ffffff">
+                        <h3 class="card-title">ADD PROJECT</h3>
                     </div>
-                    <!-- /.card-footer -->
-                </form>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" method="post" action="/machines/">
+                        {% csrf_token %}
+                        <div class="card-body" style="background-color: #afc270">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="name" class="control-label">Project Name</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                           placeholder="Enter Project">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Project Category*</label>
+                                <select class="form-control" name="category" required
+                                        style="background-color: #71a64d; color: white">
+                                    <option>Select Option</option>
+                                    <option value="Land">Land</option>
+                                    <option value="Apartment">Apartment</option>
+                                    <option value="Rentals">Rentals</option>
+                                    <option value="Machinery">Machinery</option>
+                                    <option value="Farm">Farm</option>
+                                    <option value="Poultry">Poultry</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="email" class="control-label">Project Email</label>
+                                    <input type="text" class="form-control" id="email" name="email"
+                                           placeholder="Enter Project Email">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="contact" class="control-label">Project Contact Number</label>
+                                    <input type="text" class="form-control" id="contact" name="contact"
+                                           placeholder="Enter Project Contact">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="address" class="control-label">Project Location</label>
+                                    <input type="text" class="form-control" id="address" name="address"
+                                           placeholder="Enter Project Location">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer" style="background-color: #ff8b26; color: #ffffff">
+                            <button type="submit" class="btn btn-info">Add New</button>
+                            <button type="reset" class="btn btn-default float-right">Cancel</button>
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+
+                </div>
 
             </div>
-
         </div>
-    </div>
-    </div>
+
+ </div>
 
 {% endblock %}
