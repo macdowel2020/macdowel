@@ -17,6 +17,9 @@ Including another URLconf
 from django.urls import path
 from hr.controller import home, authenticate, register, departments, projects, farms, machinery, land
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', home.dashboard, name='dashboard'),
     #     Authenticate
@@ -36,11 +39,22 @@ urlpatterns = [
     path('approve_request/', farms.approve_request, name='approve_request'),
     path('reject_request/', farms.reject_request, name='reject_request'),
     path('delete_expenditure/', farms.delete_expenditure, name='delete_expenditure'),
+    path('update_project_photo/', farms.update_project_photo, name='update_project_photo'),
+    path('farm_inventory/', farms.farm_inventory, name='farm_inventory'),
+    path('delete_inventory/', farms.delete_inventory, name='delete_inventory'),
 
     #     MACHINERY
     path('machines/', machinery.machines, name='machines'),
 
     #     LAND
     path('land/', land.land, name='land'),
+    path('delete_project/', farms.delete_project, name='delete_project'),
+
+    #     STAFF
+    path('update_staff_photo/', register.update_staff_photo, name='update_staff_photo'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

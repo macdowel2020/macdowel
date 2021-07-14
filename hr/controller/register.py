@@ -3,6 +3,7 @@ import string
 
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -31,6 +32,7 @@ def profile(request):
 
                 dob = request.POST["dob"]
                 password = request.POST["password"]
+                staff_responsibilities = request.POST["staff_responsibilities"]
 
                 if request.user.is_staff:
 
@@ -63,6 +65,7 @@ def profile(request):
                             gender=gender,
                             dob=dob,
                             staff_status='active',
+                            staff_responsibilities=staff_responsibilities
                         )
                         # record action
                         AuditTrail.objects.create(user=request.user, project=staff.project,
@@ -117,3 +120,30 @@ def profile(request):
     else:
         messages.error(request, 'Login to Continue')
         return HttpResponseRedirect("/")
+
+
+def update_staff_photo(incoming):
+    if incoming.user.is_authenticated:
+        if incoming.method == 'POST' and incoming.FILES['image']:
+            email = incoming.GET['email']
+
+            ustaff = Staff.objects.get(user__email__contains=email)
+
+
+            image = incoming.FILES['image']
+            print(image.name)
+            print(image.size)
+
+            Staff.objects.filter(user__email__contains=ustaff.user.email).update(
+                image=image
+            )
+            fs = FileSystemStorage()
+            fs.save(image.name, image)
+            print('worked upload')
+            return HttpResponseRedirect('/staff/?email=%s' % ustaff.user.email)
+        else:
+            return HttpResponseRedirect('/staff/')
+    else:
+        messages.error(incoming, 'Login to proceed!')
+        return HttpResponseRedirect('/')
+

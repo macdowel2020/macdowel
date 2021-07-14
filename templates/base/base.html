@@ -43,6 +43,16 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="height: auto">
+     {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible shadow fade show" role="alert"
+                 style="margin-top: 10px!important;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message | safe }}
+            </div>
+        {% endfor %}
+
         {% block content %} {% endblock %}
 
     </div>
@@ -124,6 +134,8 @@
         });
     });
 </script>
+
+{% block javascript %} {% endblock %}
 
 
 

@@ -4,10 +4,12 @@ import string
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
-from hr.models import Staff, Project, AuditTrail, Income, Expenditure
+from django.core.files.storage import FileSystemStorage
+from hr.models import Staff, Project, AuditTrail, Income, Expenditure, Inventory
 
 userdetail = ''
+
+
 def farms(request):
     if request.user.is_authenticated:
         staff = Staff.objects.get(user=request.user)
@@ -70,13 +72,16 @@ def farm_detail(request):
             code = request.GET["code"]
             # get loan details
             project = Project.objects.get(code=code)
-            userdetail =project.code
+            staff = Staff.objects.filter(project__code__contains=project.code)
+            userdetail = project.code
             incomes = Income.objects.filter(project__code__contains=code).order_by('-id')
-            pending_expenditures = Expenditure.objects.filter(project__code__contains=code, status__contains='Pending').order_by('-id')
+            pending_expenditures = Expenditure.objects.filter(project__code__contains=code,
+                                                              status__contains='Pending').order_by('-id')
             approved_expenditures = Expenditure.objects.filter(project__code__contains=code,
                                                                status__contains='Approved').order_by('-id')
             rejected_expenditures = Expenditure.objects.filter(project__code__contains=code,
                                                                status__contains='Rejected').order_by('-id')
+            inventory = Inventory.objects.filter(project__code__contains=code).order_by('-id')
 
             # calculate the income total amount
             for d in incomes:
@@ -95,23 +100,25 @@ def farm_detail(request):
                 rejected_total += int(d.amount)
 
             if total > approved_total:
-                profit = total -approved_total
+                profit = total - approved_total
             else:
-                profit =0
+                profit = 0
 
             if total > approved_total:
                 loss = 0
             else:
                 loss = total - approved_total
-            return render(request, 'mac/details/farm_detail.html', {'project': project, 'incomes': incomes,
+            return render(request, 'mac/details/farm_report.html', {'project': project, 'incomes': incomes,
                                                                     'total': total,
                                                                     'pending_expenditures': pending_expenditures,
                                                                     'pending_total': pending_total,
                                                                     'approved_expenditures': approved_expenditures,
                                                                     'approved_total': approved_total,
                                                                     'rejected_expenditures': rejected_expenditures,
-                                                                    'rejected_total': rejected_total, 'loss':loss,
-                                                                    'profit':profit
+                                                                    'rejected_total': rejected_total, 'loss': loss,
+                                                                    'profit': profit,
+                                                                    'staff': staff,
+                                                                    'inventory': inventory
                                                                     })
         except Exception as p:
             print(str(p))
@@ -130,6 +137,7 @@ def farm_income(request):
             # Get the project
             code = request.GET['code']
             project = Project.objects.get(code=code)
+            print('PROJECT CODE', project.code)
 
             # Add the income
 
@@ -149,7 +157,7 @@ def farm_income(request):
                 description=description
             )
             messages.success(request, 'You have successfully added an Income')
-            return HttpResponseRedirect('/farm_detail/?code=%s', project.code)
+            return HttpResponseRedirect('/farm_detail/?code=%s'%project.code)
         except Exception as p:
             print(str(p))
             messages.error(request, 'An Error Occured')
@@ -185,7 +193,7 @@ def request_expenditure(request):
                 approved_by=request.user.username
             )
             messages.success(request, 'You have successfully added your request, please wait for approval from MD')
-            return HttpResponseRedirect('/farm_detail/?code=%s', project.code)
+            return HttpResponseRedirect('/farm_detail/?code=%s' % project.code)
         except Exception as p:
             print(str(p))
             messages.error(request, 'An Error Occured')
@@ -196,29 +204,37 @@ def request_expenditure(request):
         return HttpResponseRedirect('/')
 
 
-
 def approve_request(request):
     try:
         code = request.GET["code"]
+        xp = Expenditure.objects.get(code=code)
+
+        project = Project.objects.get(code=xp.project.code)
         Expenditure.objects.filter(code=code).update(status='Approved')
         messages.success(request, 'You have successfully Approved an Expenditure Request ')
-        return HttpResponseRedirect('/farms/')
+        return HttpResponseRedirect('/farm_detail/?code=%s' % project.code)
     except Exception as p:
         print(str(p))
         messages.error(request, 'An Error Occurred')
         return HttpResponseRedirect('/')
+
 
 def reject_request(request):
-    try:
-        code = request.GET["code"]
-        Expenditure.objects.filter(code=code).update(status='Rejected')
-        messages.success(request, 'Request has been Rejected')
-        return HttpResponseRedirect('/farm_detail/?code=%s'%userdetail)
-    except Exception as p:
-        print(str(p))
-        messages.error(request, 'An Error Occurred')
-        return HttpResponseRedirect('/')
-
+    if request.method == 'POST':
+        try:
+            code = request.POST["code"]
+            reason = request.POST["reason"]
+            xp = Expenditure.objects.get(code=code)
+            project = Project.objects.get(code=xp.project.code)
+            Expenditure.objects.filter(code__contains=code).update(status='Rejected', reason=reason)
+            messages.success(request, 'Request has been Rejected')
+            return HttpResponseRedirect('/farm_detail/?code=%s' % project.code)
+        except Exception as p:
+            print(str(p))
+            messages.error(request, 'An Error Occurred')
+            return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/farm_detail/?code=%s' % userdetail)
 
 
 def delete_expenditure(request):
@@ -232,6 +248,7 @@ def delete_expenditure(request):
         messages.error(request, 'An Error Occurred')
         return HttpResponseRedirect('/')
 
+
 def delete_income(request):
     try:
         code = request.GET["code"]
@@ -239,3 +256,106 @@ def delete_income(request):
         print(str(p))
         messages.error(request, 'An Error Occurred')
         return HttpResponseRedirect('/')
+
+
+def delete_project(request):
+    try:
+        code = request.GET["code"]
+        Project.objects.get(code__contains=code).delete()
+        messages.success(request, 'Project has been deleted Successfully')
+        return HttpResponseRedirect('/farms/')
+
+    except Exception as p:
+        print(str(p))
+        messages.error(request, 'An Error Occurred')
+        return HttpResponseRedirect('/')
+
+
+def update_project_photo(incoming):
+    if incoming.user.is_authenticated:
+        if incoming.method == 'POST' and incoming.FILES['image']:
+            code = incoming.GET["code"]
+
+            image = incoming.FILES['image']
+            print(image.name)
+            print(image.size)
+            xp = Project.objects.get(code__contains=code)
+
+            Project.objects.filter(code__contains=code).update(
+                image=image
+            )
+            fs = FileSystemStorage()
+            fs.save(image.name, image)
+            messages.success(incoming, 'Project Photo has been Updated Successfully')
+            return HttpResponseRedirect('/farm_detail/?code=%s' % xp.code)
+        else:
+            return HttpResponseRedirect('/farms/')
+    else:
+        messages.error(incoming, 'Login to proceed!')
+        return HttpResponseRedirect('/')
+
+
+def farm_inventory(request):
+    if request.user.is_authenticated:
+        try:
+            # Get the Staff
+            user_staff = request.user.email
+            user = Staff.objects.get(user__email__contains=user_staff)
+            # Get the project
+            code = request.GET['code']
+            project = Project.objects.get(code=code)
+
+            # Add the income
+
+
+            item = request.POST["item"]
+            qty = request.POST["qty"]
+            unit_price = request.POST["unit_price"]
+            description = request.POST["description"]
+            date = request.POST["date"]
+            reference_copy = request.FILES['reference_copy']
+            print(reference_copy.name)
+            print(reference_copy.size)
+
+
+            total_price = float(qty) * float(unit_price)
+
+            Inventory.objects.create(
+                code=''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6)),
+                staff=user,
+                project=project,
+                item=item,
+                qty = qty,
+                unit_price = unit_price,
+                total_price = total_price,
+                status = 'Completed',
+                description = description,
+                date=date,
+                reference_copy=reference_copy
+            )
+            fs = FileSystemStorage()
+            fs.save(reference_copy.name, reference_copy)
+            messages.success(request, 'You have successfully added an Inventory Item')
+            return HttpResponseRedirect('/farm_detail/?code=%s' %project.code)
+        except Exception as p:
+            print(str(p))
+            messages.error(request, 'An Error Occured')
+    else:
+        messages.error(request, 'Login to Proceed')
+        return HttpResponseRedirect('/')
+
+
+def delete_inventory(request):
+    try:
+        code = request.GET["code"]
+        iv =  Inventory.objects.get(code=code)
+        Inventory.objects.get(code=code).delete()
+        messages.success(request, 'Item has been Deleted')
+        return HttpResponseRedirect('/farm_detail/?code=%s' % iv.project.code)
+    except Exception as p:
+        print(str(p))
+        messages.error(request, 'An Error Occurred')
+        return HttpResponseRedirect('/')
+
+
+

@@ -47,36 +47,41 @@
                                         colspan="1"
                                         aria-sort="ascending"
                                         aria-label="Rendering engine: activate to sort column descending"
-                                        style="width: 277px;">#
+                                        style="width: 100px;">#
                                     </th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                         colspan="1"
                                         aria-sort="ascending"
                                         aria-label="Rendering engine: activate to sort column descending"
-                                        style="width: 277px;">Name
+                                        style="width: 277px;">NAME
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending" style="width: 352px;">
-                                        Project
+                                        PROJECT
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending"
                                         style="width: 314px;">
-                                        Role
+                                        ROLE
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending"
+                                        style="width: 314px;">
+                                        RESPONSIBILITY
                                     </th>
 
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending"
                                         style="width: 314px;">
-                                        Department
+                                        DEPARTMENT
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending"
-                                        style="width: 238px;">Contact
+                                        style="width: 238px;">CONTACT
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="CSS grade: activate to sort column ascending" style="width: 173px;">
-                                        Action
+                                        ACTION
                                     </th>
                                 </tr>
                                 </thead>
@@ -92,6 +97,7 @@
                                         </a></td>
                                         <td>{% if u.project %}{{ u.project }} {% else %}NIL{% endif %}</td>
                                         <td>{% if u.role %}{{ u.role }} {% else %}NIL{% endif %}</td>
+                                        <td>{{ u.staff_responsibilities }}</td>
                                         <td>{% if u.department %}{{ u.department }} {% else %}NIL{% endif %}</td>
                                         <td>{{ u.contact }}</td>
                                         <td>
@@ -108,12 +114,13 @@
                                 <tfoot>
                                 <tr>
                                     <th rowspan="1" colspan="1">#</th>
-                                    <th rowspan="1" colspan="1">Name</th>
-                                    <th rowspan="1" colspan="1">Project</th>
-                                    <th rowspan="1" colspan="1">Role</th>
-                                    <th rowspan="1" colspan="1">Department</th>
-                                    <th rowspan="1" colspan="1">Contact</th>
-                                    <th rowspan="1" colspan="1">Action</th>
+                                    <th rowspan="1" colspan="1">NAME</th>
+                                    <th rowspan="1" colspan="1">PROJECT</th>
+                                    <th rowspan="1" colspan="1">ROLE</th>
+                                    <th rowspan="1" colspan="1">RESPONSIBILITY</th>
+                                    <th rowspan="1" colspan="1">DEPARTMENT</th>
+                                    <th rowspan="1" colspan="1">CONTACT</th>
+                                    <th rowspan="1" colspan="1">ACTION</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -183,7 +190,7 @@
                                        placeholder="Enter User Name" required>
                             </div>
 
-                         <div class="form-group">
+                            <div class="form-group">
                                 <label for="password">Password*</label>
                                 <input type="text" class="form-control" id="password" name="password"
                                        placeholder="Enter Password" required>
@@ -259,6 +266,13 @@
                                        placeholder="Enter Date of Birth" required>
                             </div>
 
+                            <div class="form-group">
+                                <label for="nin">Staff Responsibilities*</label>
+                                <input type="text" class="form-control" id="staff_responsibilities"
+                                       name="staff_responsibilities"
+                                       placeholder="Enter Staff Responsibilities" required>
+                            </div>
+
 
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -287,16 +301,21 @@
                         <div class="card card-success card-outline ">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle"
-                                         src="{% static 'assets/dist/img/user4-128x128.jpg' %}"
+                                    {#                                    <img class="profile-user-img img-fluid img-circle" src="{% static 'assets/dist/img/user4-128x128.jpg' %}" alt="User profile picture">#}
+
+                                    <img class="profile-user-img img-fluid img-circle" src="{{ profile.image.url }}"
                                          alt="User profile picture">
+
                                 </div>
 
                                 <h3 class="profile-username text-center">{% if profile.user.first_name %}
                                     {{ profile.user.first_name }} {{ profile.user.last_name }}{% else %}
                                     {{ profile.user.username |capfirst }}{% endif %}</h3>
 
-                                <p class="text-muted text-center">{{ profile.department.name }} Department</p>
+                                <p class="text-muted text-center">{{ profile.department.name | upper }} DEPARTMENT</p>
+                                <button class="btn btn-success btn-block" data-toggle="modal"
+                                        data-target="#modal-user">UPLOAD PROFILE PHOTO
+                                </button>
 
                             </div>
                             <!-- /.card-body -->
@@ -436,6 +455,56 @@
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
+
+
+
+
+        {# MODAL CODE #}
+        <!-- Modal -->
+        <div class="modal fade" id="modal-user" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLongTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content ">
+                    <div class="modal-header" style="background-color: #285d18; text-align: center!important;">
+                        <h5 class="modal-title" id="modal-company" style="text-align: center">UPLOAD STAFF PHOTO</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form-horizontal" method="post"
+                          action="/update_staff_photo/?email={{ profile.user.email }}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="modal-body" style="background-color: rgba(161,255,131,0.55)">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ profile.user.email }}" id="email"
+                                       name="email" hidden>
+
+                                <div class="col-sm-12">
+                                    {#                                <label for="username" class="control-label">User Name *</label>#}
+                                    {#                                <input type="text" class="form-control" id="username" name="username"#}
+                                    {#                                       placeholder="Enter User Name" required>#}
+
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label class="custom-file-label" for="logo">Choose Image File</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer" style="background-color: #285d18">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                                    class="fa fa-close"></i> Close
+                            </button>
+                            <button type="submit" class="btn btn-success">UPLOAD PHOTO</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
 
 
 

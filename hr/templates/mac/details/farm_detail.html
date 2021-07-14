@@ -29,11 +29,6 @@
                     <!-- Profile Image -->
                     <div class="card card-success card-outline ">
                         <div class="card-body box-profile">
-                            {#                                <div class="text-center">#}
-                            {#                                    <img class="img-fluid img-rounded"#}
-                            {#                                         src="{% static 'assets/dist/img/user4-128x128.jpg' %}"#}
-                            {#                                         alt="User profile picture">#}
-                            {#                                </div>#}
 
 
                             <div class="col-sm-12">
@@ -48,16 +43,17 @@
 
                             <h3 class="profile-username text-center"><b>INCOME: UGX: {% if  total > approved_total %}
                                 <span style="color: green"><i
-                                        class="fa fa-arrow-circle-o-up"></i> {{ total |intcomma  }}/= </span>{% else %}
+                                        class="fa fa-arrow-circle-o-up"></i> {{ total |intcomma }}/= </span>{% else %}
                                 <span style="color: red"><i
-                                        class="fa fa-arrow-circle-o-down"></i> {{ total |intcomma }}/= </span> {% endif %}</b>
+                                        class="fa fa-arrow-circle-o-down"></i> {{ total |intcomma }}/= </span> {% endif %}
+                            </b>
                             </h3>
                             <h3 class="profile-username text-center"><b>EXPENDITURE:
                                 UGX: {% if  total < approved_total %}
                                     <span style="color: red"><i
                                             class="fa fa-arrow-circle-o-up"></i> {{ approved_total |intcomma }}/= </span>
                                 {% else %}
-                                    <span style="color: green">{{ approved_total|intcomma  }}/=</span>
+                                    <span style="color: green">{{ approved_total|intcomma }}/=</span>
                                 {% endif %}
                             </b>
                             </h3>
@@ -150,7 +146,7 @@
 
                                                 <div class="info-box-content">
                                                     <span class="info-box-text">Income</span>
-                                                    <span class="info-box-number">UGX: {{ total|intcomma  }}/=</span>
+                                                    <span class="info-box-number">UGX: {{ total|intcomma }}/=</span>
 
                                                     <div class="progress">
                                                         <div class="progress-bar" style="width: 70%"></div>
@@ -168,7 +164,7 @@
 
                                                 <div class="info-box-content">
                                                     <span class="info-box-text">Expenditure</span>
-                                                    <span class="info-box-number">UGX: {{ approved_total|intcomma  }}/=</span>
+                                                    <span class="info-box-number">UGX: {{ approved_total|intcomma }}/=</span>
 
                                                     <div class="progress">
                                                         <div class="progress-bar" style="width: 70%"></div>
@@ -186,7 +182,7 @@
 
                                                 <div class="info-box-content">
                                                     <span class="info-box-text">Profit</span>
-                                                    <span class="info-box-number">UGX: {{ profit|intcomma  }}/=</span>
+                                                    <span class="info-box-number">UGX: {{ profit|intcomma }}/=</span>
 
                                                     <div class="progress">
                                                         <div class="progress-bar" style="width: 70%"></div>
@@ -204,7 +200,7 @@
 
                                                 <div class="info-box-content">
                                                     <span class="info-box-text">Loss</span>
-                                                    <span class="info-box-number"> UGX: {{ loss|intcomma  }}/=</span>
+                                                    <span class="info-box-number"> UGX: {{ loss|intcomma }}/=</span>
 
                                                     <div class="progress">
                                                         <div class="progress-bar" style="width: 70%"></div>
@@ -217,7 +213,6 @@
                                         </div>
                                         <!-- /.col -->
                                     </div>
-
 
 
                                 </div>
@@ -318,10 +313,12 @@
                                                     <th rowspan="1" colspan="1">Staff</th>
                                                     <th rowspan="1" colspan="1"
                                                         style="background-color: rgba(36,118,31,0.96)!important;">
-                                                        <span style="color: white">TOTAL:</span> <b
-                                                            style="color: #fff1ff!important; font-size: 20px!important;">{{ total|intcomma  }}/=</b>
+
                                                     </th>
-                                                    <th rowspan="1" colspan="1">Action</th>
+                                                    <th rowspan="1" colspan="1"><span style="color: white">TOTAL:</span>
+                                                        <b
+                                                                style="color: #fff1ff!important; font-size: 20px!important;">{{ total|intcomma }}/=</b>
+                                                    </th>
                                                 </tr>
                                                 </tfoot>
                                             </table>
@@ -518,7 +515,7 @@
 
                                                         <td>{{ u.entered_on }}</td>
                                                         <td>{{ u.staff.user.username }}</td>
-                                                        <td>{{ u.amount|intcomma  }}/=</td>
+                                                        <td>{{ u.amount|intcomma }}/=</td>
                                                         <td style="text-align: center">
                                                             <i class="fa fa-warning"></i>
                                                             <span class=" badge badge-warning"
@@ -626,7 +623,7 @@
 
                                                         <td>{{ u.entered_on }}</td>
                                                         <td>{{ u.staff.user.username }}</td>
-                                                        <td>{{ u.amount|intcomma  }}</td>
+                                                        <td>{{ u.amount|intcomma }}</td>
                                                         <td style="text-align: center">
                                                             <b>X</b>
                                                             <span class=" badge badge-danger"
@@ -734,7 +731,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content bg-info">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{ project.name |upper}} EXPENDITURE</h4>
+                    <h4 class="modal-title">{{ project.name |upper }} EXPENDITURE</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
