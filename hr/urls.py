@@ -57,6 +57,7 @@ urlpatterns = [
 
     #     STAFF
     path('update_staff_photo/', register.update_staff_photo, name='update_staff_photo'),
+    path('update_user_profile/', register.update_user_profile, name='update_user_profile'),
 
 ]
 

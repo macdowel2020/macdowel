@@ -49,7 +49,10 @@
                                                     <div class="card-body box-profile">
                                                         <div class="text-center">
                                                             <img class="img-fluid rounded" src="{{ project.image.url }}"
-                                                                 alt="Photo" style=" box-shadow: 0 8px 6px -6px black;">
+                                                                 alt="Photo" style="
+                                                                 box-shadow: 0 8px 6px -6px black;
+                                                                 height: 180px;
+">
                                                         </div>
 
                                                         <h3 class="profile-username text-center"><label
@@ -106,19 +109,19 @@
 
             <div class="col-md-3">
                 <div class="card card-success">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: #ff8b26; color: #ffffff">
                         <h3 class="card-title">ADD A MACHINE</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form class="form-horizontal" method="post" action="/staff_projects/">
                         {% csrf_token %}
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: #afc270">
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <label for="name" class="control-label">EQUIPMENT NAME</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                           placeholder="Enter Project">
+                                           placeholder="Enter Project" required>
                                 </div>
                             </div>
 
@@ -132,8 +135,8 @@
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <label for="email" class="control-label">CONTACT EMAIL</label>
-                                    <input type="text" class="form-control" id="email" name="email"
-                                           placeholder="Enter Project Email">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           placeholder="Enter Project Email" required>
                                 </div>
                             </div>
 
@@ -141,7 +144,7 @@
                                 <div class="col-sm-12">
                                     <label for="contact" class="control-label">CONTACT NUMBER</label>
                                     <input type="text" class="form-control" id="contact" name="contact"
-                                           placeholder="Enter Project Contact">
+                                           placeholder="Enter Project Contact" required>
                                 </div>
                             </div>
 
@@ -149,7 +152,7 @@
                                 <div class="col-sm-12">
                                     <label for="address" class="control-label">MACHINE GPS LOCATION/ ADDRESS</label>
                                     <input type="text" class="form-control" id="address" name="address"
-                                           placeholder="Enter Project Location">
+                                           placeholder="Enter Project Location" required>
                                 </div>
                             </div>
 
@@ -158,7 +161,7 @@
                                     <label for="registration_number" class="control-label">REGISTRATION NUMBER</label>
                                     <input type="text" class="form-control" id="registration_number"
                                            name="registration_number"
-                                           placeholder="Enter Registration Number">
+                                           placeholder="Enter Registration Number" required>
                                 </div>
                             </div>
 
@@ -166,13 +169,13 @@
                                 <div class="col-sm-12">
                                     <label for="chassis" class="control-label">CHASSIS NUMBER</label>
                                     <input type="text" class="form-control" id="chassis" name="chassis"
-                                           placeholder="Enter Chassis Number">
+                                           placeholder="Enter Chassis Number" required>
                                 </div>
                             </div>
 
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
+                        <div class="card-footer" style="background-color: #147713; color: #ffffff">
 
                             <button type="reset" class="btn btn-default float-left">CANCEL</button>
                             <button type="submit" class="btn btn-outline-light float-right"

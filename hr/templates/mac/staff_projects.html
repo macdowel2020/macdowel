@@ -8,7 +8,7 @@
             color: black;
         }
     </style>
- <div class="container_fluid m-2">
+    <div class="container_fluid m-2">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -36,7 +36,7 @@
         <!-- /.content-header -->
 
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
 
                 <div class="card">
                     <div class="card-header">
@@ -66,7 +66,12 @@
                                                     <div class="card-body box-profile">
                                                         <div class="text-center">
                                                             <img class="img-fluid rounded" src="{{ project.image.url }}"
-                                                                 alt="Photo" style=" box-shadow: 0 8px 6px -6px black;">
+                                                                 alt="Photo" style="
+                                                                 box-shadow: 0 8px 6px -6px black;
+                                                                 height: 270px;
+
+
+">
                                                         </div>
 
                                                         <h3 class="profile-username text-center"><label
@@ -126,77 +131,78 @@
                     <!-- /.card-body -->
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card card-info">
-                    <div class="card-header" style="background-color: #ff8b26; color: #ffffff">
-                        <h3 class="card-title">ADD PROJECT</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <form class="form-horizontal" method="post" action="/machines/">
-                        {% csrf_token %}
-                        <div class="card-body" style="background-color: #afc270">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="name" class="control-label">Project Name</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                           placeholder="Enter Project">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Project Category*</label>
-                                <select class="form-control" name="category" required
-                                        style="background-color: #71a64d; color: white">
-                                    <option>Select Option</option>
-                                    <option value="Land">Land</option>
-                                    <option value="Apartment">Apartment</option>
-                                    <option value="Rentals">Rentals</option>
-                                    <option value="Machinery">Machinery</option>
-                                    <option value="Farm">Farm</option>
-                                    <option value="Poultry">Poultry</option>
-
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="email" class="control-label">Project Email</label>
-                                    <input type="text" class="form-control" id="email" name="email"
-                                           placeholder="Enter Project Email">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="contact" class="control-label">Project Contact Number</label>
-                                    <input type="text" class="form-control" id="contact" name="contact"
-                                           placeholder="Enter Project Contact">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="address" class="control-label">Project Location</label>
-                                    <input type="text" class="form-control" id="address" name="address"
-                                           placeholder="Enter Project Location">
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer" style="background-color: #ff8b26; color: #ffffff">
-                            <button type="submit" class="btn btn-info">Add New</button>
-                            <button type="reset" class="btn btn-default float-right">Cancel</button>
-                        </div>
-                        <!-- /.card-footer -->
-                    </form>
-
-                </div>
-
-            </div>
+            {#            <div class="col-md-3">#}
+            {#                <div class="card card-info">#}
+            {#                    <div class="card-header" style="background-color: #ff8b26; color: #ffffff">#}
+            {#                        <h3 class="card-title">ADD PROJECT</h3>#}
+            {#                    </div>#}
+            {#                    <!-- /.card-header -->#}
+            {#                    <!-- form start -->#}
+            {#                    <form class="form-horizontal" method="post" action="/staff_projects/">#}
+            {#                        {% csrf_token %}#}
+            {#                        <div class="card-body" style="background-color: #afc270">#}
+            {#                            <div class="form-group">#}
+            {#                                <div class="col-sm-12">#}
+            {#                                    <label for="name" class="control-label">Project Name</label>#}
+            {#                                    <input type="text" class="form-control" id="name" name="name"#}
+            {#                                           placeholder="Enter Project" required>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {##}
+            {#                            <div class="form-group">#}
+            {#                                <label>Project Category*</label>#}
+            {#                                <select class="form-control" name="category" required#}
+            {#                                        style="background-color: #71a64d; color: white">#}
+            {#                                    <option></option>#}
+            {#                                    <option value="Land">Land</option>#}
+            {#                                    <option value="Apartment">Apartment</option>#}
+            {#                                    <option value="Rentals">Rentals</option>#}
+            {#                                    <option value="Machinery">Machinery</option>#}
+            {#                                    <option value="Farm">Farm</option>#}
+            {#                                    <option value="Poultry">Poultry</option>#}
+            {##}
+            {#                                </select>#}
+            {#                            </div>#}
+            {##}
+            {#                            <div class="form-group">#}
+            {#                                <div class="col-sm-12">#}
+            {#                                    <label for="email" class="control-label">Project Email</label>#}
+            {#                                    <input type="email" class="form-control" id="email" name="email"#}
+            {#                                           placeholder="Enter Project Email" required>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {##}
+            {#                            <div class="form-group">#}
+            {#                                <div class="col-sm-12">#}
+            {#                                    <label for="contact" class="control-label">Project Contact Number</label>#}
+            {#                                    <input type="text" class="form-control" id="contact" name="contact"#}
+            {#                                           placeholder="Enter Project Contact" required>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {##}
+            {#                            <div class="form-group">#}
+            {#                                <div class="col-sm-12">#}
+            {#                                    <label for="address" class="control-label">Project Location</label>#}
+            {#                                    <input type="text" class="form-control" id="address" name="address"#}
+            {#                                           placeholder="Enter Project Location" required>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {##}
+            {#                        </div>#}
+            {#                        <!-- /.card-body -->#}
+            {#                        <div class="card-footer" style="background-color: #147713; color: #ffffff">#}
+            {##}
+            {#                            <button type="reset" class="btn btn-default float-left">Cancel</button>#}
+            {#                            <button type="submit" class="btn btn-success float-right">Add New</button>#}
+            {#                        </div>#}
+            {#                        <!-- /.card-footer -->#}
+            {#                    </form>#}
+            {##}
+            {#                </div>#}
+            {##}
+            {#            </div>#}
         </div>
 
- </div>
+    </div>
 
 {% endblock %}

@@ -147,3 +147,36 @@ def update_staff_photo(incoming):
         messages.error(incoming, 'Login to proceed!')
         return HttpResponseRedirect('/')
 
+def update_user_profile(incoming):
+    try:
+        if incoming.method == "POST":
+            email = incoming.POST['email']
+
+            first_name = incoming.POST['first_name']
+            last_name = incoming.POST['last_name']
+            contact = incoming.POST['contact']
+            address = incoming.POST['address']
+            nin = incoming.POST['nin']
+
+            user = User.objects.get(email=email)
+            user.first_name=first_name
+            user.last_name=last_name
+            user.save()
+
+            mf = Staff.objects.get(user=user)
+
+            Staff.objects.filter(code=mf.code).update(
+                user=user,
+                contact=contact,
+                address=address,
+                nin=nin
+            )
+            messages.success(incoming, 'Updated User Profile Successfully')
+            return HttpResponseRedirect('/staff/?email=%s' % email)
+        else:
+            messages.error(incoming, 'FAILED!!!')
+            return HttpResponseRedirect('/')
+    except Exception as p:
+        print(str(p))
+        messages.error(incoming, 'FAILED!!! %s'%p)
+        return HttpResponseRedirect('/')

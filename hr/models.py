@@ -15,7 +15,7 @@ class Project(models.Model):
     contact = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
-    image = models.ImageField(upload_to="projects/", default="logo.jpg")
+    image = models.ImageField(upload_to="projects/", default="place.jpg")
     registration_number = models.CharField(max_length=255, null=True, blank=True)
     chassis = models.CharField(max_length=255, null=True, blank=True)
 

@@ -45,7 +45,10 @@
                                         <div class="card-body box-profile">
                                             <div class="text-center">
                                                 <img class="img-fluid rounded" src="{{ project.image.url }}"
-                                                     alt="Photo" style=" box-shadow: 0 8px 6px -6px black;">
+                                                     alt="Photo" style="
+                                                     box-shadow: 0 8px 6px -6px black;
+                                                     height: 180px;
+">
                                             </div>
 
                                             <h3 class="profile-username text-center"><label
@@ -111,7 +114,7 @@
                             <div class="col-sm-12">
                                 <label for="name" class="control-label">Project Name</label>
                                 <input type="text" class="form-control" id="name" name="name"
-                                       placeholder="Enter Project">
+                                       placeholder="Enter Project" required>
                             </div>
                         </div>
 
@@ -126,8 +129,8 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label for="email" class="control-label">Project Email</label>
-                                <input type="text" class="form-control" id="email" name="email"
-                                       placeholder="Enter Project Email">
+                                <input type="email" class="form-control" id="email" name="email"
+                                       placeholder="Enter Project Email" required>
                             </div>
                         </div>
 
@@ -135,7 +138,7 @@
                             <div class="col-sm-12">
                                 <label for="contact" class="control-label">Project Contact Number</label>
                                 <input type="text" class="form-control" id="contact" name="contact"
-                                       placeholder="Enter Project Contact">
+                                       placeholder="Enter Project Contact" required>
                             </div>
                         </div>
 
@@ -143,14 +146,14 @@
                             <div class="col-sm-12">
                                 <label for="address" class="control-label">Project Location</label>
                                 <input type="text" class="form-control" id="address" name="address"
-                                       placeholder="Enter Project Location">
+                                       placeholder="Enter Project Location" required>
                             </div>
                         </div>
 
                     </div>
                     <!-- /.card-body -->
                     {% if request.user.is_superuser %}
-                        <div class="card-footer" style="background-color: #ff8b26; color: #ffffff">
+                        <div class="card-footer" style="background-color: #147713; color: #ffffff">
 
                             <button type="reset" class="btn btn-danger float-left">CANCEL</button>
                             <button type="submit" class="btn btn-success float-right">ADD NOW</button>
