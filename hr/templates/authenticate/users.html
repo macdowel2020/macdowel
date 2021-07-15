@@ -396,7 +396,7 @@
                                         <form class="form-horizontal" method="post" action="/update_user_profile/">
                                             {% csrf_token %}
 
-                                            <input name="email" value="{{ profile.user.email }}">
+                                            <input name="email" value="{{ profile.user.email }}" hidden>
 
                                             <div class="form-group">
                                                 <label for="inputName" class="col-sm-2 control-label">FIRST NAME</label>
