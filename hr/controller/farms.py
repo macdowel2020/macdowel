@@ -74,9 +74,9 @@ def p_detail(request):
             project = Project.objects.get(code=code)
             staff = Staff.objects.filter(project__code__contains=project.code)
             userdetail = project.code
-            incomes = Income.objects.filter(project__code__contains=code).order_by('-id')
+            incomes = Income.objects.filter(project__code__contains=code).order_by('-entered_on')
             pending_expenditures = Expenditure.objects.filter(project__code__contains=code,
-                                                              status__contains='Pending').order_by('-id')
+                                                             ).order_by('-id')
             approved_expenditures = Expenditure.objects.filter(project__code__contains=code,
                                                                status__contains='Approved').order_by('-id')
             rejected_expenditures = Expenditure.objects.filter(project__code__contains=code,
@@ -143,8 +143,13 @@ def income(request):
 
             amount = request.POST["amount"]
             item = request.POST["item"]
-            reason = request.POST["reason"]
+            # reason = request.POST["reason"]
             description = request.POST["description"]
+            category = request.POST["category"]
+            qty = request.POST["qty"]
+
+            sub_total = (int(qty)*int(amount))
+            print(sub_total)
 
             Income.objects.create(
                 code=''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6)),
@@ -153,14 +158,17 @@ def income(request):
                 amount=amount,
                 item=item,
                 status='received',
-                reason=reason,
-                description=description
+                # reason=reason,
+                description=description,
+                category=category,
+                qty=qty,
+                sub_total=sub_total
             )
             messages.success(request, 'You have successfully added an Income')
             return HttpResponseRedirect('/farm_detail/?code=%s'%project.code)
         except Exception as p:
             print(str(p))
-            messages.error(request, 'An Error Occured')
+            messages.error(request, 'An Error Occurred')
     else:
         messages.error(request, 'Login to Proceed')
         return HttpResponseRedirect('/')
@@ -228,6 +236,26 @@ def reject_request(request):
             project = Project.objects.get(code=xp.project.code)
             Expenditure.objects.filter(code__contains=code).update(status='Rejected', reason=reason)
             messages.success(request, 'Request has been Rejected')
+            return HttpResponseRedirect('/farm_detail/?code=%s' % project.code)
+        except Exception as p:
+            print(str(p))
+            messages.error(request, 'An Error Occurred')
+            return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/farm_detail/?code=%s' % userdetail)
+
+#     TO DO LIST
+
+def edit_and_request(request):
+    if request.method == 'POST':
+        try:
+            code = request.POST["code"]
+            amount = request.POST["amount"]
+            xp = Expenditure.objects.get(code=code)
+            project = Project.objects.get(code=xp.project.code)
+
+            Expenditure.objects.filter(code__contains=code).update(amount=amount, status='Pending')
+            messages.success(request, 'Request has been Re submitted')
             return HttpResponseRedirect('/farm_detail/?code=%s' % project.code)
         except Exception as p:
             print(str(p))

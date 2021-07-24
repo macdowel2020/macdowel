@@ -86,9 +86,12 @@ class Income(models.Model):
     amount = models.CharField(max_length=255, null=True, blank=True)
     item = models.CharField(max_length=255, null=True, blank=True)
     status = models.CharField(max_length=255, null=True, blank=True)
-    reason = models.CharField(max_length=255, null=True, blank=True)
+    # reason = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=255, null=True, blank=True)
     entered_on = models.DateTimeField(auto_now=True)
+    category=models.CharField(max_length=255, null=True, blank=True)
+    qty = models.IntegerField(default=0, blank=True, null=True)
+    sub_total = models.IntegerField(default=0, blank=True, null=True)
 
     def __str__(self):
         return self.item

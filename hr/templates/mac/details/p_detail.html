@@ -96,23 +96,24 @@
                                                     LOCATION</label>
                                                     <input type="text" id="registration_number"
                                                            name="registration_number"
-                                                           value="{{ project.address |upper}}"
+                                                           value="{{ project.address |upper }}"
                                                            placeholder="Enter Registration Number" required="required"
                                                            disabled="disabled" class="form-control"></div>
                                             </div>
 
                                             <div class="col-sm-3">
                                                 <div class="form-group"><label for="registration_number">SERIAL NUMBER
-                                                    </label>
+                                                </label>
                                                     <input type="text" id="registration_number"
                                                            name="registration_number"
-                                                           value="MACDOWEL-{{ project.code}}"
+                                                           value="MACDOWEL-{{ project.code }}"
                                                            required="required"
                                                            disabled="disabled" class="form-control"></div>
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <div class="form-group"><label for="registration_number">CATEGORY</label>
+                                                <div class="form-group"><label
+                                                        for="registration_number">CATEGORY</label>
                                                     <input type="text" id="registration_number"
                                                            name="registration_number"
                                                            value="{{ project.category |upper }}"
@@ -255,26 +256,17 @@
                                                         colspan="1"
                                                         aria-sort="ascending"
                                                         aria-label="Rendering engine: activate to sort column descending"
-                                                        style="width: 20%;"> ITEM
+                                                        style="width: 20%;"> PARTICULAR
                                                     </th>
 
-
-                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="example1"
                                                         rowspan="1"
                                                         colspan="1"
-                                                        aria-label="Platform(s): activate to sort column ascending"
-                                                        style="width: 20%;">
-                                                        REASON
+                                                        aria-sort="ascending"
+                                                        aria-label="Rendering engine: activate to sort column descending"
+                                                        style="width: 20%;"> SOURCE
                                                     </th>
 
-
-                                                    <th class="sorting" tabindex="0" aria-controls="example1"
-                                                        rowspan="1"
-                                                        colspan="1"
-                                                        aria-label="CSS grade: activate to sort column ascending"
-                                                        style="width: 10%;">
-                                                        STAFF
-                                                    </th>
 
                                                     <th class="sorting" tabindex="0" aria-controls="example1"
                                                         rowspan="1"
@@ -283,6 +275,7 @@
                                                         style="width: 10%">
                                                         AMOUNT
                                                     </th>
+
 
                                                     <th class="sorting" tabindex="0" aria-controls="example1"
                                                         rowspan="1"
@@ -299,9 +292,8 @@
                                                     <tr role="row" class="odd">
 
                                                         <td>{{ u.entered_on }}</td>
-                                                        <td><b>{{ u.item }}</b></td>
-                                                        <td>{{ u.reason }}</td>
-                                                        <td>{{ u.staff.user.username |capfirst }}</td>
+                                                        <td>{{ u.item }}</td>
+                                                        <td>{{ u.category }}</td>
                                                         <td>{{ u.amount |intcomma }}/=</td>
                                                         <td style="text-align: right">
 
@@ -326,13 +318,11 @@
                                                 </tbody>
                                                 <tfoot>
                                                 <tr style="background-color: #b9c2af">
-                                                    <th rowspan="1" colspan="1">Date</th>
-                                                    <th rowspan="1" colspan="1">Item</th>
-                                                    <th rowspan="1" colspan="1">Reason</th>
-                                                    <th rowspan="1" colspan="1">Staff</th>
-                                                    <th rowspan="1" colspan="1">
+                                                    <th rowspan="1" colspan="1">DATE</th>
+                                                    <th rowspan="1" colspan="1">PARTICULAR</th>
+                                                    <th rowspan="1" colspan="1">SOURCE</th>
+                                                    <th rowspan="1" colspan="1">AMOUNT</th>
 
-                                                    </th>
                                                     <th rowspan="1" colspan="1" style="background-color: #939393"><span
                                                             style="color: white;">TOTAL:</span>
                                                         <b style="color: #fff1ff!important; font-size: 20px!important;">{{ total|intcomma }}/=</b>
@@ -463,12 +453,52 @@
                                                                     <td>{{ u.entered_on }}</td>
                                                                     <td>{{ u.staff.user.username }}</td>
                                                                     <td>{{ u.amount|intcomma }}/=</td>
-                                                                    <td style="text-align: center">
-                                                                        <i class="fa fa-warning"></i>
-                                                                        <span class=" badge badge-warning"
-                                                                              style="padding: 5px!important;">Pending</span>
-                                                                    </td>
+                                                                    {% if u.status == 'Pending' %}
+                                                                        <td style="text-align: center">
+                                                                            <i class="fa fa-warning"></i>
+                                                                            <span class=" badge badge-warning"
+                                                                                  style="padding: 5px!important;">Pending</span>
+                                                                        </td>
+
+                                                                    {% elif u.status == 'Approved' %}
+                                                                        <td style="text-align: center">
+                                                                            <i class="fa fa-check"></i>
+                                                                            <span class=" badge badge-success"
+                                                                                  style="padding: 5px!important;">Approved</span>
+                                                                        </td>
+                                                                    {% else %}
+
+                                                                        <td style="text-align: center">
+                                                                            <i class="fa fa-close"></i>
+                                                                            <span class=" badge badge-danger"
+                                                                                  style="padding: 5px!important;">Rejected</span>
+                                                                        </td>
+
+                                                                    {% endif %}
+
+
                                                                     <td style="text-align: right">
+
+                                                                        {% if u.status == 'Rejected' %}
+
+                                                                            <button data-toggle="modal"
+                                                                                    data-target="#modal-edit"
+                                                                                    class="btn  btn-primary btn-sm"
+
+                                                                                    onclick="
+                                                                                            document.getElementById('ex_cod').value='{{ u.code }}';
+                                                                                            document.getElementById('amountx').value='{{ u.amount }}';
+                                                                                            "
+
+                                                                            ><i
+                                                                                    class="fa fa-ban"></i>  Edit and Resend
+                                                                            </button>
+
+
+                                                                        {% endif %}
+
+
+
                                                                         {% if request.user.is_superuser %}
                                                                             <a href="/approve_request/?code={{ u.code }}"
                                                                                class="btn  btn-success btn-sm"
@@ -818,14 +848,15 @@
                                 <div class="row">
 
                                     <div class="col-sm-12">
-                                    <h3>
-                                         <button type="button" class="btn btn-success btn-sm title"
-                                                style="background-color: #4eaa24!important;  box-shadow: 0 8px 6px -6px black;"
-                                                data-toggle="modal"
-                                                data-target="#modal-inventory"><i class="fa fa-cart-arrow-down"></i> ADD
-                                            ITEM
-                                        </button>
-                                    </h3>
+                                        <h3>
+                                            <button type="button" class="btn btn-success btn-sm title"
+                                                    style="background-color: #4eaa24!important;  box-shadow: 0 8px 6px -6px black;"
+                                                    data-toggle="modal"
+                                                    data-target="#modal-inventory"><i class="fa fa-cart-arrow-down"></i>
+                                                ADD
+                                                ITEM
+                                            </button>
+                                        </h3>
 
 
                                         <div class="col-sm-12">
@@ -1093,26 +1124,40 @@
                     <div class="modal-body">
                         <input type="text" class="form-control" id="code" name="code" value="{{ project.code }}" hidden>
                         <div class="form-group">
-                            <label for="item">SHORT DESCRIPTION *</label>
+                            <label for="item">PARTICULAR *</label>
                             <input type="text" class="form-control" id="item" name="item"
-                                   placeholder="Enter short description for income" required>
+                                   placeholder="Enter Particular for income" required>
                         </div>
                         <div class="form-group">
                             <label for="amount">AMOUNT *</label>
-                            <input type="text" class="form-control" id="amount" name="amount"
+                            <input type="number" class="form-control" id="amount" name="amount"
                                    placeholder="Enter Amount" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="reason">REASON *</label>
-                            <input type="text" class="form-control" id="reason" name="reason"
-                                   placeholder="Enter Reason" required>
+                            <label for="qty">QUANTITY *</label>
+                            <input type="number" class="form-control" id="qty" name="qty"
+                                   placeholder="Enter Quantity " required>
                         </div>
+
+
+                        <div class="form-group">
+                            <label for="category">SOURCE *</label>
+                            <select type="text" class="form-control" id="category" name="category"
+                                    placeholder="Enter Category">
+                                <option value="Farm Produce">Farm Produce</option>
+                                <option value="Credit/ Loans">Credit/ Loans</option>
+                                <option value="Insurance">Insurance</option>
+                                <option value="Machine Income">Machine Income</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="description">FULL DESCRIPTION *</label>
-                            <input type="text" class="form-control" id="description" name="description"
-                                   placeholder="Enter Description" required>
+                            <textarea type="text" class="form-control" id="description" name="description"
+                                      placeholder="Enter Description" required></textarea>
                         </div>
 
 
@@ -1236,7 +1281,7 @@
                       autocomplete="off">
                     {% csrf_token %}
                     <div class="modal-body">
-                        <input type="text" class="form-control" id="ex_code" name="code" hidden>
+                        <input type="text" class="form-control" id="ex_code" name="code" >
 
                         {#                        <div class="form-group">#}
                         {#                            <label for="amount">Amount Requested *</label>#}
@@ -1329,6 +1374,47 @@
                         <button type="submit" class="btn btn-outline-light" style="background-color: green!important;">
                             SUBMIT
                         </button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+     <div class="modal fade" id="modal-edit">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-success">
+                <div class="modal-header">
+                    <h4 class="modal-title">EDIT AND SEND</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/edit_and_request/?code={{ pending_expenditures.code }}" method="post"
+                      enctype="multipart/form-data"
+                      autocomplete="off">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="ex_cod" name="code" >
+
+                        <div class="form-group">
+                            <label for="amount">Amount Requested *</label>
+                            <input type="text" class="form-control" id="amountx" name="amount"
+                                   >
+                        </div>
+
+{#                        <div class="form-group">#}
+{#                            <label for="reason">Reason For Rejection *</label>#}
+{#                            <textarea type="text" class="form-control" id="ex_reason" name="reason"#}
+{#                                      placeholder="Enter the Reason why the request is Rejected!" required></textarea>#}
+{#                        </div>#}
+
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-light">Submit</button>
                     </div>
                 </form>
             </div>

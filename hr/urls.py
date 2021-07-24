@@ -58,6 +58,7 @@ urlpatterns = [
     #     STAFF
     path('update_staff_photo/', register.update_staff_photo, name='update_staff_photo'),
     path('update_user_profile/', register.update_user_profile, name='update_user_profile'),
+    path('edit_and_request/', farms.edit_and_request, name='edit_and_request'),
 
 ]
 

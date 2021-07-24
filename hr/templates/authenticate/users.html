@@ -28,7 +28,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
-                    <button type="button" class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-info"><i
+                    <button type="button" class="btn  btn-success btn-sm" data-toggle="modal" data-target="#modal-info"><i
                             class="fa fa-users"></i> ADD NEW
                     </button>
                 </h3>
@@ -160,10 +160,10 @@
 
         <div class="modal fade" id="modal-info">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content bg-info">
+                <div class="modal-content bg-info" style="background-color: #afc270!important;">
                     <div class="modal-header">
                         <h4 class="modal-title">MAC DOWEL EMPLOYEE</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" style="color: #ff1a06;" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -276,8 +276,8 @@
 
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-outline-light">Save Information</button>
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-light" style="background-color: green!important;">Save Information</button>
                         </div>
                     </form>
 
@@ -301,10 +301,6 @@
                         <div class="card card-success card-outline ">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    {#                                    <img class="profile-user-img img-fluid img-circle" src="{% static 'assets/dist/img/user4-128x128.jpg' %}" alt="User profile picture">#}
-{##}
-{#                                    <img class="profile-user-img img-fluid img-circle" src="{{ profile.image.url }}"#}
-{#                                         alt="User profile picture">#}
 
                                     <img class="img-fluid rounded" src="{{ profile.image.url }}"
                                                                  alt="Photo" style="
@@ -350,14 +346,14 @@
                                 <hr>
                                 <strong><i class="fa fa-user mr-1"></i> ACCOUNT STATUS</strong>
 
-                                <p class="text-muted">{{ profile.staff_status }}</p>
+                                <p class="text-muted">{{ profile.staff_status |upper}}</p>
 
 
                                 <hr>
 
                                 <strong><i class="fa fa-file-text-o mr-1"></i> PROJECT</strong>
 
-                                <p class="text-muted">{{ profile.project.name }}</p>
+                                <p class="text-muted">{{ profile.project.name  |upper}}</p>
 
 
                                 <hr>
@@ -498,7 +494,7 @@
                                                 <div class="col-sm-offset-2 col-sm-10">
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox"> I agree to the <a href="#">terms and
+                                                            <input type="checkbox" checked> I agree to the <a href="#">terms and
                                                             conditions</a>
                                                         </label>
                                                     </div>
