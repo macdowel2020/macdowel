@@ -15,7 +15,8 @@ Including another URLconf
 """
 
 from django.urls import path
-from hr.controller import home, authenticate, register, departments, projects, farms, machinery, land
+from hr.controller import home, authenticate, register, departments, projects, \
+    project_categories, filter_projects
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,40 +26,40 @@ urlpatterns = [
     #     Authenticate
     path('login/', authenticate.login, name='login'),
     path('logout/', authenticate.logout, name='logout'),
-    path('staff/', register.profile, name='staff'),
-    path('departments/', departments.dept, name='departments'),
-    path('roles/', departments.role, name='roles'),
-    path('staff_projects/', projects.staff_projects, name='staff_projects'),
-    path('project_detail/', projects.projectDtetail, name='project_detail'),
-
-    #     PROJECT DETAILS
-
-    path('farm_detail/', farms.p_detail, name='farm_detail'),
-    path('add_farm_income/', farms.income, name='add_farm_income'),
-    path('request_expenditure/', farms.request_expenditure, name='request_expenditure'),
-    path('approve_request/', farms.approve_request, name='approve_request'),
-    path('reject_request/', farms.reject_request, name='reject_request'),
-    path('delete_expenditure/', farms.delete_expenditure, name='delete_expenditure'),
-    path('update_project_photo/', farms.update_project_photo, name='update_project_photo'),
-    path('farm_inventory/', farms.inventory, name='farm_inventory'),
-    path('delete_inventory/', farms.delete_inventory, name='delete_inventory'),
-
-    #     PROJECTS
-    # MACHINES
-    path('machines/', machinery.machines, name='machines'),
-    path('delete_machine/', machinery.delete_machine, name='delete_machine'),
-
-    # FARMS
-    path('farms/', farms.farms, name='farms'),
-
-    #     LAND
-    path('land/', land.land, name='land'),
-    path('delete_project/', farms.delete_project, name='delete_project'),
 
     #     STAFF
     path('update_staff_photo/', register.update_staff_photo, name='update_staff_photo'),
     path('update_user_profile/', register.update_user_profile, name='update_user_profile'),
-    path('edit_and_request/', farms.edit_and_request, name='edit_and_request'),
+
+    #     =========== NEW =========
+    path('project_categories/', project_categories.project_categories, name='project_categories'),
+    path('delete_location/', project_categories.delete_location, name='delete_location'),
+    path('all_projects/', projects.all_projects, name='all_projects'),
+    path('project_detail/', projects.project_detail, name='project_detail'),
+
+    #     STAFF
+    path('all_staff/', register.all_staff, name='all_staff'),
+    path('administrators/', register.administrators, name='administrators'),
+    path('departments/', departments.dept, name='departments'),
+    path('roles/', departments.role, name='roles'),
+    path('delete_role/', departments.delete_role, name='delete_role'),
+    path('delete_department/', departments.delete_department, name='delete_department'),
+    #     Filters
+    path('filter_projects/', filter_projects.filter_projects, name='filter_projects'),
+    #     Project
+    path('update_project_photo/', projects.update_project_photo, name='update_project_photo'),
+    path('add_farm_income/', projects.income, name='add_farm_income'),
+    path('request_expenditure/', projects.request_expenditure, name='request_expenditure'),
+    path('approve_request/', projects.approve_request, name='approve_request'),
+    path('reject_request/', projects.reject_request, name='reject_request'),
+    path('delete_expenditure/', projects.delete_expenditure, name='delete_expenditure'),
+    path('farm_inventory/', projects.inventory, name='farm_inventory'),
+    path('delete_inventory/', projects.delete_inventory, name='delete_inventory'),
+    path('delete_project/', projects.delete_project, name='delete_project'),
+    path('edit_and_request/', projects.edit_and_request, name='edit_and_request'),
+    path('add_staff_to_project/', projects.add_staff_to_project, name='add_staff_to_project'),
+
+
 
 ]
 

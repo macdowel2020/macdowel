@@ -1,0 +1,107 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Farms{% endblock %}
+{% block content %}
+    <!-- Content Header (Page header) -->
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/staff_projects/" style="color: #1b1e21">PROJECTS</a>
+                        </li>
+                        <li class="breadcrumb-item active">DASHBOARD</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">
+                            PROJECTS
+                        </h1>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+
+                            <div class="row">
+
+                                {% for project in  projects %}
+
+                                    <div class="col-md-3">
+                                        <!-- Profile Image -->
+                                        <div class="card card-success card-outline">
+                                            <div class="card-body box-profile">
+                                                <div class="text-center">
+                                                    <img class="img-fluid rounded" src="{{ project.image.url }}"
+                                                         alt="Photo" style="
+                                                     box-shadow: 0 8px 6px -6px black;">
+                                                </div>
+
+                                                <h3 class="profile-username text-center"><label
+                                                        for="registration_number">{{ project.project_name |upper }}</label>
+                                                </h3>
+
+                                                <p class="text-muted text-center"
+                                                   style="color: black!important;">{{ project.email }}</p>
+
+                                                <ul class="list-group list-group-unbordered mb-3">
+                                                    <li class="list-group-item">
+                                                        <b>LOCATION</b> <a
+                                                            class="float-right">{{ project.location.location |upper }}</a>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <b>CONTACT</b> <a class="float-right">{{ project.contact }}</a>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <b>CATEGORY</b> <a
+                                                            class="float-right">{{ project.category | upper }}</a>
+                                                    </li>
+                                                </ul>
+
+                                                <a href="/project_detail/?code={{ project.code }}"
+                                                   class="btn btn-success btn-block"
+                                                   style=" box-shadow: 0 8px 6px -6px black; background-color: #89ac4d!important;"><i
+                                                        class="fa fa-eye"></i> <b>VIEW
+                                                    DETAILS</b></a>
+
+                                                {% if request.user.is_superuser %}
+                                                    <a href="/delete_project/?code={{ project.code }}"
+                                                       class="btn btn-danger btn-block"
+                                                       style=" box-shadow: 0 8px 6px -6px black; background-color: red!important;"
+                                                       onclick="return confirm('Are you sure you want to Remove Record?');"
+                                                    ><i class="fa fa-trash-o"></i> <b>DELETE</b></a>
+                                                {% endif %}
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

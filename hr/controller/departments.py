@@ -5,22 +5,23 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from hr.models import Department, AuditTrail, Staff, Role, Project
+from hr.models import Department, AuditTrail, Staff, Role
 
 
 def dept(request):
     if request.user.is_authenticated:
-        staff = Staff.objects.get(user=request.user)
+
         if request.method == "POST":
             try:
+                # staff = Staff.objects.get(user=request.user)
                 dept_name = request.POST["name"]
                 Department.objects.create(
                     code=''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6)),
                     name=dept_name
                 )
                 # record action
-                AuditTrail.objects.create(user=request.user, project=staff.project,
-                                          action='Created new Department')
+                # AuditTrail.objects.create(user=request.user, project=staff.project,
+                #                           action='Created new Department')
                 messages.success(request, 'Department added successfully')
                 return HttpResponseRedirect('/departments/')
 
@@ -28,8 +29,8 @@ def dept(request):
                 print(str(p))
                 return HttpResponseRedirect('/departments/')
         else:
-            departments = Department.objects.all()
-            return render(request, 'mac/departments.html', {'departments': departments})
+            departments = Department.objects.all().order_by('-id')
+            return render(request, 'new/departments.html', {'departments': departments})
     else:
         messages.error(request, 'You are not allowed to perform this action')
         return HttpResponseRedirect('/')
@@ -37,9 +38,10 @@ def dept(request):
 
 def role(request):
     if request.user.is_authenticated:
-        staff = Staff.objects.get(user=request.user)
+
         if request.method == "POST":
             try:
+                # staff = Staff.objects.get(user=request.user)
                 ds = []
                 rolesx = Role.objects.all()
                 for i in rolesx:
@@ -51,10 +53,10 @@ def role(request):
                         code=''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6)),
                         name=dept_role
                     )
-                    # record action
-                    AuditTrail.objects.create(user=request.user, project=staff.project,
-                                              action='Created new Role')
-                    messages.success(request, 'Role added successfully')
+                    # # record action
+                    # AuditTrail.objects.create(user=request.user, project=staff.project,
+                    #                           action='Created new Role')
+                    messages.success(request, 'Access Level added successfully')
                     return HttpResponseRedirect('/roles/')
                 else:
                     print('Role already exists')
@@ -65,10 +67,26 @@ def role(request):
                 print(str(p))
                 return HttpResponseRedirect('/roles/')
         else:
-            roles = Role.objects.all()
-            return render(request, 'mac/role.html', {'roles': roles})
+            roles = Role.objects.all().order_by('-id')
+            return render(request, 'new/role.html', {'roles': roles})
     else:
         messages.error(request, 'You are not allowed to perform this action')
         return HttpResponseRedirect('/')
 
 
+def delete_role(incoming):
+    if incoming.user.is_authenticated and incoming.user.is_superuser:
+        name = incoming.GET['name']
+        Role.objects.get(name__contains=name).delete()
+        return HttpResponseRedirect('/roles/')
+    else:
+        return HttpResponseRedirect('/')
+
+
+def delete_department(incoming):
+    if incoming.user.is_authenticated and incoming.user.is_superuser:
+        name = incoming.GET['name']
+        Department.objects.get(name__contains=name).delete()
+        return HttpResponseRedirect('/departments/')
+    else:
+        return HttpResponseRedirect('/')

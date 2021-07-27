@@ -1,0 +1,103 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Categories{% endblock %}
+{% block content %}
+    <!-- Content Header (Page header) -->
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/staff_projects/" style="color: #1b1e21">PROJECT
+                            CATEGORIES</a>
+                        </li>
+                        <li class="breadcrumb-item active">DASHBOARD</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-9">
+                <div class="row">
+                    {% for c in locations %}
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <a href="/filter_projects/?location={{ c.location }}">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-success elevation-1"><i
+                                            class="fa fa-product-hunt"></i></span>
+
+                                    <div class="info-box-content">
+                                        <span class="info-box-text" style="color: black">{{ c.location |upper }} PROJECTS</span>
+                                        <span class="info-box-number"></span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                            </a>
+                            <a href="/delete_location/?code={{ c.code }}" class="btn btn-block btn-outline-danger"><i class="fa fa-trash-o"></i> DELETE</a>
+                            <!-- /.info-box -->
+                        </div>
+                        <!-- /.col -->
+                    {% endfor %}
+
+                    <!-- /.col -->
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="card card-success">
+                    <div class="card-header" style="background-color: #ff8b26; color: #ffffff">
+                        <h3 class="card-title">PROJECT LOCATIONS</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" method="post" action="/project_categories/">
+                        {% csrf_token %}
+                        <div class="card-body" style="background-color: #1e8e51">
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="location" class="control-label">LOCATION NAME</label>
+                                    <input type="text" class="form-control" id="location" name="location"
+                                           placeholder="Enter Project Location" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="location" class="control-label">DESCRIPTION</label>
+                                    <textarea type="text" class="form-control" id="description" name="description"
+                                              placeholder="Enter Description" required></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+                        {% if request.user.is_superuser %}
+                            <div class="card-footer" style="background-color: #147713; color: #ffffff">
+
+                                <button type="reset" class="btn btn-danger float-left">CANCEL</button>
+                                <button type="submit" class="btn btn-success float-right">SUBMIT</button>
+
+                            </div>
+                        {% endif %}
+                        <!-- /.card-footer -->
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

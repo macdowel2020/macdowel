@@ -1,0 +1,289 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <style>
+        li a {
+            color: black;
+        }
+    </style>
+    <div id="project">
+        <div class="container_fluid m-2">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            {% if view == "detail" %}
+                                <h1 class="m-0 text-dark">Project</h1>
+                            {% else %}
+                                <h1 class="m-0 text-dark"><a href="/staff_projects/">PROJECTS</a></h1>
+                            {% endif %}
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right" style="color: black">
+                                <li class="breadcrumb-item"><a href="/">DASHBOARD</a></li>
+
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <div class="row">
+                <div class="col-md-9">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Data Table With Full Features</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                <div class="row">
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="example1"
+                                               class="table table-bordered table-striped dataTable table-responsive"
+                                               role="grid" aria-describedby="example1_info">
+                                            <thead style="background-color: #1e8e51!important;">
+                                            <tr role="row">
+
+                                                <th class="sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1"
+                                                    colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending"
+                                                    style="width: 10px;">#
+                                                </th>
+
+                                                <th class="sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1"
+                                                    colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending"
+                                                    style="width: 199.344px;">PROJECT
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                    style="width: 256.609px;">LOCATION
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending"
+                                                    style="width: 227.719px;">CATEGORY
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending"
+                                                    style="width: 169.969px;">START DATE
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="CSS grade: activate to sort column ascending"
+                                                    style="width: 120.359px;">ACTION
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {% for p in projects %}
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1">{{ forloop.counter }}</td>
+                                                    <td>{{ p.project_name |upper }}</td>
+                                                    <td>{{ p.location.location |upper }}</td>
+                                                    <td>{{ p.category | upper }}</td>
+                                                    <td>{{ p.start_date |date |upper }}</td>
+                                                    <td><a href="/project_detail/?code={{ p.code }}" class="btn btn-success"><i class="fa fa-eye" title="PROJECT DETAIL"></i>
+                                                    </a> <a
+                                                            href="#" class="btn btn-danger"><i class="fa fa-trash" title="DELETE PROJECT"></i>
+                                                    </a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <th rowspan="1" colspan="1">#</th>
+                                                <th rowspan="1" colspan="1">PROJECT</th>
+                                                <th rowspan="1" colspan="1">LOCATION</th>
+                                                <th rowspan="1" colspan="1">CATEGORY</th>
+                                                <th rowspan="1" colspan="1">START DATE</th>
+                                                <th rowspan="1" colspan="1">ACTION</th>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card card-success">
+                        <div class="card-header" style="background-color: #ff8b26; color: #ffffff">
+                            <h3 class="card-title">ADD PROJECT</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal" method="post" action="/all_projects/">
+                            {% csrf_token %}
+                            <div class="card-body" style="background-color: #1e8e51">
+
+                                <div class="form-group">
+
+                                    <label for="name" class="control-label">PROJECT NAME</label>
+                                    <input type="text" class="form-control" id="project_name" name="project_name"
+                                           placeholder="Enter Project Name" required
+                                           style="background-color: #71a64d; color: white!important;">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="start_date" class="control-label">START DATE</label>
+                                    <input type="date" class="form-control" id="start_date"
+                                           name="start_date"
+                                           style="background-color: #71a64d; color: white!important;">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>PROJECT LOCATION *</label>
+                                    <select class="form-control" name="location" required
+                                            style="background-color: #71a64d; color: white">
+                                        {% for l in locations %}
+                                            <option value="{{ l.code }}">{{ l.location |upper }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="category">PROJECT CATEGORY *</label>
+                                    <select class="form-control dropdown" name="category" id="category" required
+                                            onchange="ChangeDropdowns(this.value);"
+                                            style="background-color: #71a64d; color: white">
+                                        <option value="">SELECT</option>
+                                        <option value="Farm">FARM</option>
+                                        <option value="Machinery">MACHINERY</option>
+                                        <option value="Land">LAND</option>
+                                        <option value="Apartment">APARTMENT</option>
+                                        <option value="Rental" class="optional referral">RENTAL</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contact" class="control-label">CONTACT</label>
+                                    <input type="text" class="form-control" id="contact"
+                                           name="contact"
+                                           placeholder="Enter Contact Number" required
+                                           style="background-color: #71a64d; color: white!important;">
+                                </div>
+
+
+                                <div id="farms" style="display: none">
+
+                                </div>
+
+                                <div id="machines" style="display: none">
+
+                                </div>
+
+                                <div id="land" style="display: none">
+
+                                </div>
+                                <div id="apartments" style="display: none">
+
+                                </div>
+
+                                <div id="rentals" style="display: none">
+
+                                </div>
+
+
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer" style="background-color: #147713; color: #ffffff">
+
+                                <button type="reset" class="btn btn-default float-left">Cancel</button>
+                                <button type="submit" class="btn btn-success float-right">SUBMIT</button>
+                            </div>
+                            <!-- /.card-footer -->
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script type="text/javascript">
+
+
+        $("#category").change(function () {
+            if ($(this).val() == "Farm") {
+                $('#farms').show();
+                $('#machines').hide();
+                {#                $('#contact').attr('required', '');#}
+                {#                $('#otherField1').attr('data-error', 'This field is required.');#}
+                {#                $('#otherField2').attr('required', '');#}
+                {#                $('#otherField2').attr('data-error', 'This field is required.');#}
+            }
+            else if ($(this).val() == "Machinery") {
+                $('#machines').show();
+                $('#farms').hide();
+                $('#land').hide();
+                $('#apartments').hide();
+                $('#rentals').hide();
+
+            }
+
+            else if ($(this).val() == "Land") {
+                $('#land').show();
+                $('#machines').hide();
+                $('#farms').hide();
+                $('#apartments').hide();
+                $('#rentals').hide();
+            }
+
+            else if ($(this).val() == "Apartment") {
+                $('#apartments').show();
+                $('#farms').hide();
+                $('#machines').hide();
+                $('#land').hide();
+                $('#rentals').hide();
+            }
+
+            else if ($(this).val() == "Rental") {
+                $('#rentals').show();
+                $('#apartments').hide();
+                $('#farms').hide();
+                $('#machines').hide();
+                $('#land').hide();
+
+            }
+
+
+            else {
+                {#                $('#otherFieldGroupDiv').hide();#}
+                {#                $('#otherField1').removeAttr('required');#}
+                {#                $('#otherField1').removeAttr('data-error');#}
+                {#                $('#otherField2').removeAttr('required');#}
+                {#                $('#otherField2').removeAttr('data-error');#}
+            }
+        });
+        $("#category").trigger("change");
+    </script>
+{% endblock %}
