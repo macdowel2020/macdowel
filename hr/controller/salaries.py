@@ -30,7 +30,6 @@ def add_salary(incoming):
     if incoming.user.is_authenticated:
         if incoming.method == 'POST':
             try:
-                # code =
                 category = incoming.POST['category']
                 expected_amount = incoming.POST['expected_amount']
                 amount_paid = incoming.POST['amount_paid']
@@ -99,6 +98,8 @@ def edit_salary(incoming):
 
                 if int(balance) == 0:
                     status = 'FULLY PAID'
+                if int(amount_paid) > int(expected_amount):
+                    status = 'OVER PAID'
                 else:
                     status = 'PARTIALLY PAID'
 
@@ -125,6 +126,21 @@ def edit_salary(incoming):
             except Exception as p:
                 print(str(p))
                 return HttpResponseRedirect('/salary_payments/')
+    else:
+        messages.error(incoming, 'Login to Proceed')
+        return HttpResponseRedirect('/')
 
-    messages.error(incoming, 'Login to Proceed')
-    return HttpResponseRedirect('/')
+
+def detail_salary(incoming):
+    if incoming.user.is_authenticated and incoming.user.is_superuser:
+        try:
+            idx = incoming.POST['id']
+            salary_x = Salary.objects.get(id=idx)
+            staff_salary = Salary.objects.get(id=salary_x.id)
+            return render(incoming, '', {'staff_salary': staff_salary})
+        except Exception as p:
+            print(str(p))
+            return HttpResponseRedirect('/salary_payments/')
+    else:
+        messages.error(incoming, 'Login to Proceed')
+        return HttpResponseRedirect('/')

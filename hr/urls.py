@@ -82,6 +82,7 @@ urlpatterns = [
     #    === COMPANY ASSETS ===
     path('all_assets_list/', assets.all_assets_list, name='all_assets_list'),
     path('delete_asset/', assets.delete_asset, name='delete_asset'),
+    path('asset_detail/', assets.asset_detail, name='asset_detail'),
 
     #     SALARIES URL
     path('salary_payments/', salaries.salary_payments, name='salary_payments'),
@@ -90,8 +91,12 @@ urlpatterns = [
     path('delete_salary/', salaries.delete_salary, name='delete_salary'),
     path('edit_salary/', salaries.edit_salary, name='edit_salary'),
 
+    path('detail_salary/', salaries.detail_salary, name='detail_salary'),  # Not applied
+
     #     USER
     path('delete_staff/', register.delete_staff, name='delete_staff'),
+
+
 
 ]
 

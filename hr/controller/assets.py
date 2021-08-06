@@ -64,3 +64,12 @@ def delete_asset(incoming):
     else:
         messages.error(incoming, 'You are not allowed to perform this action')
         return HttpResponseRedirect('/')
+
+
+def asset_detail(incoming):
+    if incoming.user.is_authenticated:
+        idx = incoming.GET['id']
+        assetx = Asset.objects.get(id=idx)
+        return render(incoming, 'asset_detail.html', {'assetx': assetx})
+    messages.error(incoming, 'You are not allowed to perform this action')
+    return HttpResponseRedirect('/')

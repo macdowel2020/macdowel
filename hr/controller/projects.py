@@ -406,7 +406,7 @@ def delete_income(request):
         code = request.GET["code"]
         Income.objects.get(code__contains=code).delete()
         messages.success(request, 'Income Deleted successfully')
-        return HttpResponseRedirect('/farms/')
+        return HttpResponseRedirect('/all_projects/')
     except Exception as p:
         print(str(p))
         messages.error(request, 'An Error Occurred')
@@ -418,7 +418,7 @@ def delete_project(request):
         code = request.GET["code"]
         AllProject.objects.get(code__contains=code).delete()
         messages.success(request, 'Project has been deleted Successfully')
-        return HttpResponseRedirect('/farms/')
+        return HttpResponseRedirect('/all_projects/')
 
     except Exception as p:
         print(str(p))
@@ -448,7 +448,7 @@ def delete_the_project(incoming):
             code = incoming.GET['code']
             AllProject.objects.get(code__contains=code).delete()
             messages.success(incoming, 'Project has been Deleted successfully!')
-            return HttpResponseRedirect('/farms/')
+            return HttpResponseRedirect('/all_projects/')
 
         except Exception as p:
             print(str(p))

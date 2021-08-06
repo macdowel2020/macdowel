@@ -1,0 +1,164 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}Asset Detail{% endblock %}
+
+{% block content %}
+    <nav class="hk-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light bg-transparent">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="/salary_payments/">Asset Details</a>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <form method="post" action="/add_salary/" enctype="multipart/form-data">
+                {% csrf_token %}
+                <section class="hk-sec-wrapper">
+                    <h5 class="hk-sec-title">ASSET DETAIL</h5>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="row">
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="expected_amount">ASSET NAME</label>
+                                        <input type="text" id="asset_name" name="asset_name"
+                                               class="form-control"
+                                               aria-describedby="expected_amount" value="{{ assetx.asset_name }}"
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="expected_amount" class="form-text text-muted">
+                                            Name
+                                        </small>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="asset_model">ASSET MODEL</label>
+                                        <input type="text" id="asset_model" name="asset_model"
+                                               class="form-control"
+                                               aria-describedby="asset_model" value="{{ assetx.asset_model }}"
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="asset_model" class="form-text text-muted">
+                                            Name
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="cost">COST</label>
+                                        <input type="text" id="cost" name="cost"
+                                               class="form-control"
+                                               aria-describedby="cost" value="{{ assetx.cost |intcomma }}"
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="cost" class="form-text text-muted">
+                                            Cost
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="date">DATE</label>
+                                        <input type="text" id="date" name="date"
+                                               class="form-control"
+                                               aria-describedby="date" value="{{ assetx.date |date }}"
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="date" class="form-text text-muted">
+                                            Date
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="purchase_date">PURCHASE DATE</label>
+                                        <input type="text" id="purchase_date" name="purchase_date"
+                                               class="form-control"
+                                               aria-describedby="date_sold" value="{{ assetx.purchase_date |date }}"
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="purchase_date" class="form-text text-muted">
+                                            Date Sold
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="location">LOCATION</label>
+                                        <input type="text" id="location" name="location"
+                                               class="form-control"
+                                               aria-describedby="location" value="{{ assetx.location }}"
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="location" class="form-text text-muted">
+                                            Location
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="purchase_id">PURCHASE ID</label>
+                                        <input type="text" id="purchase_id" name="purchase_id"
+                                               class="form-control"
+                                               aria-describedby="purchase_id" value="{{ assetx.purchase_id }}"
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="purchase_id" class="form-text text-muted">
+                                            Purchase ID
+                                        </small>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="description">DESCRIPTION</label>
+                                        <textarea type="text" id="description" name="description" class="form-control"
+                                                  aria-describedby="description" required
+                                                  style="background-color: #626583!important; color: whitesmoke!important;">{{ assetx.description }}</textarea>
+                                        <small id="description" class="form-text text-muted">
+                                            Enter Description
+                                        </small>
+
+                                    </div>
+
+                                    <div class="email-feedback" style="display: none">
+                                        <p></p>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-md-12">
+{#                                    <button type="submit" class="btn btn-success pull-right"#}
+{#                                            style="background-color: green!important;">SUBMIT FORM#}
+{#                                    </button>#}
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascript %}
+    {#    <script src="{% static 'js_logic/validate_beneficiray.js' %}" type="application/javascript"></script>#}
+
+{% endblock %}

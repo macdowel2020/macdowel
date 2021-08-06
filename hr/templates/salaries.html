@@ -113,8 +113,9 @@
                                     <td>{{ u.category |upper }}</td>
                                     <td style="text-align: center!important;">{% if u.balance == 0 %}
                                         <span class="badge badge-soft-success  mr-10">FULLY PAID </span>
+                                   {% elif  u.amount_paid > u.expected_amount %}
+                                        <span class="badge badge-soft-danger mr-10">OVER PAID</span>
                                     {% else %}
-
                                         <span class="badge badge-soft-danger mr-10">PARTIALLY PAID</span>
                                     {% endif %}</td>
                                     <td>
