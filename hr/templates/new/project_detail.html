@@ -521,7 +521,8 @@
                                                                                    class="btn  btn-success btn-sm disabled"
                                                                                    onclick="return confirm('Confirm to Perform this action?');"
                                                                                 ><i
-                                                                                        class="fa fa-check"></i> Approved
+                                                                                        class="fa fa-check"></i>
+                                                                                    Approved
                                                                                 </a>
                                                                             {% else %}
                                                                                 <a href="/approve_request/?code={{ u.code }}"
@@ -1312,12 +1313,6 @@
                     <div class="modal-body">
                         <input type="text" class="form-control" id="ex_code" name="code">
 
-                        {#                        <div class="form-group">#}
-                        {#                            <label for="amount">Amount Requested *</label>#}
-                        {#                            <input type="text" class="form-control" id="amount" name="amount"#}
-                        {#                                   placeholder="Enter Amount" disabled>#}
-                        {#                        </div>#}
-
                         <div class="form-group">
                             <label for="reason">Reason For Rejection *</label>
                             <textarea type="text" class="form-control" id="ex_reason" name="reason"
@@ -1433,12 +1428,6 @@
                             >
                         </div>
 
-                        {#                        <div class="form-group">#}
-                        {#                            <label for="reason">Reason For Rejection *</label>#}
-                        {#                            <textarea type="text" class="form-control" id="ex_reason" name="reason"#}
-                        {#                                      placeholder="Enter the Reason why the request is Rejected!" required></textarea>#}
-                        {#                        </div>#}
-
 
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -1468,7 +1457,8 @@
                     {% csrf_token %}
                     <div class="modal-body">
 
-                        <input type="text" class="form-control" id="code" name="code" value="{{ project.code }}"/>
+                        <input type="text" class="form-control" id="code" name="code" value="{{ project.code }}"
+                               hidden/>
 
 
                         <div class="form-group">

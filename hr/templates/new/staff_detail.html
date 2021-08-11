@@ -1,0 +1,302 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    {% if view == "staff" %}
+                        <h1 class="m-0 text-dark">STAFF</h1>
+                    {% else %}
+                        <h1 class="m-0 text-dark"><a href="/staff/">STAFF</a></h1>
+                    {% endif %}
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
+                        <li class="breadcrumb-item active">STAFF</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+      <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2">
+
+                        <!-- Profile Image -->
+                        <div class="card card-success card-outline ">
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+
+                                    <img class="img-fluid rounded" src="{{ profile.image.url }}"
+                                                                 alt="Photo" style="
+                                                                 box-shadow: 0 8px 6px -6px black;
+                                                                 height: 180px;">
+
+                                </div>
+
+                                <h3 class="profile-username text-center">{% if profile.user.first_name %}
+                                    {{ profile.user.first_name | upper}} {{ profile.user.last_name |upper }}{% else %}
+                                    {{ profile.user.username |upper }}{% endif %}</h3>
+
+                                <p class="text-muted text-center">{{ profile.department.name | upper }} DEPARTMENT</p>
+                                <button class="btn btn-success btn-block" data-toggle="modal"
+                                        data-target="#modal-user" style="background-color: #a1a239!important;  box-shadow: 0 8px 6px -6px black;">UPLOAD
+                                    PROFILE PHOTO
+                                </button>
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- About Me Box -->
+                        <div class="card card-primary">
+                            <div class="card-header bg-success">
+                                <h3 class="card-title">ABOUT EMPLOYEE</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <strong><i class="fa fa-book mr-1"></i>NATIONAL ID</strong>
+
+                                <p class="text-muted">
+                                    {{ profile.nin }}
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="fa fa-map-marker mr-1"></i> LOCATION</strong>
+
+                                <p class="text-muted">{{ profile.address }}</p>
+
+                                <hr>
+                                <strong><i class="fa fa-user mr-1"></i> ACCOUNT STATUS</strong>
+
+                                <p class="text-muted">{{ profile.staff_status |upper}}</p>
+
+
+                                <hr>
+
+                                <strong><i class="fa fa-file-text-o mr-1"></i> PROJECT</strong>
+
+                                <p class="text-muted">{{ profile.project.name  |upper}}</p>
+
+
+                                <hr>
+                                <strong><i class="fa fa-user mr-1"></i> USERNAME</strong>
+
+                                <p class="text-muted">{{ profile.user.username }}</p>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header p-2" style="background-color: black">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item"><a class="nav-link " href="#activity"
+                                                            data-toggle="tab" style="margin-right: 3px!important;">PROJECTS</a></li>
+
+                                    <li class="nav-item"><a class="nav-link active show"
+                                                            href="#settings"
+                                                            data-toggle="tab"
+                                                            style="background-color: #ffb40d!important;color: black"
+                                    >UPDATE STAFF PROFILE</a></li>
+                                </ul>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane " id="activity">
+
+                                        <!-- /.post -->
+                                    </div>
+
+
+                                    <div class="tab-pane active show" id="settings">
+                                        <form class="form-horizontal" method="post" action="/update_user_profile/">
+                                            {% csrf_token %}
+
+                                            <input name="email" value="{{ profile.user.email }}" hidden>
+
+                                            <div class="form-group">
+                                                <label for="inputName" class="col-sm-2 control-label">FIRST NAME</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="first_name"
+                                                           name="first_name"
+                                                           style="box-shadow: 0 8px 6px -9px black;"
+                                                           value="{{ profile.user.first_name |upper }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputName" class="col-sm-2 control-label">LAST NAME</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="last_name"
+                                                           name="last_name"
+                                                           style="box-shadow: 0 8px 6px -9px black;"
+                                                           value="{{ profile.user.last_name |upper }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="contact" class="col-sm-2 control-label">CONTACT</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="contact"
+                                                           name="contact"
+                                                           style="box-shadow: 0 8px 6px -9px black;"
+                                                           value="{{ profile.contact }}">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="contact" class="col-sm-2 control-label">ADDRESS</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="address"
+                                                           name="address"
+                                                           style="box-shadow: 0 8px 6px -9px black;"
+                                                           value="{{ profile.address |upper }}">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="contact" class="col-sm-2 control-label">NATIONAL ID</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="nin"
+                                                           name="nin"
+                                                           style="box-shadow: 0 8px 6px -9px black;"
+                                                           value="{{ profile.nin }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="contact" class="col-sm-2 control-label">GENDER</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="gender"
+                                                           name="gender"
+                                                           value="{{ profile.gender }}" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="contact" class="col-sm-2 control-label">DEPARTMENT</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           id="department"
+                                                           name="department"
+                                                           value="{{ profile.department.name |upper }}" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="contact" class="col-sm-2 control-label">RESPONSIBILITIES</label>
+                                                <div class="col-sm-12">
+                                                    <textarea type="text"
+                                                           class="form-control"
+                                                           id="staff_responsibilities"
+                                                           name="staff_responsibilities"
+                                                              disabled>{{ profile.staff_responsibilities }}</textarea>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" checked> I agree to the <a href="#">terms and
+                                                            conditions</a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="submit" class="btn btn-danger">UPDATE PROFILE</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        {# MODAL CODE #}
+        <!-- Modal -->
+        <div class="modal fade" id="modal-user" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLongTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content ">
+                    <div class="modal-header" style="background-color: #285d18; text-align: center!important;">
+                        <h5 class="modal-title" id="modal-company" style="text-align: center">UPLOAD STAFF PHOTO</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form-horizontal" method="post"
+                          action="/update_staff_photo/?email={{ profile.user.email }}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="modal-body" style="background-color: rgba(161,255,131,0.55)">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ profile.user.email }}" id="email"
+                                       name="email" hidden>
+
+                                <div class="col-sm-12">
+                                    {#                                <label for="username" class="control-label">User Name *</label>#}
+                                    {#                                <input type="text" class="form-control" id="username" name="username"#}
+                                    {#                                       placeholder="Enter User Name" required>#}
+
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label class="custom-file-label" for="logo">Choose Image File</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer" style="background-color: #285d18">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                                    class="fa fa-close"></i> Close
+                            </button>
+                            <button type="submit" class="btn btn-success">UPLOAD PHOTO</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+{% endblock %}

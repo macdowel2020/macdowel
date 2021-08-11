@@ -30,6 +30,7 @@ urlpatterns = [
     #     STAFF
     path('update_staff_photo/', register.update_staff_photo, name='update_staff_photo'),
     path('update_user_profile/', register.update_user_profile, name='update_user_profile'),
+    path('staff/', register.staff, name='staff'), # Staff Details
 
     #     =========== NEW =========
     path('project_categories/', project_categories.project_categories, name='project_categories'),
@@ -58,8 +59,6 @@ urlpatterns = [
     path('delete_project/', projects.delete_project, name='delete_project'),
     path('edit_and_request/', projects.edit_and_request, name='edit_and_request'),
     path('add_staff_to_project/', projects.add_staff_to_project, name='add_staff_to_project'),
-
-
 
 ]
 

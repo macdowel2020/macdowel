@@ -303,3 +303,18 @@ def administrators(incoming):
             return render(incoming, 'new/administrators.html', {'admins': admins, 'departments': departments})
     else:
         return HttpResponseRedirect('/')
+
+
+def staff(incoming):
+    if incoming.user.is_authenticated:
+        try:
+            email = incoming.GET['email']
+            staff_detail = Staff.objects.get(user__email__contains=email)
+            print('staff details page')
+            return render(incoming, 'new/staff_detail.html', {'profile': staff_detail})
+        except Exception as p:
+            print(str(p))
+            return HttpResponseRedirect('/')
+    else:
+        messages.error(incoming, 'Login to Proceed')
+        return HttpResponseRedirect('/')
