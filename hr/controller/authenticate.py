@@ -20,15 +20,19 @@ def login(incoming):
                     print('perez worked')
                     # record action
                     # AuditTrail.objects.create(user=user, action="Logged in successfully")
+                    messages.success(incoming, 'Welcome, we are glad to have you back!')
                     return HttpResponseRedirect('/')
                 else:
+                    messages.error(incoming, 'Login Failed Try Again')
                     return render(incoming, 'authenticate/login.html',
                                   {'error': 'The user account does not exists!!'})
             else:
+                messages.error(incoming, 'Login Failed Try Again')
                 return render(incoming, 'authenticate/login.html',
                               {'error': 'The user account does not exists!!'})
         except Exception as p:
             print(str(p))
+            messages.error(incoming, 'Login Failed Try Again')
             return HttpResponseRedirect('/')
 
 
@@ -37,6 +41,7 @@ def logout(incoming):
     try:
         # AuditTrail.objects.create(user=incoming.user, action="Logged out successfully")
         auth.logout(incoming)
+        messages.success(incoming, 'You are now Logged out!')
         return HttpResponseRedirect('/')
     except Exception as p:
         print(str(p))

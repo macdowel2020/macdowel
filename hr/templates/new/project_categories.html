@@ -22,82 +22,181 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <div class="container-fluid">
-        <div class="row">
 
-            <div class="col-md-9">
-                <div class="row">
-                    {% for c in locations %}
-                        <div class="col-12 col-sm-6 col-md-3">
-                            <a href="/filter_projects/?location={{ c.location }}">
-                                <div class="info-box">
-                                    <span class="info-box-icon bg-success elevation-1"><i
-                                            class="fa fa-product-hunt"></i></span>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                {% for c in locations %}
 
-                                    <div class="info-box-content">
-                                        <span class="info-box-text" style="color: black">{{ c.location |upper }} PROJECTS</span>
-                                        <span class="info-box-number"></span>
+                    <div class="col-md-6">
+                        <div class="card" style="background-color: #00316e!important; -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777; color: white">
+                            <div class="card-header card-header-action">
+                                <h6 style="color: white!important;">PROJECTS</h6>
+                                <div class="d-flex align-items-center card-action-wrap">
+                                    <div class="inline-block dropdown">
+                                        <a class="dropdown-toggle no-caret" data-toggle="dropdown" href="#"
+                                           aria-expanded="false"
+                                           role="button"><i class="ion ion-ios-more"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="/delete_location/?code={{ c.code }}"> <i
+                                                    class="fa fa-trash-o"
+                                                    style="color: red"></i> DELETE</a>
+
+                                        </div>
                                     </div>
-                                    <!-- /.info-box-content -->
                                 </div>
-                            </a>
-                            <a href="/delete_location/?code={{ c.code }}" class="btn btn-block btn-outline-danger"><i class="fa fa-trash-o"></i> DELETE</a>
-                            <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
-                    {% endfor %}
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-start justify-content-between mb-5">
+                                    <div class="display-6 text-dark"
+                                         style="color: white!important;">{{ c.location |upper }} </div>
+                                    <div class="font-16 text-green font-weight-500">
+                                        <a href="/filter_projects/?location={{ c.location }}"
+                                           style="color: #dddddd!important;"> <i class="fa fa-eye"></i>
+                                            DETAIL </a>
+                                        <span></span>
+                                    </div>
 
-                    <!-- /.col -->
-                </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
 
-
-            <div class="col-md-3">
-                <div class="card card-success">
-                    <div class="card-header" style="background-color: #ff8b26; color: #ffffff">
-                        <h3 class="card-title">PROJECT LOCATIONS</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <form class="form-horizontal" method="post" action="/project_categories/">
-                        {% csrf_token %}
-                        <div class="card-body" style="background-color: #1e8e51">
-
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="location" class="control-label">LOCATION NAME</label>
-                                    <input type="text" class="form-control" id="location" name="location"
-                                           placeholder="Enter Project Location" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="location" class="control-label">DESCRIPTION</label>
-                                    <textarea type="text" class="form-control" id="description" name="description"
-                                              placeholder="Enter Description" required></textarea>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- /.card-body -->
-                        {% if request.user.is_superuser %}
-                            <div class="card-footer" style="background-color: #147713; color: #ffffff">
-
-                                <button type="reset" class="btn btn-danger float-left">CANCEL</button>
-                                <button type="submit" class="btn btn-success float-right">SUBMIT</button>
-
-                            </div>
-                        {% endif %}
-                        <!-- /.card-footer -->
-                    </form>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header card-header-action text-center">
+                    <h6 class="text-center">PROJECT LOCATIONS</h6>
 
                 </div>
+                <form class="form-horizontal" method="post" action="/project_categories/">
+                    {% csrf_token %}
+                    <div class="card-body">
 
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="location" class="control-label">LOCATION NAME</label>
+                                <input type="text" class="form-control" id="location" name="location"
+                                       placeholder="Enter Project Location" required style="background-color: #00aff0!important;color: white">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="location" class="control-label">DESCRIPTION</label>
+                                <textarea type="text" class="form-control" id="description" rows="8" name="description" style="background-color: #00aff0!important;color: white"
+                                          placeholder="Enter Description" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block float-right mb-3"
+                                    style="background-color: #00316e!important; ">SUBMIT
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-9">
+            <div class="row">
+                {% for c in locations %}
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a href="/filter_projects/?location={{ c.location }}">
+                            <div class="info-box">
+                                    <span class="info-box-icon bg-success elevation-1"><i
+                                            class="fa fa-product-hunt"></i></span>
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text"
+                                          style="color: black">{{ c.location |upper }} PROJECTS</span>
+                                    <span class="info-box-number"></span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                        </a>
+                        <a href="/delete_location/?code={{ c.code }}" class="btn btn-block btn-outline-danger"><i
+                                class="fa fa-trash-o"></i> DELETE</a>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                {% endfor %}
+
+                <!-- /.col -->
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card card-success">
+                <div class="card-header" style="background-color: #ff8b26; color: #ffffff">
+                    <h3 class="card-title">PROJECT LOCATIONS</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form class="form-horizontal" method="post" action="/project_categories/">
+                    {% csrf_token %}
+                    <div class="card-body" style="background-color: #1e8e51">
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="location" class="control-label">LOCATION NAME</label>
+                                <input type="text" class="form-control" id="location" name="location"
+                                       placeholder="Enter Project Location" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="location" class="control-label">DESCRIPTION</label>
+                                <textarea type="text" class="form-control" id="description" name="description"
+                                          placeholder="Enter Description" required></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.card-body -->
+                    {% if request.user.is_superuser %}
+                        <div class="card-footer" style="background-color: #147713; color: #ffffff">
+
+                            <button type="reset" class="btn btn-danger float-left">CANCEL</button>
+                            <button type="submit" class="btn btn-success float-right">SUBMIT</button>
+
+                        </div>
+                    {% endif %}
+                    <!-- /.card-footer -->
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

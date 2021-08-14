@@ -1,7 +1,11 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
+
+
+    {% block page_title %}Dashboard {% endblock %}
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -20,216 +24,277 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info" style="background-color: #858c76!important; color: #fcfffc!important;">
-                        <div class="inner">
-                            <h3>{{ farm_count }}</h3>
-
-                            <p>FARMS</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <a href="/farms/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="background-color: #ff3902!important; -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;">
+                <div class="card-header card-header-action">
+                    <h6 style="color: white!important;">Farm Produce Income</h6>
+                    <div class="d-flex align-items-center card-action-wrap">
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{ machine_count }}<sup style="font-size: 20px"></sup></h3>
-
-                            <p>MACHINERY</p>
+                <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between mb-5">
+                        <div class="display-5 text-dark"
+                             style="color: white!important;">{% if all_income %}UGX {{ all_income |intcomma }}
+                            /= {% else %} 0.00{% endif %}</div>
+                        <div class="font-16 text-green font-weight-500">
+                            <i class="ion ion-md-arrow-up mr-5"></i>
+                            <span></span>
                         </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <a href="/machines/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ land_count }}</h3>
 
-                            <p>LAND</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-money"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{ apartment_count }}</h3>
-
-                            <p>APARTMENTS</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
             </div>
-            <!-- /.row -->
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="background-color: #ff3902!important; -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;">
+                <div class="card-header card-header-action">
+                    <h6 style="color: white!important;">Credit/ Loans Income</h6>
+                    <div class="d-flex align-items-center card-action-wrap">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between mb-5">
+                        <div class="display-5 text-dark" style="color: white!important;">{% if all_land %}UGX
+                            {{ all_land |intcomma }}
+                            /= {% else %} 0.00{% endif %}</div>
+                        <div class="font-16 text-green font-weight-500">
+                            <i class="ion ion-md-arrow-up mr-5"></i>
+                            <span></span>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="background-color: #ff3902!important; -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;">
+                <div class="card-header card-header-action">
+                    <h6 style="color: white!important;">Insurance Income</h6>
+                    <div class="d-flex align-items-center card-action-wrap">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between mb-5">
+                        <div class="display-5 text-dark" style="color: white!important;">{% if all_machinery %}UGX
+                            {{ all_machinery |intcomma }}
+                            /= {% else %} 0.00{% endif %}</div>
+                        <div class="font-16 text-green font-weight-500">
+                            <i class="ion ion-md-arrow-up mr-5"></i>
+                            <span></span>
+                        </div>
+                    </div>
 
-            <!-- Main row -->
-            <div class="row">
-                <!-- Left col -->
-                <section class="col-lg-7 connectedSortable">
-                    <!-- Custom tabs (Charts with tabs)-->
-                    <div class="card">
-                        <div class="card-header d-flex p-0">
-                            <h3 class="card-title p-3">
-                                <i class="fa fa-pie-chart mr-1"></i>
-                                Profit & Loss
-                            </h3>
-                            <ul class="nav nav-pills ml-auto p-2">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                                </li>
+                </div>
+            </div>
+        </div>
 
-                            </ul>
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="tab-content p-0">
-                                <!-- Morris chart - Sales -->
-                                <div class="chart tab-pane active" id="revenue-chart"
-                                     style="position: relative; height: 300px;"></div>
-                                <div class="chart tab-pane" id="sales-chart"
-                                     style="position: relative; height: 310px;"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card" style="background-color: #ffb404!important;">
+                <div class="card-header card-header-action">
+                    <h6>Machinery Income</h6>
+                    <div class="d-flex align-items-center card-action-wrap">
+                        <div class="inline-block dropdown">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between mb-5">
+                        <div class="display-5 text-dark" style="color: black!important;">{% if all_apartments %}UGX
+                            {{ all_apartments |intcomma }}
+                            /= {% else %} 0.00{% endif %}</div>
+                        <div class="font-16 text-green font-weight-500">
+                            <i class="ion ion-md-arrow-up mr-5"></i>
+                            <span></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="background-color: #ffb404!important;">
+                <div class="card-header card-header-action">
+                    <h6>Other Income</h6>
+                    <div class="d-flex align-items-center card-action-wrap">
+                        <div class="inline-block dropdown">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between mb-5">
+                        <div class="display-5 text-dark" style="color: black!important;">{% if all_rental %}UGX
+                            {{ all_rental |intcomma }}
+                            /= {% else %} 0.00{% endif %}</div>
+                        <div class="font-16 text-green font-weight-500">
+                            <i class="ion ion-md-arrow-up mr-5"></i>
+                            <span></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <a href="/farms/">
+                <div class="card card-sm" style="background-color: #0a2042!important;">
+                    <div class="card-body">
+                        <span class="d-block font-11 font-weight-500 text-light text-uppercase mb-10">FARMS</span>
+                        <div class="d-flex align-items-end justify-content-between">
+                            <div>
+																<span class="d-block">
+																	<span class="display-5 font-weight-400 text-light"
+                                                                          style="color: white">{{ farm_count }}</span>
+																	<small></small>
+																</span>
                             </div>
-                        </div><!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
-
-                    <!-- /.card -->
-                </section>
-                <!-- /.Left col -->
-                <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                <section class="col-lg-5 connectedSortable">
-
-
-                    <!-- /.card -->
-                    <!-- Calendar -->
-                    <div class="card" style="background-color: #d3dcbb!important; color: #0b2e13!important;">
-                        <div class="card-header no-border">
-
-                            <h3 class="card-title">
-                                <i class="fa fa-calendar"></i>
-                                Calendar
-                            </h3>
-                            <!-- tools card -->
-                            <div class="card-tools">
-                                <!-- button with a dropdown -->
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-success btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">
-                                        <i class="fa fa-bars"></i></button>
-                                    <div class="dropdown-menu float-right" role="menu">
-                                        <a href="#" class="dropdown-item">Add new event</a>
-                                        <a href="#" class="dropdown-item">Clear events</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href="#" class="dropdown-item">View calendar</a>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-success btn-sm" data-widget="collapse">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-success btn-sm" data-widget="remove">
-                                    <i class="fa fa-times"></i>
-                                </button>
+                            <div>
+                                <span class="text-danger font-12 font-weight-600"></span>
                             </div>
-                            <!-- /. tools -->
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <!--The calendar -->
-                            <div id="calendar" style="width: 100%"></div>
+                        <div class="progress progress-bar-xs mt-{{ farm_count |safe }}">
+                            <div class="progress-bar bg-success w-{{ farm_count |safe }}" role="progressbar"
+                                 aria-valuenow="55"
+                                 aria-valuemin="0"
+                                 aria-valuemax="10"></div>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
-                </section>
-
-
-                <!-- right col -->
-            </div>
-
-  <div class="row">
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-info" style="background-color: #d3dcbb!important; color: #0b2e13!important;"><i class="fa fa-lock"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Machinery Collections</span>
-                            <span class="info-box-number">UGX 1,410,000/=</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-success"><i class="fa fa-money"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Apartment Collections</span>
-                            <span class="info-box-number">UGX 410,000.00/=</span>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/lands/">
+                <div class="card card-sm" style="background-color: #0a2042!important;">
+                    <div class="card-body">
+                        <span class="d-block font-11 font-weight-500 text-light text-uppercase mb-10">LAND PROPERTIES</span>
+                        <div class="d-flex align-items-end justify-content-between">
+                            <div>
+																<span class="d-block">
+																	<span class="display-5 font-weight-400 text-light"
+                                                                          style="color: white">{{ land_count }}</span>
+																	<small></small>
+																</span>
+                            </div>
+                            <div>
+                                <span class="text-danger font-12 font-weight-600"></span>
+                            </div>
                         </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-warning"><i class="fa fa-money"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Farming Collections</span>
-                            <span class="info-box-number">UGX 13,648.00/=</span>
+                        <div class="progress progress-bar-xs mt-{{ land_count }}">
+                            <div class="progress-bar bg-success w-{{ land_count }}" role="progressbar"
+                                 aria-valuenow="55"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
                         </div>
-                        <!-- /.info-box-content -->
                     </div>
-                    <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-danger" style="background-color: #d3dcbb!important; color: red!important;"><i class="fa fa-file-archive-o"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Rental Collections</span>
-                            <span class="info-box-number">UGX 100, 000, 000/=</span>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/only_machines/">
+                <div class="card card-sm" style="background-color: #0a2042!important;">
+                    <div class="card-body">
+                        <span class="d-block font-11 font-weight-500 text-light text-uppercase mb-10">MACHINERY</span>
+                        <div class="d-flex align-items-end justify-content-between">
+                            <div>
+																<span class="d-block">
+																	<span class="display-5 font-weight-400 text-light"
+                                                                          style="color: white">{{ machine_count }}</span>
+																	<small></small>
+																</span>
+                            </div>
+                            <div>
+                                <span class="text-danger font-12 font-weight-600"></span>
+                            </div>
                         </div>
-                        <!-- /.info-box-content -->
+                        <div class="progress progress-bar-xs mt-{{ machine_count }}">
+                            <div class="progress-bar bg-success w-{{ machine_count }}" role="progressbar"
+                                 aria-valuenow="55"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
                     </div>
-                    <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/only_apartments/">
+                <div class="card card-sm" style="background-color: #0a2042!important;">
+                    <div class="card-body">
+                        <span class="d-block font-11 font-weight-500 text-light text-uppercase mb-10">APARTMENTS</span>
+                        <div class="d-flex align-items-end justify-content-between">
+                            <div>
+																<span class="d-block">
+																	<span class="display-5 font-weight-400 text-light"
+                                                                          style="color: white">{{ apartment_count }}</span>
+																	<small></small>
+																</span>
+                            </div>
+                            <div>
+                                <span class="text-danger font-12 font-weight-600"></span>
+                            </div>
+                        </div>
+                        <div class="progress progress-bar-xs mt-{{ apartment_count }}">
+                            <div class="progress-bar bg-success w-{{ apartment_count }}" role="progressbar"
+                                 aria-valuenow="55"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        <div class="col-md-6">
+            <a href="/only_rentals/">
+                <div class="card card-sm" style="background-color: #0a2042!important;">
+                    <div class="card-body">
+                        <span class="d-block font-11 font-weight-500 text-light text-uppercase mb-10">RENTALS</span>
+                        <div class="d-flex align-items-end justify-content-between">
+                            <div>
+																<span class="d-block">
+																	<span class="display-5 font-weight-400 text-light"
+                                                                          style="color: white">{{ rental_count }}</span>
+																	<small></small>
+																</span>
+                            </div>
+                            <div>
+                                <span class="text-danger font-12 font-weight-600"></span>
+                            </div>
+                        </div>
+                        <div class="progress progress-bar-xs mt-{{ rental_count }}">
+                            <div class="progress-bar bg-success w-{{ rental_count }}" role="progressbar"
+                                 aria-valuenow="55"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+
+
 
 {% endblock %}

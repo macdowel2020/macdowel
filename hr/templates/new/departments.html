@@ -8,9 +8,9 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     {% if view == "detail" %}
-                        <h1 class="m-0 text-dark">Staff</h1>
+                        <h3 class="m-0 text-dark">Staff</h3>
                     {% else %}
-                        <h1 class="m-0 text-dark"><a href="/departments/">DEPARTMENTS</a></h1>
+                        <h3 class="m-0 text-dark"><a href="/departments/">DEPARTMENTS</a></h3>
                     {% endif %}
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -24,82 +24,77 @@
     </div>
     <!-- /.content-header -->
     <div class="row">
-        <div class="col-md-9">
+    <div class="col-md-12">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="table-wrap">
 
-            <div class="card">
-                <div class="card-body">
-                    <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                <table class="table tablesaw table-bordered table-hover mb-0 tablesaw-sortable tablesaw-swipe"
+                       data-tablesaw-mode="swipe" data-tablesaw-sortable="" data-tablesaw-sortable-switch=""
+                       data-tablesaw-minimap="" data-tablesaw-mode-switch="" id="tablesaw-8446" style="">
+                    <thead>
+                    <tr>
+                        <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="persist"
+                            class="tablesaw-sortable-head tablesaw-swipe-cellpersist"
+                            data-tablesaw-sortable-numeric="false">
+                            <button class="tablesaw-sortable-btn">S/N<span
+                                    class="tablesaw-sortable-arrow"></span></button>
+                        </th>
+                        <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
+                            data-tablesaw-priority="3"
+                            class="tablesaw-sortable-head tablesaw-sortable-ascending"
+                            data-tablesaw-sortable-numeric="">
+                            <button class="tablesaw-sortable-btn">DEPARTMENT<span
+                                    class="tablesaw-sortable-arrow"></span></button>
+                        </th>
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
-                                       aria-describedby="example1_info">
-                                    <thead>
-                                    <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1"
-                                            aria-sort="ascending"
-                                            aria-label="Rendering engine: activate to sort column descending"
-                                            style="width: 277px;">#
-                                        </th>
+                        <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1"
+                            class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="">
+                            <button class="tablesaw-sortable-btn"><abbr
+                            >ACTION</abbr><span
+                                    class="tablesaw-sortable-arrow"></span></button>
+                        </th>
 
 
-                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 314px;">
-                                            DEPARTMENT
-                                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
+                    {% for u in departments %}
+                        <tr>
+                            <td class="title tablesaw-swipe-cellpersist"><a
+                                    href="javascript:void(0)">{{ forloop.counter }}</a>
+                            </td>
+                            <td>{{ u.name |upper }}</td>
+                            <td><a href="/delete_department/?name={{ u.name }}"
+                                   class="btn  btn-block btn-outline-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
 
-                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1"
-                                            aria-label="CSS grade: activate to sort column ascending"
-                                            style="width: 173px;">
-                                            ACTION
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                    {% endfor %}
 
-                                    {% for u in departments %}
-                                        <tr role="row" class="odd">
-
-                                            <td>{{ forloop.counter }}</td>
-                                            <td>{{ u.name |upper}}</td>
-                                            <td><a href="/delete_department/?name={{ u.name }}" class="btn  btn-block btn-outline-danger btn-sm">Delete</a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th rowspan="1" colspan="1">#</th>
-                                        <th rowspan="1" colspan="1">DEPARTMENT</th>
-                                        <th rowspan="1" colspan="1">ACTION</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- /.card-body -->
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th rowspan="1" colspan="1">#</th>
+                        <th rowspan="1" colspan="1">DEPARTMENT</th>
+                        <th rowspan="1" colspan="1">ACTION</th>
+                    </tr>
+                    </tfoot>
+                </table>
             </div>
-        </div>
 
+        </div>
         <div class="col-md-3">
-            <div class="card card-success" style="background-color: #1e8e51!important;">
-                <div class="card-header">
-                    <h3 class="card-title">NEW DEPARTMENT</h3>
+            <div class="card">
+                <div class="card-header card-header-action text-center">
+                    <h6 class="text-center">NEW DEPARTMENT</h6>
+
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
                 <form class="form-horizontal" method="post" action="/departments/">
                     {% csrf_token %}
                     <div class="card-body">
+
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label for="name" class="control-label">DEPARTMENT *</label>
@@ -108,18 +103,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block float-right mb-3">SUBMIT</button>
+                        </div>
                     </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-success">SUBMIT</button>
-                        <button type="reset" class="btn btn-default float-right">CANCEL</button>
-                    </div>
-                    <!-- /.card-footer -->
                 </form>
-
             </div>
-
         </div>
     </div>
 
 {% endblock %}
+

@@ -1,3 +1,4 @@
+import datetime
 import random
 import string
 from django.contrib import messages
@@ -59,14 +60,15 @@ def project_detail(request):
             approved_total = 0
             rejected_total = 0
 
-            code = request.GET.get("code")
+            code = request.GET["code"]
             # get loan details
             project = AllProject.objects.get(code=code)
+            print(project)
 
             # staff = Staff.objects.filter(project__code__contains=project.code)
             userdetail = project.code
 
-            incomes = Income.objects.all().filter(project__code__contains=project.code)
+            incomes = Income.objects.all().filter(project__code__contains=project.code).order_by('-id')
 
             pending_expenditures = Expenditure.objects.filter(project__code__contains=project.code, ).order_by('-id')
             approved_expenditures = Expenditure.objects.filter(project__code__contains=project.code,
@@ -113,7 +115,8 @@ def project_detail(request):
                                                                'rejected_expenditures': rejected_expenditures,
                                                                'rejected_total': rejected_total, 'loss': loss,
                                                                'profit': profit, 'users': users,
-                                                               'inventory': inventory, 'project_staffs': project_staffs})
+                                                               'inventory': inventory,
+                                                               'project_staffs': project_staffs})
         except Exception as p:
             print(str(p))
             return HttpResponseRedirect('/staff_projects/')
@@ -190,16 +193,18 @@ def income(request):
             print('PROJECT CODE', project.code)
 
             # Add the income
-
             amount = request.POST["amount"]
             item = request.POST["item"]
             # reason = request.POST["reason"]
             description = request.POST["description"]
             category = request.POST["category"]
             qty = request.POST["qty"]
+            date = request.POST["date"]
 
             sub_total = (int(qty) * int(amount))
             print(sub_total)
+
+            # d = datetime.datetime.strftime(datetime.datetime.strptime(date, '%Y-%m-%d'), '%Y-%m-%d')
 
             Income.objects.create(
                 code=''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6)),
@@ -212,6 +217,7 @@ def income(request):
                 description=description,
                 category=category,
                 qty=qty,
+                date=date,
                 sub_total=sub_total
             )
             messages.success(request, 'You have successfully added an Income')
@@ -219,6 +225,7 @@ def income(request):
         except Exception as p:
             print(str(p))
             messages.error(request, 'An Error Occurred')
+            return HttpResponseRedirect('/')
     else:
         messages.error(request, 'Login to Proceed')
         return HttpResponseRedirect('/')
@@ -392,6 +399,9 @@ def delete_expenditure(request):
 def delete_income(request):
     try:
         code = request.GET["code"]
+        Income.objects.get(code__contains=code).delete()
+        messages.success(request, 'Income Deleted successfully')
+        return HttpResponseRedirect('/farms/')
     except Exception as p:
         print(str(p))
         messages.error(request, 'An Error Occurred')
@@ -408,4 +418,36 @@ def delete_project(request):
     except Exception as p:
         print(str(p))
         messages.error(request, 'An Error Occurred')
+        return HttpResponseRedirect('/')
+
+
+def remove_staff_from_project(incoming):
+    if incoming.user.is_authenticated and incoming.user.is_superuser:
+        try:
+            id = incoming.GET['id']
+            AddStaffToProject.objects.get(id=id).delete()
+            messages.success(incoming, 'Staff assignment has been removed successfully!')
+            return HttpResponseRedirect('/')
+
+        except Exception as p:
+            print(str(p))
+            return HttpResponseRedirect('/')
+    else:
+        messages.error(incoming, 'You are not permitted to perform this action')
+        return HttpResponseRedirect('/')
+
+
+def delete_the_project(incoming):
+    if incoming.user.is_authenticated and incoming.user.is_superuser:
+        try:
+            code = incoming.GET['code']
+            AllProject.objects.get(code__contains=code).delete()
+            messages.success(incoming, 'Project has been Deleted successfully!')
+            return HttpResponseRedirect('/farms/')
+
+        except Exception as p:
+            print(str(p))
+            return HttpResponseRedirect('/all_projects/')
+    else:
+        messages.error(incoming, 'You are not permitted to perform this action')
         return HttpResponseRedirect('/')

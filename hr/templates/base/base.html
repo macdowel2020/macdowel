@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>MAC DOWEL CRM: {% block title %} {% endblock %}</title>
+    <meta name="description" content="Mac Dowel CRM"/>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- vector map CSS -->
+    <link href="{% static 'adminx/vendors/vectormap/jquery-jvectormap-2.0.3.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Toggles CSS -->
+    <link href="{% static 'adminx/vendors/jquery-toggles/css/toggles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'adminx/vendors/jquery-toggles/css/themes/toggles-light.css' %}" rel="stylesheet"
+          type="text/css">
+
+    <!-- Morris Charts CSS -->
+    <link href="{% static 'adminx/vendors/morris.js/morris.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Toastr CSS -->
+    {#    <link href="{% static 'adminx/vendors/jquery-toast-plugin/dist/jquery.toast.min.css' %}" rel="stylesheet"#}
+    {#          type="text/css">#}
+
+    <!-- ION CSS -->
+    <link href="{% static 'adminx/vendors/ion-rangeslider/css/ion.rangeSlider.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'adminx/vendors/ion-rangeslider/css/ion.rangeSlider.skinHTML5.css' %}" rel="stylesheet"
+          type="text/css">
+
+    <!-- select2 CSS -->
+    <link href="{% static 'adminx/vendors/select2/dist/css/select2.min.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Pickr CSS -->
+    <link href="{% static 'adminx/vendors/pickr-widget/dist/pickr.min.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Daterangepicker CSS -->
+    <link href="{% static 'adminx/vendors/daterangepicker/daterangepicker.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Tablesaw table CSS -->
+    <link href="{% static 'adminx/vendors/tablesaw/dist/tablesaw.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Custom CSS -->
+    <link href="{% static 'adminx/dist/css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<!-- HK Wrapper -->
+<div class="hk-wrapper hk-vertical-nav">
+    {% include 'base/header.html' %}
+
+    {% include 'base/sidebar.html' %}
+
+    {% include 'base/settings.html' %}
+
+    <!-- Main Content -->
+    <div class="hk-pg-wrapper">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible shadow fade show" role="alert"
+                 style="margin-top: 10px!important;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message | safe }}
+            </div>
+        {% endfor %}
+
+        <!-- Container -->
+        <div class="container-fluid mt-xl-50 mt-sm-30 mt-15 px-xxl-65 px-xl-20">
+            <ul class="nav nav-tabs nav-sm nav-light mb-25" role="tablist">
+                <li class="nav-item mb-5">
+                    <a class="nav-link link-icon-left active" data-toggle="tab" href="#tabs-1" role="tab"><i
+                            class="zmdi zmdi-apps"></i>{% block page_title %}Dashboard {% endblock %}</a>
+                </li>
+
+
+            </ul>
+
+
+            <!-- Tab panes -->
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        <!-- /Container -->
+
+
+        <!-- Footer -->
+        <div class="hk-footer-wrap container-fluid px-xxl-65 px-xl-20">
+            <footer class="footer">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <p>Prepared by<a href="/" class="text-dark" target="_blank">DIQUELA SYSTEMS</a> ©
+                            MAC DOWEL 2021-2026</p>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <p class="d-inline-block">Version 1.0.0</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- /Footer -->
+    </div>
+    <!-- /Main Content -->
+
+</div>
+<!-- /HK Wrapper -->
+
+<!-- jQuery -->
+<script src="{% static 'adminx/vendors/jquery/dist/jquery.min.js' %}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{% static 'adminx/vendors/popper.js/dist/umd/popper.min.js' %}"></script>
+<script src="{% static 'adminx/vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+<!-- Slimscroll JavaScript -->
+<script src="{% static 'adminx/dist/js/jquery.slimscroll.js' %}"></script>
+
+<!-- Fancy Dropdown JS -->
+<script src="{% static 'adminx/dist/js/dropdown-bootstrap-extended.js' %}"></script>
+
+<!-- FeatherIcons JavaScript -->
+<script src="{% static 'adminx/dist/js/feather.min.js' %}"></script>
+
+<!-- Toggles JavaScript -->
+<script src="{% static 'adminx/vendors/jquery-toggles/toggles.min.js' %}"></script>
+<script src="{% static 'adminx/dist/js/toggle-data.js' %}"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="{% static 'adminx/vendors/raphael/raphael.min.js' %}"></script>
+<script src="{% static 'adminx/vendors/morris.js/morris.min.js' %}"></script>
+
+<!-- Counter Animation JavaScript -->
+<script src="{% static 'adminx/vendors/waypoints/lib/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'adminx/vendors/jquery.counterup/jquery.counterup.min.js' %}"></script>
+
+<!-- EChartJS JavaScript -->
+<script src="{% static 'adminx/vendors/echarts/dist/echarts-en.min.js' %}"></script>
+
+<!-- Sparkline JavaScript -->
+<script src="{% static 'adminx/vendors/jquery.sparkline/dist/jquery.sparkline.min.js' %}"></script>
+
+<!-- Vector Maps JavaScript -->
+<script src="{% static 'adminx/vendors/vectormap/jquery-jvectormap-2.0.3.min.js' %}"></script>
+<script src="{% static 'adminx/vendors/vectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+<script src="{% static 'adminx/dist/js/vectormap-data.js' %}"></script>
+
+<!-- Owl JavaScript -->
+<script src="{% static 'adminx/vendors/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+
+<!-- Toastr JS -->
+{#<script src="{% static 'adminx/vendors/jquery-toast-plugin/dist/jquery.toast.min.js' %}"></script>#}
+
+
+<!-- Fancy Dropdown JS -->
+<script src="{% static 'adminx/dist/js/dropdown-bootstrap-extended.js' %}"></script>
+
+<!-- Ion JavaScript -->
+<script src="{% static 'adminx/vendors/ion-rangeslider/js/ion.rangeSlider.min.js' %}"></script>
+<script src="{% static 'adminx/dist/js/rangeslider-data.js' %}"></script>
+
+<!-- Toggles JavaScript -->
+<script src="{% static 'adminx/vendors/jquery-toggles/toggles.min.js' %}"></script>
+<script src="{% static 'adminx/dist/js/toggle-data.js' %}"></script>
+
+<!-- Select2 JavaScript -->
+<script src="{% static 'adminx/vendors/select2/dist/js/select2.full.min.js' %}"></script>
+<script src="{% static 'adminx/dist/js/select2-data.js' %}"></script>
+
+<!-- Bootstrap Tagsinput JavaScript -->
+<script src="{% static 'adminx/vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js' %}"></script>
+
+<!-- Bootstrap Input spinner JavaScript -->
+<script src="{% static 'adminx/vendors/bootstrap-input-spinner/src/bootstrap-input-spinner.js' %}"></script>
+<script src="{% static 'adminx/dist/js/inputspinner-data.js' %}"></script>
+
+<!-- Pickr JavaScript -->
+<script src="{% static 'adminx/vendors/pickr-widget/dist/pickr.min.js' %}"></script>
+<script src="{% static 'adminx/dist/js/pickr-data.js' %}"></script>
+
+<!-- Daterangepicker JavaScript -->
+<script src="{% static 'adminx/vendors/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'adminx/vendors/daterangepicker/daterangepicker.js' %}"></script>
+<script src="{% static 'adminx/dist/js/daterangepicker-data.js' %}"></script>
+
+<!-- FeatherIcons JavaScript -->
+<script src="{% static 'adminx/dist/js/feather.min.js' %}"></script>
+
+<!-- Toggles JavaScript -->
+<script src="{% static 'adminx/vendors/jquery-toggles/toggles.min.js' %}"></script>
+<script src="{% static 'adminx/dist/js/toggle-data.js' %}"></script>
+
+<!-- Init JavaScript -->
+<script src="{% static 'adminx/dist/js/init.js' %}"></script>
+<script src="{% static 'adminx/dist/js/dashboard-data.js' %}"></script>
+
+<!-- Tablesaw JavaScript -->
+<script src="{% static 'adminx/vendors/tablesaw/dist/tablesaw.jquery.js' %}"></script>
+<script src="{% static 'adminx/dist/js/tablesaw-data.js' %}"></script>
+
+{% block javascript %} {% endblock %}
+
+</body>
+
+</html>

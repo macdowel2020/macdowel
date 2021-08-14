@@ -1,0 +1,112 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                        <h3 class="m-0 text-dark"><a href="/farms/" style="color: black">FARMS</a></h3>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
+                        <li class="breadcrumb-item active">FARMS</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap">
+                    <a href="/all_projects/" class="btn  btn-success btn-sm mb-3"><i
+                    class="fa fa-bank"></i> ADD PROJECT
+            </a>
+
+                        <table class="table tablesaw table-bordered table-hover mb-0 tablesaw-sortable tablesaw-swipe"
+                               data-tablesaw-mode="swipe" data-tablesaw-sortable="" data-tablesaw-sortable-switch=""
+                               data-tablesaw-minimap="" data-tablesaw-mode-switch="" id="tablesaw-8446" style="">
+                            <thead>
+                            <tr>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="persist"
+                                    class="tablesaw-sortable-head tablesaw-swipe-cellpersist"
+                                    data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">S/N<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
+                                    data-tablesaw-priority="3"
+                                    class="tablesaw-sortable-head tablesaw-sortable-ascending"
+                                    data-tablesaw-sortable-numeric="">
+                                    <button class="tablesaw-sortable-btn">PROJECT<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="">
+                                    <button class="tablesaw-sortable-btn"><abbr
+                                    >LOCATION</abbr><span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">START DATE<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">CONTACT PERSON<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">ACTION<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for u in the_farms %}
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a
+                                            href="javascript:void(0)">{{ forloop.counter }}</a>
+                                    </td>
+
+                                    <td>{{ u.project_name }}</td>
+                                    <td>{{ u.location }}</td>
+                                    <td>{{ u.start_date |date }}</td>
+                                    <td>{{ u.contact }}</td>
+                                    <td>
+                                          <a href="/project_detail/?code={{ u.code }}"
+                                               class="btn btn-success btn-block btn-xs"><i class="fa fa-trash" title="View Details"></i> DETAIL</a>
+                                            {% if request.user.is_superuser %}
+                                                <a href="/delete_the_project/?code={{ u.code }}" class="btn btn-danger btn-block btn-xs">
+                                                    <i class="fa fa-trash" title="Delete Project"></i> DELETE
+                                                </a>
+                                            {% endif %}
+
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
+

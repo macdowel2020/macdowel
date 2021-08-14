@@ -1,0 +1,392 @@
+{% load static %}
+
+
+<!-- Vertical Nav -->
+<nav class="hk-nav hk-nav-dark" style="background-color: #0a2042; color: whitesmoke;">
+    <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i
+            data-feather="x"></i></span></a>
+    <div class="nicescroll-bar" style="color: whitesmoke!important;">
+        <div class="navbar-nav-wrap">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        <i class="ion ion-md-analytics"></i>
+                        <span class="nav-link-text">DASHBOARD</span>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse"
+                       data-target="#content_drp" aria-expanded="false">
+                        <i class="ion ion-md-clipboard"></i>
+                        <span class="nav-link-text">PROJECTS</span>
+                    </a>
+                    <ul id="content_drp" class="nav flex-column collapse collapse-level-1">
+                        <li class="nav-item">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/all_projects/">ALL PROJECTS</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/farms/">FARMS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/lands/">LAND PROPERTIES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/only_machines/">MACHINERY</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/only_apartments/">APARTMENTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/only_rentals/">RENTAL HOUSES</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <ul class="navbar-nav flex-column">
+
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/project_categories/">
+                                <i class="fa fa-file-archive-o"></i>
+                                <span class="nav-link-text">PROJECT CATEGORIES</span>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse"
+                           data-target="#content_drp1" aria-expanded="false">
+                            <i class="fa fa-users"></i>
+                            <span class="nav-link-text">HUMAN RESOURCE</span>
+                        </a>
+                        <ul id="content_drp1" class="nav flex-column collapse collapse-level-1">
+                            <li class="nav-item">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/all_staff/">STAFF</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/administrators/">ADMINISTRATORS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/departments/">DEPARTMENTS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/roles/">ACCESS CONTROL</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+
+            </ul>
+            <hr class="nav-separator">
+
+
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/roles/">
+                        <i class="fa fa-gears"></i>
+                        <span class="nav-link-text">SETTINGS</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
+<!-- /Vertical Nav -->
+
+
+{#<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #041533!important;">#}
+{#    <!-- Brand Logo -->#}
+{#    <a href="/" class="brand-link " style="background-color: #041533; color: whitesmoke">#}
+{#        <img src="{% static 'assets/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo"#}
+{#             class="brand-image img-circle elevation-3"#}
+{#             style="opacity: .8">#}
+{#        <span class="brand-text font-weight-light"><b>MAC DOWEL</b></span>#}
+{#    </a>#}
+{##}
+{#    <!-- Sidebar -->#}
+{#    <div class="sidebar">#}
+{#        <!-- Sidebar user panel (optional) -->#}
+{#        <div class="user-panel mt-3 pb-3 mb-3 d-flex">#}
+{#            <div class="image">#}
+{##}
+{#            </div>#}
+{#            <div class="info">#}
+{#                <a href="#" class="d-block" style="color: #ffffff!important;"> <b>#}
+{#                    {% if request.user.is_anonymous %}{% elif request.user.first_name %}#}
+{#                        {{ request.user.first_name |capfirst }} - {{ request.user.last_name |capfirst }}#}
+{#                        {% else %}{{ request.user |capfirst }} {% endif %} </b></a>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <!-- Sidebar Menu -->#}
+{#        <nav class="mt-2">#}
+{#            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"#}
+{#                data-accordion="false">#}
+{#                <!-- Add icons to the links using the .nav-icon class#}
+{#                     with font-awesome or any other icon font library -->#}
+{#                <li class="nav-item has-treeview menu-open ">#}
+{#                    <a href="/" class="nav-link active " style="background-color: #f26010">#}
+{#                        <i class="nav-icon fa fa-dashboard"></i>#}
+{#                        <p>#}
+{#                            DASHBOARD#}
+{#                            <i class="right fa fa-angle-left"></i>#}
+{#                        </p>#}
+{#                    </a>#}
+{##}
+{#                </li>#}
+{##}
+{#                <li class="nav-item has-treeview ">#}
+{##}
+{#                    <a href="/all_projects/" class="nav-link">#}
+{#                        <i class="nav-icon fa fa-plug"></i>#}
+{#                        <p>#}
+{#                            PROJECTS#}
+{#                        </p>#}
+{#                    </a>#}
+{##}
+{#                <li class="nav-item has-treeview" >#}
+{#                    <a href="/project_categories/" class="nav-link">#}
+{#                        <i class="nav-icon fa fa-plug"></i>#}
+{#                        <p>#}
+{#                           {% if request.user.is_superuser %} PROJECT CATEGORIES {% else %} PROJECT CATEGORIES{% endif %}#}
+{#                        </p>#}
+{#                    </a>#}
+{##}
+{#                <li class="nav-item has-treeview">#}
+{#                    <a href="#" class="nav-link">#}
+{#                        <i class="nav-icon fa fa-bar-chart-o"></i>#}
+{#                        <p>#}
+{#                            GENERAL ANALYSIS#}
+{#                            <i class="fa fa-angle-left right"></i>#}
+{#                        </p>#}
+{#                    </a>#}
+{#                    <ul class="nav nav-treeview">#}
+{#                        <li class="nav-item">#}
+{#                            <a href="/" class="nav-link">#}
+{#                                <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                <p>Projects</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{##}
+{##}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{##}
+{#menu-open#}
+{#                {% if request.user.is_superuser %}#}
+{#                    <li class="nav-item has-treeview ">#}
+{#                        <a href="#" class="nav-link"#}
+{#                           >#}
+{#                            <i class="nav-icon fa fa-users"></i>#}
+{#                            <p>#}
+{#                                HR MANAGER#}
+{#                                <i class="fa fa-angle-left right"></i>#}
+{#                            </p>#}
+{#                        </a>#}
+{#                        <ul class="nav nav-treeview">#}
+{#                            <li class="nav-item">#}
+{#                                <a href="/all_staff/" class="nav-link" >#}
+{#                                    <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                    <p>STAFF</p>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li class="nav-item">#}
+{#                                <a href="/administrators/" class="nav-link">#}
+{#                                    <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                    <p>ADMINISTRATORS</p>#}
+{#                                </a>#}
+{#                            </li>#}
+{##}
+{#                             <li class="nav-item">#}
+{#                                <a href="/departments/" class="nav-link" >#}
+{#                                    <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                    <p>DEPARTMENTS</p>#}
+{#                                </a>#}
+{#                            </li>#}
+{##}
+{#                              <li class="nav-item">#}
+{#                                <a href="/roles/" class="nav-link">#}
+{#                                    <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                    <p>ACCESS LEVELS</p>#}
+{#                                </a>#}
+{#                            </li>#}
+{##}
+{##}
+{##}
+{#                        </ul>#}
+{#                    </li>#}
+{#                {% endif %}#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#                <li class="nav-item has-treeview">#}
+{#                    <a href="#" class="nav-link bg-success"#}
+{#                       style="background-color: #d3dcbb!important; color: #0b2e13!important;">#}
+{#                        <i class="nav-icon fa fa-credit-card"></i>#}
+{#                        <p>#}
+{#                            EQUIPEMENTS#}
+{#                            <i class="right fa fa-angle-left"></i>#}
+{#                        </p>#}
+{#                    </a>#}
+{#                    <ul class="nav nav-treeview">#}
+{#                        <li class="nav-item">#}
+{#                            <a href="/machines/" class="nav-link" style="color: black">#}
+{#                                <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                <p>MACHINERY</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{##}
+{##}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{#                <li class="nav-item has-treeview">#}
+{#                    <a href="#" class="nav-link" style="background-color: #d3dcbb!important; color: #0b2e13!important;">#}
+{#                        <i class="nav-icon fa fa-file-archive-o"></i>#}
+{#                        <p>#}
+{#                            ASSETS#}
+{#                            <i class="fa fa-angle-left right"></i>#}
+{#                        </p>#}
+{#                    </a>#}
+{#                    <ul class="nav nav-treeview">#}
+{#                        <li class="nav-item">#}
+{#                            <a href="/land/" class="nav-link" style="color: black">#}
+{#                                <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                <p>LAND</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a href="/" class="nav-link" style="color: black">#}
+{#                                <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                <p>APARTMENTS</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a href="/" class="nav-link" style="color: black">#}
+{#                                <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                <p>RENTAL'S</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{#                <li class="nav-item has-treeview">#}
+{#                    <a href="#" class="nav-link" style="background-color: #d3dcbb!important; color: #0b2e13!important;">#}
+{#                        <i class="nav-icon fa fa-pie-chart"></i>#}
+{#                        <p>#}
+{#                            POULTRY#}
+{#                            <i class="fa fa-angle-left right"></i>#}
+{#                        </p>#}
+{#                    </a>#}
+{#                    <ul class="nav nav-treeview">#}
+{#                        <li class="nav-item">#}
+{#                            <a href="/" class="nav-link" style="color: black">#}
+{#                                <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                <p>POULTRY</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{##}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{#                <li class="nav-item has-treeview">#}
+{#                    <a href="#" class="nav-link" style="background-color: #d3dcbb!important; color: #0b2e13!important;">#}
+{#                        <i class="nav-icon fa fa-users"></i>#}
+{#                        <p>#}
+{#                            KAPWETA#}
+{#                            <i class="fa fa-angle-left right"></i>#}
+{#                        </p>#}
+{#                    </a>#}
+{#                    <ul class="nav nav-treeview">#}
+{#                        <li class="nav-item">#}
+{#                            <a href="/" class="nav-link" style="color: black">#}
+{#                                <i class="fa fa-circle-o nav-icon"></i>#}
+{#                                <p>KAPWETA</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{##}
+{##}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{##}
+{#                {% if request.user.is_superuser %}#}
+{#                    <li class="nav-header" style="background-color: #ff8b26 "><b>SYSTEM CONFIG/ SETUP</b></li>#}
+{#                    <li class="nav-item">#}
+{#                        <a href="/staff_projects/" class="nav-link" style="color: black">#}
+{#                            <i class="nav-icon fa fa-circle-o text-danger"></i>#}
+{#                            <p class="text">Projects</p>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a href="/departments/" class="nav-link" style="color: black">#}
+{#                            <i class="nav-icon fa fa-circle-o text-danger"></i>#}
+{#                            <p class="text">Departments</p>#}
+{#                        </a>#}
+{#                    </li>#}
+{##}
+{#                    <li class="nav-item">#}
+{#                        <a href="/roles/" class="nav-link" style="color: black">#}
+{#                            <i class="nav-icon fa fa-circle-o text-danger"></i>#}
+{#                            <p class="text">User Roles</p>#}
+{#                        </a>#}
+{#                    </li>#}
+{##}
+{#                    <li class="nav-item">#}
+{#                        <a href="#" class="nav-link " style="color: black">#}
+{#                            <i class="nav-icon fa fa-circle-o text-danger"></i>#}
+{#                            <p class="text">System Audit</p>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                {% endif %}#}
+{##}
+{##}
+{#                <li class="nav-item" style="background-color: #d75757!important; color: #040604!important;">#}
+{#                    <a href="/logout/" class="nav-link">#}
+{#                        <i class="nav-icon fa fa-lock text-danger" style="color: #000000!important;"></i>#}
+{#                        <p class="text">Logout</p>#}
+{#                    </a>#}
+{#                </li>#}
+{##}
+{#            </ul>#}
+{#        </nav>#}
+{#        <!-- /.sidebar-menu -->#}
+{#    </div>#}
+{#    <!-- /.sidebar -->#}
+{#</aside>#}
+

@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.urls import path
 from hr.controller import home, authenticate, register, departments, projects, \
-    project_categories, filter_projects
+    project_categories, filter_projects, farms
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,7 +30,7 @@ urlpatterns = [
     #     STAFF
     path('update_staff_photo/', register.update_staff_photo, name='update_staff_photo'),
     path('update_user_profile/', register.update_user_profile, name='update_user_profile'),
-    path('staff/', register.staff, name='staff'), # Staff Details
+    path('staff/', register.staff, name='staff'),  # Staff Details
 
     #     =========== NEW =========
     path('project_categories/', project_categories.project_categories, name='project_categories'),
@@ -59,6 +59,25 @@ urlpatterns = [
     path('delete_project/', projects.delete_project, name='delete_project'),
     path('edit_and_request/', projects.edit_and_request, name='edit_and_request'),
     path('add_staff_to_project/', projects.add_staff_to_project, name='add_staff_to_project'),
+
+    #     FARMS
+    path('get_farms/', farms.get_farms, name='get_farms'),
+
+    #     INCOME
+    path('delete_income/', projects.delete_income, name='delete_income'),
+    path('remove_staff_from_project/', projects.remove_staff_from_project, name='remove_staff_from_project'),
+    path('delete_the_project/', projects.delete_the_project, name='delete_the_project'),
+
+    #     DASHBOARD URLS
+    path('farms/', home.farms, name='farms'),
+    path('lands/', home.lands, name='lands'),
+    path('delete_land/', home.delete_land, name='delete_land'),
+    path('only_machines/', home.only_machines, name='only_machines'),
+    path('delete_machine/', home.delete_machine, name='delete_machine'),
+    path('only_apartments/', home.only_apartments, name='only_apartments'),
+    path('delete_apartment/', home.delete_apartment, name='delete_apartment'),
+    path('only_rentals/', home.only_rentals, name='only_rentals'),
+    path('delete_rental/', home.delete_rental, name='delete_rental'),
 
 ]
 

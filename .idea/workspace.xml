@@ -2,12 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abd4a225-3349-4ab7-969a-7116b85ee92c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hr/templates/base/base.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hr/templates/base/header.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/base/base.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/base/header.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/controller/register.py" afterPath="$PROJECT_DIR$/hr/controller/register.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/controller/authenticate.py" afterPath="$PROJECT_DIR$/hr/controller/authenticate.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/controller/home.py" afterPath="$PROJECT_DIR$/hr/controller/home.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/controller/projects.py" afterPath="$PROJECT_DIR$/hr/controller/projects.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/models.py" afterPath="$PROJECT_DIR$/hr/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/authenticate/login.html" afterPath="$PROJECT_DIR$/hr/templates/authenticate/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/dashboard.html" afterPath="$PROJECT_DIR$/hr/templates/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/new/administrators.html" afterPath="$PROJECT_DIR$/hr/templates/new/administrators.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/new/all_projects.html" afterPath="$PROJECT_DIR$/hr/templates/new/all_projects.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/new/departments.html" afterPath="$PROJECT_DIR$/hr/templates/new/departments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/new/project_categories.html" afterPath="$PROJECT_DIR$/hr/templates/new/project_categories.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/new/project_detail.html" afterPath="$PROJECT_DIR$/hr/templates/new/project_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/new/role.html" afterPath="$PROJECT_DIR$/hr/templates/new/role.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/new/staff.html" afterPath="$PROJECT_DIR$/hr/templates/new/staff.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/templates/new/staff_detail.html" afterPath="$PROJECT_DIR$/hr/templates/new/staff_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/urls.py" afterPath="$PROJECT_DIR$/hr/urls.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/base/sidebar.html" afterPath="$PROJECT_DIR$/hr/templates/base/sidebar.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,36 +37,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hr/models.py">
+    <leaf>
+      <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hr/templates/base/sidebar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="82" column="27" lean-forward="true" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hr/controller/register.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2720">
-              <caret line="316" column="44" lean-forward="false" selection-start-line="316" selection-start-column="44" selection-end-line="316" selection-end-column="44" />
-              <folding>
-                <element signature="e#6968#8075#0" expanded="false" />
-                <element signature="e#8107#10522#0" expanded="false" />
-                <element signature="e#10559#13088#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hr/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="57" column="62" lean-forward="false" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -70,6 +62,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>EDIT</find>
+      <find>log</find>
+      <find>evie</find>
+      <find>location</find>
+      <find>request_expense</find>
+      <find>APPROVED EXPENSES: UGX</find>
+      <find>FARMS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -78,57 +76,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MAC_DONALD/urls.py" />
-        <option value="$PROJECT_DIR$/hr/controller/authenticate.py" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/departments.html" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/role.html" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/projectdetail.html" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/machinary.html" />
-        <option value="$PROJECT_DIR$/hr/controller/land.py" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/farms.html" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/land.html" />
-        <option value="$PROJECT_DIR$/hr/static/assets/plugins/bootstrap/css/bootstrap.css" />
-        <option value="$PROJECT_DIR$/hr/static/assets/dist/css/adminlte.css" />
-        <option value="$PROJECT_DIR$/hr/static/assets/plugins/bootstrap/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/hr/templates/authenticate/login.html" />
-        <option value="$PROJECT_DIR$/hr/templates/mac/details/farm_detail.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/lists/farms.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/details/farm_report.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/machinery.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/details/machinary_details.html" />
-        <option value="$PROJECT_DIR$/templates/base/base.html" />
-        <option value="$PROJECT_DIR$/hr/templates/dashboard.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/lists/projects.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/lists/machinery.html" />
         <option value="$PROJECT_DIR$/hr/templates/authenticate/users.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/details/p_detail.html" />
-        <option value="$PROJECT_DIR$/templates/base/header.html" />
         <option value="$PROJECT_DIR$/hr/templates/mac/staff_projects.html" />
         <option value="$PROJECT_DIR$/hr/static/js/vue.js" />
-        <option value="$PROJECT_DIR$/MAC_DONALD/settings.py" />
-        <option value="$PROJECT_DIR$/hr/templates/new/staff.html" />
-        <option value="$PROJECT_DIR$/hr/templates/new/administrators.html" />
-        <option value="$PROJECT_DIR$/hr/templates/new/role.html" />
-        <option value="$PROJECT_DIR$/hr/templates/new/departments.html" />
-        <option value="$PROJECT_DIR$/hr/templates/new/project_categories.html" />
         <option value="$PROJECT_DIR$/hr/controller/filter_projects.py" />
         <option value="$PROJECT_DIR$/hr/templates/new/low_projects.html" />
         <option value="$PROJECT_DIR$/hr/controller/project_categories.py" />
         <option value="$PROJECT_DIR$/hr/controller/machinery.py" />
         <option value="$PROJECT_DIR$/hr/templates/new/filter_projects.html" />
-        <option value="$PROJECT_DIR$/hr/controller/farms.py" />
-        <option value="$PROJECT_DIR$/templates/base/sidebar.html" />
-        <option value="$PROJECT_DIR$/hr/models.py" />
         <option value="$PROJECT_DIR$/hr/admin.py" />
-        <option value="$PROJECT_DIR$/hr/controller/home.py" />
         <option value="$PROJECT_DIR$/hr/controller/departments.py" />
-        <option value="$PROJECT_DIR$/hr/controller/projects.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/hr/templates/new/project_detail.html" />
-        <option value="$PROJECT_DIR$/hr/templates/new/all_projects.html" />
-        <option value="$PROJECT_DIR$/hr/urls.py" />
         <option value="$PROJECT_DIR$/hr/controller/register.py" />
+        <option value="$PROJECT_DIR$/templates/base/sidebar.html" />
+        <option value="$PROJECT_DIR$/hr/controller/farms.py" />
+        <option value="$PROJECT_DIR$/hr/templates/analysis/farms.html" />
+        <option value="$PROJECT_DIR$/templates/base/header.html" />
+        <option value="$PROJECT_DIR$/templates/base/base.html" />
+        <option value="$PROJECT_DIR$/hr/templates/base/settings.html" />
+        <option value="$PROJECT_DIR$/hr/templates/base/header.html" />
+        <option value="$PROJECT_DIR$/hr/static/adminx/dist/js/tablesaw-data.js" />
+        <option value="$PROJECT_DIR$/hr/static/adminx/vendors/tablesaw/dist/tablesaw.jquery.js" />
+        <option value="$PROJECT_DIR$/hr/templates/new/departments.html" />
+        <option value="$PROJECT_DIR$/hr/templates/new/staff.html" />
+        <option value="$PROJECT_DIR$/hr/templates/new/role.html" />
         <option value="$PROJECT_DIR$/hr/templates/new/staff_detail.html" />
+        <option value="$PROJECT_DIR$/hr/templates/new/administrators.html" />
+        <option value="$PROJECT_DIR$/hr/templates/new/project_categories.html" />
+        <option value="$PROJECT_DIR$/MAC_DONALD/settings.py" />
+        <option value="$PROJECT_DIR$/hr/templates/base/base.html" />
+        <option value="$PROJECT_DIR$/hr/controller/authenticate.py" />
+        <option value="$PROJECT_DIR$/hr/templates/authenticate/login.html" />
+        <option value="$PROJECT_DIR$/hr/templates/new/project_detail.html" />
+        <option value="$PROJECT_DIR$/hr/models.py" />
+        <option value="$PROJECT_DIR$/hr/templates/farms.html" />
+        <option value="$PROJECT_DIR$/hr/controller/projects.py" />
+        <option value="$PROJECT_DIR$/hr/templates/new/all_projects.html" />
+        <option value="$PROJECT_DIR$/hr/templates/lands.html" />
+        <option value="$PROJECT_DIR$/hr/templates/only_machines.html" />
+        <option value="$PROJECT_DIR$/hr/templates/only_apartments.html" />
+        <option value="$PROJECT_DIR$/hr/templates/dashboard.html" />
+        <option value="$PROJECT_DIR$/hr/templates/only_rentals.html" />
+        <option value="$PROJECT_DIR$/hr/urls.py" />
+        <option value="$PROJECT_DIR$/hr/controller/home.py" />
+        <option value="$PROJECT_DIR$/hr/templates/base/sidebar.html" />
       </list>
     </option>
   </component>
@@ -142,10 +140,10 @@
     <handled-path value="$PROJECT_DIR$/hr/static/admin/plugins/bower_components/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
+    <option name="x" value="1916" />
     <option name="y" value="-4" />
-    <option name="width" value="1928" />
-    <option name="height" value="1048" />
+    <option name="width" value="1448" />
+    <option name="height" value="868" />
   </component>
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
@@ -162,6 +160,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -284,7 +283,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -306,105 +304,61 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MAC_DONALD">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="macdowel">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="hr">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="macdowel">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="hr">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="templates">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="macdowel">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="hr">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="templates">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="base">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="macdowel">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="hr">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="macdowel">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="hr">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="templates">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="macdowel">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="hr">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="templates">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="new">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="macdowel">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="hr">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="static">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="macdowel">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="hr">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="static">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -443,6 +397,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PROJECTS\MACDOWELONLINE\macdowel\hr\templates" />
       <recent name="E:\PROJECTS\MACDOWELONLINE\macdowel\hr\templates\new" />
       <recent name="E:\PROJECTS\MACDOWELONLINE\macdowel\hr\templates\mac\lists" />
       <recent name="E:\PROJECTS\MAC_DONALD\hr\templates\mac\lists" />
@@ -680,17 +635,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1928" height="1048" extended-state="7" />
+    <frame x="1916" y="-4" width="1448" height="868" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16257995" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22206303" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270525" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2987887" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2974428" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -710,10 +665,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2987887" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15974212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3270525" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2974428" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22206303" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -732,104 +687,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://E:/LOANSYSTEM/setup/controllers/authenticate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="33" column="44" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/static/assets/index2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/static/assets/build/scss/_main-sidebar.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="111" column="7" lean-forward="false" selection-start-line="111" selection-start-column="7" selection-end-line="111" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/static/assets/dist/css/adminlte.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1172">
-          <caret line="3710" column="21" lean-forward="false" selection-start-line="3710" selection-start-column="21" selection-end-line="3710" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/static/admin/plugins/bower_components/node_modules/bootstrap/less/navs.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="226" column="5" lean-forward="false" selection-start-line="226" selection-start-column="5" selection-end-line="226" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/static/assets/plugins/bootstrap/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-84">
-          <caret line="3821" column="16" lean-forward="true" selection-start-line="3821" selection-start-column="16" selection-end-line="3821" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/static/assets/plugins/bootstrap/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="3890" column="21" lean-forward="false" selection-start-line="3890" selection-start-column="21" selection-end-line="3890" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/static/admin/bootstrap/less/breadcrumbs.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/authenticate/register.html" />
-    <entry file="file://$PROJECT_DIR$/hr/templates/mac/details/farm_detail.html" />
-    <entry file="file://$PROJECT_DIR$/hr/templates/authenticate/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-918">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/mac/details/machinary_details.html" />
-    <entry file="file://$PROJECT_DIR$/hr/templates/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hr/templates/mac/land.html" />
     <entry file="file://$PROJECT_DIR$/media/place.jpg" />
-    <entry file="file://$PROJECT_DIR$/templates/base/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="58" lean-forward="false" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hr/static/assets/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -841,36 +709,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/templates/mac/staff_projects.html" />
-    <entry file="file://$PROJECT_DIR$/hr/templates/new/administrators.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="199" column="74" lean-forward="true" selection-start-line="199" selection-start-column="74" selection-end-line="199" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/new/role.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="72" column="56" lean-forward="true" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/new/departments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="119" column="18" lean-forward="true" selection-start-line="119" selection-start-column="18" selection-end-line="119" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hr/templates/mac/lists/machinery.html" />
     <entry file="file://$PROJECT_DIR$/hr/templates/mac/lists/projects.html" />
-    <entry file="file://$PROJECT_DIR$/hr/templates/new/project_categories.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="30" column="62" lean-forward="true" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hr/templates/new/low_projects.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -879,13 +719,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/controller/land.py" />
-    <entry file="file://$PROJECT_DIR$/hr/controller/authenticate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hr/controller/filter_projects.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -901,47 +734,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/templates/mac/projectdetail.html" />
-    <entry file="file://$PROJECT_DIR$/hr/controller/farms.py" />
     <entry file="file://$PROJECT_DIR$/hr/controller/machinery.py" />
     <entry file="file://$PROJECT_DIR$/required.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base/sidebar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="53" column="51" lean-forward="true" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/controller/departments.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-930">
-          <caret line="17" column="42" lean-forward="true" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/controller/home.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/controller/projects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="139" column="40" lean-forward="true" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -959,73 +756,357 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/new/project_detail.html">
+    <entry file="file://$PROJECT_DIR$/hr/controller/register.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="36" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        <state relative-caret-position="658">
+          <caret line="316" column="44" lean-forward="false" selection-start-line="316" selection-start-column="44" selection-end-line="316" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/authenticate/users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1836">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/static/adminx/email.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/base/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/base/settings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/analysis/farms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="169" column="10" lean-forward="false" selection-start-line="169" selection-start-column="10" selection-end-line="169" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/controller/farms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/static/adminx/bar-charts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/static/adminx/dist/js/tablesaw-data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="34" lean-forward="true" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/static/adminx/vendors/tablesaw/dist/tablesaw.jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6273">
+          <caret line="74" column="7" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/new/role.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/new/departments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/new/administrators.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="244" column="0" lean-forward="true" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/new/staff_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="268" column="22" lean-forward="true" selection-start-line="268" selection-start-column="22" selection-end-line="268" selection-end-column="22" />
+          <folding>
+            <element signature="e#116#939#0#HTML" expanded="false" />
+            <element signature="e#1001#2881#0#HTML" expanded="false" />
+            <element signature="e#1217#1272#0#HTML" expanded="false" />
+            <element signature="e#2584#2687#0#HTML" expanded="false" />
+            <element signature="e#4441#4459#0#HTML" expanded="false" />
+            <element signature="e#5017#14185#0#HTML" expanded="false" />
+            <element signature="e#5912#5953#0#HTML" expanded="false" />
+            <element signature="e#6846#6887#0#HTML" expanded="false" />
+            <element signature="e#7771#7812#0#HTML" expanded="false" />
+            <element signature="e#8682#8723#0#HTML" expanded="false" />
+            <element signature="e#9597#9638#0#HTML" expanded="false" />
+            <element signature="e#10433#10474#0#HTML" expanded="false" />
+            <element signature="e#11286#11327#0#HTML" expanded="false" />
+            <element signature="e#12398#12439#0#HTML" expanded="false" />
+            <element signature="e#14721#14785#0#HTML" expanded="false" />
+            <element signature="e#16853#28873#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/new/project_categories.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="91" column="99" lean-forward="false" selection-start-line="91" selection-start-column="99" selection-end-line="91" selection-end-column="99" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MAC_DONALD/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        <state relative-caret-position="629">
+          <caret line="39" column="9" lean-forward="false" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/base/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="71" column="20" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="71" selection-end-column="20" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#2746#2753#1#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/authenticate/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="94" column="28" lean-forward="false" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#section#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#4034#4041#1#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/new/project_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="1037" column="49" lean-forward="true" selection-start-line="1037" selection-start-column="49" selection-end-line="1037" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#section#3;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#!!top" expanded="false" />
+            <element signature="n#div#5;n#!!top" expanded="false" />
+            <element signature="n#div#6;n#!!top" expanded="false" />
+            <element signature="n#div#7;n#!!top" expanded="false" />
+            <element signature="n#div#8;n#!!top" expanded="false" />
+            <element signature="n#block#2;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/controller/authenticate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="34" column="62" lean-forward="true" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/new/staff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="258" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#2;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/farms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="85" column="69" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/controller/projects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="439" column="0" lean-forward="false" selection-start-line="439" selection-start-column="0" selection-end-line="452" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#5594#6839#0" expanded="false" />
+            <element signature="e#5728#6735#0" expanded="false" />
+            <element signature="e#6882#7708#0" expanded="false" />
+            <element signature="e#7736#9549#0" expanded="false" />
+            <element signature="e#9590#10970#0" expanded="false" />
+            <element signature="e#11007#11544#0" expanded="false" />
+            <element signature="e#11580#12321#0" expanded="false" />
+            <element signature="e#12352#14097#0" expanded="false" />
+            <element signature="e#14135#14557#0" expanded="false" />
+            <element signature="e#14606#15345#0" expanded="false" />
+            <element signature="e#15385#15728#0" expanded="false" />
+            <element signature="e#15763#16114#0" expanded="false" />
+            <element signature="e#16150#16516#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/lands.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/only_apartments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="94" column="74" lean-forward="false" selection-start-line="94" selection-start-column="58" selection-end-line="94" selection-end-column="74" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="291" column="0" lean-forward="true" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/templates/new/all_projects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="39" selection-end-column="32" />
+        <state relative-caret-position="323">
+          <caret line="139" column="52" lean-forward="false" selection-start-line="139" selection-start-column="43" selection-end-line="139" selection-end-column="52" />
+          <folding>
+            <element signature="n#block#3;n#!!top" expanded="false" />
+            <marker date="1628931475405" expanded="false" signature="12701:12713" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="14112:14160" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="14665:14677" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="15177:15194" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="15555:15572" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="15990:16007" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="16428:16445" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="16863:16880" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="17958:17997" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="20661:20711" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="21119:21169" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="21489:21528" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="22235:22274" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="23301:23351" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="23458:23471" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="23581:23594" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="23700:23713" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="23820:23833" ph="..." />
+            <marker date="1628931475405" expanded="false" signature="23942:23955" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/new/staff_detail.html">
+    <entry file="file://$PROJECT_DIR$/hr/templates/only_machines.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-709">
-          <caret line="25" column="31" lean-forward="true" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="323">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/new/staff.html">
+    <entry file="file://$PROJECT_DIR$/hr/templates/only_rentals.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="129" column="32" lean-forward="true" selection-start-line="129" selection-start-column="32" selection-end-line="129" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/templates/authenticate/users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="522" column="0" lean-forward="true" selection-start-line="522" selection-start-column="0" selection-end-line="522" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="94" column="71" lean-forward="false" selection-start-line="94" selection-start-column="58" selection-end-line="94" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="381">
+          <caret line="78" column="22" lean-forward="false" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hr/controller/register.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2720">
-          <caret line="316" column="44" lean-forward="false" selection-start-line="316" selection-start-column="44" selection-end-line="316" selection-end-column="44" />
-          <folding>
-            <element signature="e#6968#8075#0" expanded="false" />
-            <element signature="e#8107#10522#0" expanded="false" />
-            <element signature="e#10559#13088#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="82" column="27" lean-forward="true" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
+        <state relative-caret-position="255">
+          <caret line="15" column="55" lean-forward="false" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/controller/home.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/controller/departments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/templates/base/sidebar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="57" column="62" lean-forward="false" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
           <folding />
         </state>
       </provider>

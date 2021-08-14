@@ -1,0 +1,171 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-xl-12">
+            <section class="hk-sec-wrapper">
+                <h5 class="hk-sec-title">Mode Switch Table</h5>
+                <p class="mb-40">The Stack Table stacks the table headers to a two column layout with headers on the
+                    left when the viewport width is less than 40em (640px). Swipe Mode, ModeSwitch, Minimap, Sortable,
+                    SortableSwitch modes are available.</p>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="table-wrap">
+                            <div class="tablesaw-bar tablesaw-mode-swipe tablesaw-all-cols-visible">
+                                <div class="tablesaw-sortable-switch tablesaw-bar-section"><label>Sort:<span
+                                        class="btn tablesaw-btn btn-select tablesaw-btn-select"><span
+                                        aria-hidden="true">Rank ↑</span><select><option
+                                        value="0_asc">Movie (A-Z)</option><option value="0_desc">Movie (Z-A)</option><option
+                                        selected="" value="1_asc">Rank ↑</option><option value="1_desc">Rank ↓</option><option
+                                        value="2_asc">Year ↑</option><option value="2_desc">Year ↓</option><option
+                                        value="3_asc">Rating ↑</option><option value="3_desc">Rating ↓</option><option
+                                        value="4_asc">Gross (A-Z)</option><option
+                                        value="4_desc">Gross (Z-A)</option></select></span></label></div>
+                                <div class="tablesaw-modeswitch tablesaw-bar-section"><label><span class="abbreviated">Cols</span><span
+                                        class="longform">Columns</span>:<span
+                                        class="btn tablesaw-btn btn-select tablesaw-btn-select"><span
+                                        aria-hidden="true">Swipe</span><select><option value="stack">Stack</option><option
+                                        selected="" value="swipe">Swipe</option><option
+                                        value="columntoggle">Toggle</option></select></span></label></div>
+                                <div class="tablesaw-advance"><a href="#"
+                                                                 class="btn tablesaw-nav-btn tablesaw-btn btn-micro left disabled">Previous
+                                    column</a><a href="#"
+                                                 class="btn tablesaw-nav-btn tablesaw-btn btn-micro right disabled">Next
+                                    column</a></div>
+                                <div class="tablesaw-advance minimap" style="display: block;">
+                                    <ul class="tablesaw-advance-dots">
+                                        <li><i></i></li>
+                                        <li><i></i></li>
+                                        <li class=""><i></i></li>
+                                        <li class=""><i></i></li>
+                                        <li class=""><i></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <table class="table tablesaw table-bordered table-hover mb-0 tablesaw-sortable tablesaw-swipe"
+                                   data-tablesaw-mode="swipe" data-tablesaw-sortable="" data-tablesaw-sortable-switch=""
+                                   data-tablesaw-minimap="" data-tablesaw-mode-switch="" id="tablesaw-6447" style="">
+                                <thead>
+                                <tr>
+                                    <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="persist"
+                                        class="tablesaw-sortable-head tablesaw-swipe-cellpersist"
+                                        data-tablesaw-sortable-numeric="false">
+                                        <button class="tablesaw-sortable-btn">Movie<span
+                                                class="tablesaw-sortable-arrow"></span></button>
+                                    </th>
+                                    <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
+                                        data-tablesaw-priority="3"
+                                        class="tablesaw-sortable-head tablesaw-sortable-ascending"
+                                        data-tablesaw-sortable-numeric="">
+                                        <button class="tablesaw-sortable-btn">Rank<span
+                                                class="tablesaw-sortable-arrow"></span></button>
+                                    </th>
+                                    <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2"
+                                        class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="">
+                                        <button class="tablesaw-sortable-btn">Year<span
+                                                class="tablesaw-sortable-arrow"></span></button>
+                                    </th>
+                                    <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1"
+                                        class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="">
+                                        <button class="tablesaw-sortable-btn"><abbr
+                                                title="Rotten Tomato Rating">Rating</abbr><span
+                                                class="tablesaw-sortable-arrow"></span></button>
+                                    </th>
+                                    <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                        class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                        <button class="tablesaw-sortable-btn">Gross<span
+                                                class="tablesaw-sortable-arrow"></span></button>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a href="javascript:void(0)">Avatar</a>
+                                    </td>
+                                    <td>1</td>
+                                    <td class="">2009</td>
+                                    <td class="">83%</td>
+                                    <td class="">$2.7B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a
+                                            href="javascript:void(0)">Titanic</a></td>
+                                    <td>2</td>
+                                    <td class="">1997</td>
+                                    <td class="">88%</td>
+                                    <td class="">$2.1B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a href="javascript:void(0)">The
+                                        Avengers</a></td>
+                                    <td>3</td>
+                                    <td class="">2012</td>
+                                    <td class="">92%</td>
+                                    <td class="">$1.5B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a href="javascript:void(0)">Harry
+                                        Potter and the Deathly Hallows—Part 2</a></td>
+                                    <td>4</td>
+                                    <td class="">2011</td>
+                                    <td class="">96%</td>
+                                    <td class="">$1.3B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a href="javascript:void(0)">Frozen</a>
+                                    </td>
+                                    <td>5</td>
+                                    <td class="">2013</td>
+                                    <td class="">89%</td>
+                                    <td class="">$1.2B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a href="javascript:void(0)">Iron Man
+                                        3</a></td>
+                                    <td>6</td>
+                                    <td class="">2013</td>
+                                    <td class="">78%</td>
+                                    <td class="">$1.2B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a href="javascript:void(0)">Transformers:
+                                        Dark of the Moon</a></td>
+                                    <td>7</td>
+                                    <td class="">2011</td>
+                                    <td class="">36%</td>
+                                    <td class="">$1.1B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a href="javascript:void(0)">The Lord
+                                        of the Rings: The Return of the King</a></td>
+                                    <td>8</td>
+                                    <td class="">2003</td>
+                                    <td class="">95%</td>
+                                    <td class="">$1.1B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a
+                                            href="javascript:void(0)">Skyfall</a></td>
+                                    <td>9</td>
+                                    <td class="">2012</td>
+                                    <td class="">92%</td>
+                                    <td class="">$1.1B</td>
+                                </tr>
+                                <tr>
+                                    <td class="title tablesaw-swipe-cellpersist"><a href="javascript:void(0)">Transformers:
+                                        Age of Extinction</a></td>
+                                    <td>10</td>
+                                    <td class="">2014</td>
+                                    <td class="">18%</td>
+                                    <td class="">$1.0B</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}
