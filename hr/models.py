@@ -130,3 +130,18 @@ class AuditTrail(models.Model):
     project = models.ForeignKey(AllProject, blank=True, null=True, on_delete=models.SET_NULL)
     action = models.TextField()
     date = models.DateTimeField(auto_now=True)
+
+
+class Asset(models.Model):
+    code = models.CharField(max_length=100, unique=True)
+    added_by = models.ForeignKey(Staff, blank=True, null=True, on_delete=models.SET_NULL)
+    categories = models.CharField(max_length=255, null=True, blank=True)
+    description = models.CharField(max_length=500, null=True, blank=True)
+    number = models.CharField(max_length=500, null=True, blank=True)
+    amount_sold = models.CharField(max_length=255, null=True, blank=True)
+    sold_to = models.CharField(max_length=255, null=True, blank=True)
+    purchase_id = models.CharField(max_length=255, null=True, blank=True)
+    date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.description

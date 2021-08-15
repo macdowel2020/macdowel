@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from hr.models import AllProject, Income
+from hr.models import AllProject, Income, Asset
 
 
 def dashboard(incoming):
@@ -20,11 +20,17 @@ def dashboard(incoming):
         all_apartments = 0
         all_rental = 0
 
+        assets_count = 0
+
         farm_earned = Income.objects.filter(category='Farm Produce')
         credit_income = Income.objects.filter(project__category__contains='Credit/ Loans')
         insurance_income = Income.objects.filter(project__category__contains='Insurance')
         machine_income = Income.objects.filter(project__category__contains='Machine Income')
         other_income = Income.objects.filter(project__category__contains='Other')
+
+        all_assets = Asset.objects.all()
+        for k in all_assets:
+            assets_count += int(k.amount_sold)
 
         for i in farm_earned:
             all_income += int(i.amount)
@@ -45,7 +51,8 @@ def dashboard(incoming):
                                                    'land_count': land_count, 'apartment_count': apartment_count,
                                                    'rental_count': rental_count, 'all_income': all_income,
                                                    'all_land': all_land, 'all_machinery': all_machinery,
-                                                   'all_apartments': all_apartments, 'all_rental': all_rental
+                                                   'all_apartments': all_apartments, 'all_rental': all_rental,
+                                                   'assets_count': assets_count
                                                    })
     else:
         return HttpResponseRedirect('/login/')

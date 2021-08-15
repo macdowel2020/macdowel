@@ -90,7 +90,9 @@
                                           <a href="/project_detail/?code={{ u.code }}"
                                                class="btn btn-success btn-block btn-xs"><i class="fa fa-trash" title="View Details"></i> DETAIL</a>
                                             {% if request.user.is_superuser %}
-                                                <a href="/delete_machine/?code={{ u.code }}" class="btn btn-danger btn-block btn-xs">
+                                                <a href="/delete_machine/?code={{ u.code }}"
+                                                   onclick="return confirm('Are you sure you want to delete this Record?');"
+                                                   class="btn btn-danger btn-block btn-xs">
                                                     <i class="fa fa-trash" title="Delete Project"></i> DELETE
                                                 </a>
                                             {% endif %}

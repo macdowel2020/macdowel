@@ -98,7 +98,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card" style="background-color: #ffb404!important;">
                 <div class="card-header card-header-action">
                     <h6>Machinery Income</h6>
@@ -122,7 +122,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card" style="background-color: #ffb404!important;">
                 <div class="card-header card-header-action">
                     <h6>Other Income</h6>
@@ -136,6 +136,30 @@
                     <div class="d-flex align-items-start justify-content-between mb-5">
                         <div class="display-5 text-dark" style="color: black!important;">{% if all_rental %}UGX
                             {{ all_rental |intcomma }}
+                            /= {% else %} 0.00{% endif %}</div>
+                        <div class="font-16 text-green font-weight-500">
+                            <i class="ion ion-md-arrow-up mr-5"></i>
+                            <span></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="background-color: #ffb404!important;">
+                <div class="card-header card-header-action">
+                    <h6>Assets of Company</h6>
+                    <div class="d-flex align-items-center card-action-wrap">
+                        <div class="inline-block dropdown">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between mb-5">
+                        <div class="display-5 text-dark" style="color: black!important;">{% if assets_count %}UGX
+                            {{ assets_count |intcomma }}
                             /= {% else %} 0.00{% endif %}</div>
                         <div class="font-16 text-green font-weight-500">
                             <i class="ion ion-md-arrow-up mr-5"></i>

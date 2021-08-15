@@ -1,0 +1,211 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}ASSETS{% endblock %}
+
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h3 class="m-0 text-dark"><a href="/all_assets_list/" style="color: black">ASSETS OF MAC DOWEL</a>
+                    </h3>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
+                        <li class="breadcrumb-item active">ASSETS</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap">
+                        <button type="button" class="btn  btn-success btn-sm mb-3" data-toggle="modal"
+                                data-target="#modal-asset"><i
+                                class="fa fa-bank"></i> ADD ASSET
+                        </button>
+
+                        <table class="table tablesaw table-bordered table-hover mb-0 tablesaw-sortable tablesaw-swipe"
+                               data-tablesaw-mode="swipe" data-tablesaw-sortable="" data-tablesaw-sortable-switch=""
+                               data-tablesaw-minimap="" data-tablesaw-mode-switch="" id="tablesaw-8446" style="">
+                            <thead>
+                            <tr>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="persist"
+                                    class="tablesaw-sortable-head tablesaw-swipe-cellpersist"
+                                    data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">S/N<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
+                                    data-tablesaw-priority="3"
+                                    class="tablesaw-sortable-head tablesaw-sortable-ascending"
+                                    data-tablesaw-sortable-numeric="">
+                                    <button class="tablesaw-sortable-btn">CATEGORY<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="">
+                                    <button class="tablesaw-sortable-btn"><abbr
+                                    >AMOUNT SOLD</abbr><span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">SOLD TO<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">NUMBER<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">PURCHASE ID<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">ACTION<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if assets %}
+
+                                {% for u in assets %}
+                                    <tr>
+                                        <td class="title tablesaw-swipe-cellpersist"><a
+                                                href="javascript:void(0)">{{ forloop.counter }}</a>
+                                        </td>
+
+                                        <td>{{ u.categories }}</td>
+                                        <td>UGX {{ u.amount_sold |intcomma }}</td>
+                                        <td>{{ u.sold_to }}</td>
+                                        <td>{{ u.number }}</td>
+                                        <td>{{ u.purchase_id }}</td>
+                                        <td>
+                                            {% if request.user.is_superuser %}
+                                                <a href="/delete_asset/?id={{ u.id }}"
+                                                   class="btn btn-danger btn-block btn-xs"
+                                                 onclick="return confirm('Are you sure you want to delete this Record?');"
+                                                >
+                                                    <i class="fa fa-trash" title="Delete Project"></i> DELETE
+                                                </a>
+                                            {% endif %}
+
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+
+                            {% else %}
+                                <p class="text-center" style="color: red!important;">NO RECORDS FOUND</p>
+                            {% endif %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="modal fade" id="modal-asset">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-info" style="background-color: #ffffff!important; color: black">
+                <div class="modal-header">
+                    <h4 class="modal-title">ASSETS OF COMPANY</h4>
+                    <button type="button" class="close" style="color: #ff1a06;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form action="/all_assets_list/" method="post" enctype="multipart/form-data" autocomplete="off">
+                    {% csrf_token %}
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label>CATEGORY *</label>
+                            <select class="form-control" name="categories">
+                                <option>Select Option</option>
+                                <option value="Building Assets">Building Assets</option>
+                                <option value="Equipment Assets">Equipment Assets</option>
+                                <option value="Vehicles">Vehicles</option>
+                                <option value="Apartment Assets">Apartment Assets</option>
+                                <option value="Farm Assets">Farm Assets</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount_sold">AMOUNT SOLD *</label>
+                            <input type="number" class="form-control" id="amount_sold" name="amount_sold"
+                                   placeholder="Enter Amount Sold" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="number">NUMBER *</label>
+                            <input type="text" class="form-control" id="number" name="number"
+                                   placeholder="Enter Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sold_to">SOLD TO *</label>
+                            <input type="text" class="form-control" id="sold_to" name="sold_to"
+                                   placeholder="Enter a Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sold_to">PURCHASE ID *</label>
+                            <input type="text" class="form-control" id="purchase_id" name="purchase_id"
+                                   placeholder="Enter Purchase ID" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="date">DATE *</label>
+                            <input type="date" class="form-control" id="date" name="date"
+                                   placeholder="Enter Date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">DESCRIPTION*</label>
+                            <textarea type="text" class="form-control" rows="7" id="description" name="description"
+                                      placeholder="Enter Description" required></textarea>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-light"
+                                style="background-color: green!important; color: white">
+                            Save Information
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+{% endblock %}
+

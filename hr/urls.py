@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.urls import path
 from hr.controller import home, authenticate, register, departments, projects, \
-    project_categories, filter_projects, farms
+    project_categories, filter_projects, farms, assets
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -78,6 +78,10 @@ urlpatterns = [
     path('delete_apartment/', home.delete_apartment, name='delete_apartment'),
     path('only_rentals/', home.only_rentals, name='only_rentals'),
     path('delete_rental/', home.delete_rental, name='delete_rental'),
+
+    #    === COMPANY ASSETS ===
+    path('all_assets_list/', assets.all_assets_list, name='all_assets_list'),
+    path('delete_asset/', assets.delete_asset, name='delete_asset'),
 
 ]
 
