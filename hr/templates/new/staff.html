@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% block title %} STAFF{% endblock %}
 
 {% block content %}
     <!-- Content Header (Page header) -->
@@ -109,7 +110,7 @@
                                         <a href="/staff/?email={{ u.user.email }}"
                                            class="btn  btn-outline-success btn-sm btn-block">Detail</a>
                                         <a href="#" type="button" class="btn  btn-outline-danger btn-sm btn-block"
-                                           onclick="return confirm('Are you sure you want to delete this Vehicle?');">Delete</a>
+                                           onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
 
                                     </td>
                                 </tr>

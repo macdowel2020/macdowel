@@ -1,18 +1,19 @@
 {% extends 'base/base.html' %}
 {% load static %}
-
+{% load humanize %}
+{% block title %} Salaries & Wages {% endblock %}
 {% block content %}
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                        <h3 class="m-0 text-dark"><a href="/farms/" style="color: black">FARMS</a></h3>
+                    <h3 class="m-0 text-dark"><a href="/salary_payments/" style="color: black">SALARIES & WAGES</a></h3>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">HOME</a></li>
-                        <li class="breadcrumb-item active">FARMS</li>
+                        <li class="breadcrumb-item active">SALARIES & WAGES</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,9 +27,9 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="table-wrap">
-                    <a href="/all_projects/" class="btn  btn-success btn-sm mb-3"><i
-                    class="fa fa-bank"></i> ADD PROJECT
-            </a>
+                        <a href="/load_add_salary_page/" class="btn  btn-success btn-sm mb-3"><i
+                                class="fa fa-money"></i> ADD SALARY OR WAGE
+                        </a>
 
                         <table class="table tablesaw table-bordered table-hover mb-0 tablesaw-sortable tablesaw-swipe"
                                data-tablesaw-mode="swipe" data-tablesaw-sortable="" data-tablesaw-sortable-switch=""
@@ -38,31 +39,54 @@
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="persist"
                                     class="tablesaw-sortable-head tablesaw-swipe-cellpersist"
                                     data-tablesaw-sortable-numeric="false">
-                                    <button class="tablesaw-sortable-btn">S/N<span
+                                    <button class="tablesaw-sortable-btn">#<span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
+
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
                                     data-tablesaw-priority="3"
                                     class="tablesaw-sortable-head tablesaw-sortable-ascending"
                                     data-tablesaw-sortable-numeric="">
-                                    <button class="tablesaw-sortable-btn">PROJECT<span
+                                    <button class="tablesaw-sortable-btn">S/N<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
+                                    data-tablesaw-priority="3"
+                                    class="tablesaw-sortable-head tablesaw-sortable-ascending"
+                                    data-tablesaw-sortable-numeric="">
+                                    <button class="tablesaw-sortable-btn">PAID ON<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
+                                    data-tablesaw-priority="3"
+                                    class="tablesaw-sortable-head tablesaw-sortable-ascending"
+                                    data-tablesaw-sortable-numeric="">
+                                    <button class="tablesaw-sortable-btn">NAME<span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
 
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1"
                                     class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="">
                                     <button class="tablesaw-sortable-btn"><abbr
-                                    >LOCATION</abbr><span
+                                    >AMOUNT PAID</abbr><span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="">
+                                    <button class="tablesaw-sortable-btn"><abbr
+                                    >BALANCE</abbr><span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
                                     class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
-                                    <button class="tablesaw-sortable-btn">START DATE<span
+                                    <button class="tablesaw-sortable-btn">CATEGORY<span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
                                     class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
-                                    <button class="tablesaw-sortable-btn">CONTACT PERSON<span
+                                    <button class="tablesaw-sortable-btn">STATUS<span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
 
@@ -75,31 +99,43 @@
                             </thead>
                             <tbody>
 
-                            {% for u in the_farms %}
+                            {% if  salaries%}
+                            {% for u in salaries %}
                                 <tr>
                                     <td class="title tablesaw-swipe-cellpersist"><a
                                             href="javascript:void(0)">{{ forloop.counter }}</a>
                                     </td>
+                                    <td>{{ u.code }}</td>
+                                    <td>{{ u.paid_on |date |upper }}</td>
+                                    <td>{{ u.payment_to.user.first_name |upper }} {{ u.payment_to.user.last_name |upper }}</td>
+                                    <td>UGX {{ u.amount_paid |intcomma }}/=</td>
+                                    <td>UGX {{ u.balance |intcomma }}/=</td>
+                                    <td>{{ u.category |upper }}</td>
+                                    <td style="text-align: center!important;">{% if u.balance == 0 %}
+                                        <span class="badge badge-soft-success  mr-10">FULLY PAID </span>
+                                    {% else %}
 
-                                    <td>{{ u.project_name }}</td>
-                                    <td>{{ u.location }}</td>
-                                    <td>{{ u.start_date |date }}</td>
-                                    <td>{{ u.contact }}</td>
+                                        <span class="badge badge-soft-danger mr-10">PARTIALLY PAID</span>
+                                    {% endif %}</td>
                                     <td>
-                                          <a href="/project_detail/?code={{ u.code }}"
-                                               class="btn btn-success btn-block btn-xs"><i class="fa fa-trash" title="View Details"></i> DETAIL</a>
-                                            {% if request.user.is_superuser %}
-                                                <a href="/delete_the_project/?code={{ u.code }}"
-                                                   onclick="return confirm('Are you sure you want to delete this record?');"
-                                                   class="btn btn-danger btn-block btn-xs">
-                                                    <i class="fa fa-trash" title="Delete Project"></i> DELETE
-                                                </a>
-                                            {% endif %}
-
+                                        <a href="/edit_salary/?id={{ u.id }}"
+                                           class="btn btn-success btn-block btn-xs"><i class="fa fa-eye"
+                                                                                       title="View Details"></i> DETAIL</a>
+                                        {% if request.user.is_superuser %}
+                                            <a href="/delete_salary/?id={{ u.id }}" onclick="return confirm('Are you sure you want to delete this record?');"
+                                               class="btn btn-danger btn-block btn-xs" >
+                                                <i class="fa fa-trash" title="Delete Project"></i> DELETE
+                                            </a>
+                                        {% endif %}
                                     </td>
+
                                 </tr>
 
                             {% endfor %}
+
+                            {% else %}
+                            <p style="text-align: center!important; color: red!important;"><b>NO SALARIES FOUND</b></p>
+                            {% endif %}
 
                             </tbody>
 

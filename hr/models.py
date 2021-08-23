@@ -76,6 +76,7 @@ class Expenditure(models.Model):
     entered_on = models.DateTimeField(auto_now=True)
     reason = models.CharField(max_length=300, null=True, blank=True)
     date = models.DateTimeField(blank=True, null=True)
+    expenditure_category = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.item
@@ -95,6 +96,7 @@ class Income(models.Model):
     qty = models.IntegerField(default=0, blank=True, null=True)
     sub_total = models.IntegerField(default=0, blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
+    income_category = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.item
@@ -134,14 +136,33 @@ class AuditTrail(models.Model):
 
 class Asset(models.Model):
     code = models.CharField(max_length=100, unique=True)
-    added_by = models.ForeignKey(Staff, blank=True, null=True, on_delete=models.SET_NULL)
-    categories = models.CharField(max_length=255, null=True, blank=True)
+    asset_name = models.CharField(max_length=255, null=True, blank=True)
+    asset_model = models.CharField(max_length=255, null=True, blank=True)
+    serial_number = models.CharField(max_length=255, null=True, blank=True)
+    cost = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=500, null=True, blank=True)
-    number = models.CharField(max_length=500, null=True, blank=True)
-    amount_sold = models.CharField(max_length=255, null=True, blank=True)
-    sold_to = models.CharField(max_length=255, null=True, blank=True)
-    purchase_id = models.CharField(max_length=255, null=True, blank=True)
     date = models.DateTimeField(blank=True, null=True)
+    date_sold = models.DateTimeField(blank=True, null=True)
+    location = models.CharField(max_length=500, null=True, blank=True)
+    purchase_id = models.CharField(max_length=255, null=True, blank=True)
+    added_by = models.ForeignKey(Staff, blank=True, null=True, on_delete=models.SET_NULL)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.description
+
+
+class Salary(models.Model):
+    code = models.CharField(max_length=100, unique=True)
+    payment_to = models.ForeignKey(Staff, blank=True, null=True, on_delete=models.SET_NULL)
+    category = models.CharField(max_length=255, null=True, blank=True)
+    expected_amount = models.IntegerField(default=0)
+    amount_paid = models.IntegerField(default=0)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    status = models.CharField(max_length=255, null=True, blank=True)
+    paid_on = models.DateTimeField(blank=True, null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    balance = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.category

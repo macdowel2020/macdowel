@@ -42,31 +42,34 @@
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="persist"
                                     class="tablesaw-sortable-head tablesaw-swipe-cellpersist"
                                     data-tablesaw-sortable-numeric="false">
-                                    <button class="tablesaw-sortable-btn">S/N<span
+                                    <button class="tablesaw-sortable-btn">#<span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
                                     data-tablesaw-priority="3"
                                     class="tablesaw-sortable-head tablesaw-sortable-ascending"
                                     data-tablesaw-sortable-numeric="">
-                                    <button class="tablesaw-sortable-btn">CATEGORY<span
+                                    <button class="tablesaw-sortable-btn">SERIAL NO<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col=""
+                                    data-tablesaw-priority="3"
+                                    class="tablesaw-sortable-head tablesaw-sortable-ascending"
+                                    data-tablesaw-sortable-numeric="">
+                                    <button class="tablesaw-sortable-btn">ASSET NAME<span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
 
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1"
                                     class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="">
                                     <button class="tablesaw-sortable-btn"><abbr
-                                    >AMOUNT SOLD</abbr><span
+                                    >COST</abbr><span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
                                     class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
-                                    <button class="tablesaw-sortable-btn">SOLD TO<span
-                                            class="tablesaw-sortable-arrow"></span></button>
-                                </th>
-                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
-                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
-                                    <button class="tablesaw-sortable-btn">NUMBER<span
+                                    <button class="tablesaw-sortable-btn">LOCATION<span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
 
@@ -91,17 +94,16 @@
                                         <td class="title tablesaw-swipe-cellpersist"><a
                                                 href="javascript:void(0)">{{ forloop.counter }}</a>
                                         </td>
-
-                                        <td>{{ u.categories }}</td>
-                                        <td>UGX {{ u.amount_sold |intcomma }}</td>
-                                        <td>{{ u.sold_to }}</td>
-                                        <td>{{ u.number }}</td>
+                                        <td>{{ u.serial_number }}</td>
+                                        <td>{{ u.asset_name |upper }}</td>
+                                        <td>UGX {{ u.cost |intcomma }}/=</td>
+                                        <td>{{ u.location |upper }}</td>
                                         <td>{{ u.purchase_id }}</td>
                                         <td>
                                             {% if request.user.is_superuser %}
                                                 <a href="/delete_asset/?id={{ u.id }}"
                                                    class="btn btn-danger btn-block btn-xs"
-                                                 onclick="return confirm('Are you sure you want to delete this Record?');"
+                                                   onclick="return confirm('Are you sure you want to delete this Record?');"
                                                 >
                                                     <i class="fa fa-trash" title="Delete Project"></i> DELETE
                                                 </a>
@@ -141,47 +143,52 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>CATEGORY *</label>
-                            <select class="form-control" name="categories">
-                                <option>Select Option</option>
-                                <option value="Building Assets">Building Assets</option>
-                                <option value="Equipment Assets">Equipment Assets</option>
-                                <option value="Vehicles">Vehicles</option>
-                                <option value="Apartment Assets">Apartment Assets</option>
-                                <option value="Farm Assets">Farm Assets</option>
-                                <option value="Others">Others</option>
-                            </select>
+                            <label for="asset_name">ASSET NAME *</label>
+                            <input type="text" class="form-control" id="asset_name" name="asset_name"
+                                   placeholder="Enter Asset Name" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="amount_sold">AMOUNT SOLD *</label>
-                            <input type="number" class="form-control" id="amount_sold" name="amount_sold"
-                                   placeholder="Enter Amount Sold" required>
+                            <label for="asset_model">ASSET MODEL *</label>
+                            <input type="text" class="form-control" id="asset_model" name="asset_model"
+                                   placeholder="Enter Asset Model" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="number">NUMBER *</label>
-                            <input type="text" class="form-control" id="number" name="number"
-                                   placeholder="Enter Number" required>
+                            <label for="serial_number">SERIAL NUMBER *</label>
+                            <input type="text" class="form-control" id="serial_number" name="serial_number"
+                                   placeholder="Enter Serial Number" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="sold_to">SOLD TO *</label>
-                            <input type="text" class="form-control" id="sold_to" name="sold_to"
-                                   placeholder="Enter a Name" required>
+                            <label for="cost">COST*</label>
+                            <input type="number" class="form-control" id="cost" name="cost"
+                                   placeholder="Enter Cost" required>
                         </div>
-
-                        <div class="form-group">
-                            <label for="sold_to">PURCHASE ID *</label>
-                            <input type="text" class="form-control" id="purchase_id" name="purchase_id"
-                                   placeholder="Enter Purchase ID" required>
-                        </div>
-
 
                         <div class="form-group">
                             <label for="date">DATE *</label>
                             <input type="date" class="form-control" id="date" name="date"
-                                   placeholder="Enter Date" required>
+                                   placeholder="Enter Date">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="date_sold">DATE SOLD </label>
+                            <input type="date" class="form-control" id="date_sold" name="date_sold"
+                                   placeholder="Enter Date Sold">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">LOCATION *</label>
+                            <input type="text" class="form-control" id="location" name="location"
+                                   placeholder="Enter Location" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="purchase_id">PURCHASE ID </label>
+                            <input type="text" class="form-control" id="purchase_id" name="purchase_id"
+                                   placeholder="Enter Purchase ID" required>
                         </div>
 
                         <div class="form-group">

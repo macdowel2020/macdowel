@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.urls import path
 from hr.controller import home, authenticate, register, departments, projects, \
-    project_categories, filter_projects, farms, assets
+    project_categories, filter_projects, farms, assets, salaries
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -82,6 +82,13 @@ urlpatterns = [
     #    === COMPANY ASSETS ===
     path('all_assets_list/', assets.all_assets_list, name='all_assets_list'),
     path('delete_asset/', assets.delete_asset, name='delete_asset'),
+
+    #     SALARIES URL
+    path('salary_payments/', salaries.salary_payments, name='salary_payments'),
+    path('load_add_salary_page/', salaries.load_add_salary_page, name='load_add_salary_page'),
+    path('add_salary/', salaries.add_salary, name='add_salary'),
+    path('delete_salary/', salaries.delete_salary, name='delete_salary'),
+    path('edit_salary/', salaries.edit_salary, name='edit_salary'),
 
 ]
 

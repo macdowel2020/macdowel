@@ -96,7 +96,7 @@
                                            name="registration_number"
                                            value="{{ project.location.location |upper }}"
                                            placeholder="Enter Registration Number" required="required"
-                                            class="form-control"></div>
+                                           class="form-control"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -118,7 +118,7 @@
                                            style="background-color: #c9c9c9!important;"
                                            value="{{ project.category |upper }}"
                                            required="required"
-                                            class="form-control"></div>
+                                           class="form-control"></div>
                             </div>
 
 
@@ -326,7 +326,7 @@
                                         <td class="title tablesaw-swipe-cellpersist"><a
                                                 href="javascript:void(0)">{{ forloop.counter }}</a>
                                         </td>
-                                        <td>{{ u.date |date}}</td>
+                                        <td>{{ u.date |date }}</td>
                                         <td>{{ u.item }}</td>
                                         <td>{{ u.category }}</td>
                                         <td>{{ u.amount |intcomma }}/=</td>
@@ -463,7 +463,7 @@
                                                         href="javascript:void(0)">{{ forloop.counter }}</a>
                                                 </td>
                                                 <td>{{ u.item }}</td>
-                                                <td>{{ u.entered_on }}</td>
+                                                <td>{{ u.date }}</td>
                                                 <td>{{ u.staff.user.username }}</td>
                                                 <td>{{ u.amount|intcomma }}/=</td>
                                                 {% if u.status == 'Pending' %}
@@ -965,7 +965,7 @@
                     <button type="button" class="btn btn-primary btn-sm mb-3"
                             style="background-color: #19385a;  box-shadow: 0 8px 6px -6px black;"
                             data-toggle="modal"
-                            data-target="#modal-add_staff"><i class="fa fa-cart-arrow-down"></i> STAFF TO PROJECT
+                            data-target="#modal-add_staff"><i class="fa fa-cart-arrow-down"></i> ADD STAFF TO PROJECT
                     </button>
                 {% endif %}
                 <div class="row">
@@ -1091,6 +1091,22 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="income_category">INCOME CATEGORY *</label>
+                            <select type="text" class="form-control" id="income_category" name="income_category"
+                                    style="background-color: #626583!important; color: white!important;"
+                                    placeholder="Enter Category">
+                                <option value="Transport">Transport</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Advert">Advert</option>
+                                <option value="Salary">Salary</option>
+                                <option value="Wages">Wages</option>
+                                <option value="Building">Building</option>
+                                <option value="Communication">Communication</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="item">DATE *</label>
                             <input type="date" class="form-control datepicker" id="date" name="date"
                                    style="background-color: #626583!important; color: white!important;"
@@ -1167,7 +1183,28 @@
                             <label for="item">PARTICULAR *</label>
                             <input type="text" class="form-control" id="item" name="item"
                                    style="background-color: #626583!important;color: white"
-                                   placeholder="Enter Item" required>
+                                   placeholder="Enter Particular" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">DATE *</label>
+                            <input type="date" class="form-control" id="date" name="date"
+                                   placeholder="Enter Date" required
+                                   style="background-color: #626583!important;color: white">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expenditure_category">EXPENSE CATEGORY *</label>
+                            <select type="text" class="form-control" id="expenditure_category" name="expenditure_category"
+                                    style="background-color: #626583!important; color: white!important;">
+                                <option value="Transport">Transport</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Advert">Advert</option>
+                                <option value="Salary">Salary</option>
+                                <option value="Wages">Wages</option>
+                                <option value="Building">Building</option>
+                                <option value="Communication">Communication</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="amount">AMOUNT *</label>

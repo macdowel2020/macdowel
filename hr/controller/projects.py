@@ -195,11 +195,11 @@ def income(request):
             # Add the income
             amount = request.POST["amount"]
             item = request.POST["item"]
-            # reason = request.POST["reason"]
             description = request.POST["description"]
             category = request.POST["category"]
             qty = request.POST["qty"]
             date = request.POST["date"]
+            income_category=request.POST['income_category']
 
             sub_total = (int(qty) * int(amount))
             print(sub_total)
@@ -218,6 +218,7 @@ def income(request):
                 category=category,
                 qty=qty,
                 date=date,
+                income_category=income_category,
                 sub_total=sub_total
             )
             messages.success(request, 'You have successfully added an Income')
@@ -244,7 +245,9 @@ def request_expenditure(request):
             # Add the income
             amount = request.POST["amount"]
             item = request.POST["item"]
+            date = request.POST["date"]
             description = request.POST["description"]
+            expenditure_category= request.POST['expenditure_category']
 
             Expenditure.objects.create(
                 code=''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6)),
@@ -255,7 +258,9 @@ def request_expenditure(request):
                 status='Pending',
                 description=description,
                 is_approved=False,
-                approved_by=request.user.username
+                approved_by=request.user.username,
+                date=date,
+                expenditure_category=expenditure_category
             )
             messages.success(request, 'You have successfully added your request, please wait for approval from MD')
             return HttpResponseRedirect('/project_detail/?code=%s' % project.code)

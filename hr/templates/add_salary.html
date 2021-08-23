@@ -1,0 +1,142 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Add Salary{% endblock %}
+
+{% block content %}
+    <nav class="hk-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light bg-transparent">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="/salary_payments/">Salaries & Wages</a>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <form method="post" action="/add_salary/" enctype="multipart/form-data">
+                {% csrf_token %}
+                <section class="hk-sec-wrapper">
+                    <h5 class="hk-sec-title">SALARY OR WAGE DETAIL</h5>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="payment_to">SALARY OR WAGE PAYMENT TO</label>
+
+                                        <select class="form-control custom-select  " name="payment_to"
+                                                style="background-color: #626583!important; color: whitesmoke!important;">
+                                            <option selected="">Select</option>
+                                            {% for i in staff %}
+                                                <option value="{{ i.code }}">{{ i.user.first_name |upper }} {{ i.user.last_name |upper }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <small id="first_name" class="form-text text-muted">
+                                            Enter Recipient of Salary or Wage
+                                        </small>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="expected_amount">SALARY OR WAGE EXPECTED</label>
+                                        <input type="number" id="expected_amount" name="expected_amount" min="0"
+                                               class="form-control"
+                                               aria-describedby="expected_amount" required
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="expected_amount" class="form-text text-muted">
+                                            Enter Expected Amount
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="amount_paid">SALARY OR WAGE PAID</label>
+                                        <input type="number" id="amount_paid" name="amount_paid" min="0"
+                                               class="form-control"
+                                               aria-describedby="amount_paid" required
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="amount_paid" class="form-text text-muted">
+                                            Enter Amount Paid
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="category">CATEGORY</label>
+
+                                        <select class="form-control custom-select" name="category"
+                                                style="background-color: #626583!important; color: whitesmoke!important;">
+                                            <option selected="" value="SALARY">SALARY</option>
+                                            <option value="WAGE">WAGE</option>
+                                        </select>
+                                        <small id="first_name" class="form-text text-muted">
+                                            Enter Category
+                                        </small>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="paid_on">DATE OF PAYMENT</label>
+                                        <input type="date" id="paid_on" name="paid_on" class="form-control"
+                                               aria-describedby="paid_on" required
+                                               style="background-color: #626583!important; color: whitesmoke!important;">
+                                        <small id="paid_on" class="form-text text-muted">
+                                            Enter Payment Date
+                                        </small>
+                                    </div>
+                                    <div class="invalid-feedback" style="display: none">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="description">DESCRIPTION</label>
+                                        <textarea type="text" id="description" name="description" class="form-control"
+                                                  aria-describedby="description" required
+                                                  style="background-color: #626583!important; color: whitesmoke!important;"></textarea>
+                                        <small id="description" class="form-text text-muted">
+                                            Enter Description
+                                        </small>
+
+                                    </div>
+
+                                    <div class="email-feedback" style="display: none">
+                                        <p></p>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-success pull-right"
+                                            style="background-color: green!important;">SUBMIT FORM
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascript %}
+    {#    <script src="{% static 'js_logic/validate_beneficiray.js' %}" type="application/javascript"></script>#}
+
+{% endblock %}

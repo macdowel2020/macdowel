@@ -12,27 +12,31 @@ def all_assets_list(incoming):
     if incoming.user.is_authenticated and incoming.user.is_superuser:
         if incoming.method == 'POST':
             try:
-                categories = incoming.POST['categories']
+                asset_name = incoming.POST['asset_name']
+                asset_model = incoming.POST['asset_model']
+                serial_number = incoming.POST['serial_number']
+                cost = incoming.POST['cost']
                 description = incoming.POST['description']
-                number = incoming.POST['number']
-                amount_sold = incoming.POST['amount_sold']
-                sold_to = incoming.POST['sold_to']
-                purchase_id = incoming.POST['purchase_id']
                 date = incoming.POST['date']
+                date_sold = incoming.POST['date_sold']
+                location = incoming.POST['location']
+                purchase_id = incoming.POST['purchase_id']
 
                 staff = Staff.objects.get(user__email__contains=incoming.user.email)
                 Asset.objects.create(
                     code=''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6)),
-                    added_by=staff,
-                    categories=categories,
+                    asset_name=asset_name,
+                    asset_model=asset_model,
+                    serial_number=serial_number,
+                    cost=cost,
                     description=description,
-                    number=number,
-                    amount_sold=amount_sold,
-                    sold_to=sold_to,
+                    date=date,
+                    date_sold=date_sold,
+                    location=location,
                     purchase_id=purchase_id,
-                    date=date
+                    added_by=staff,
                 )
-                messages.success(incoming, 'Asset has been successfully created')
+                messages.success(incoming, 'An Asset has been successfully created')
                 return HttpResponseRedirect('/all_assets_list/')
             except Exception as p:
                 print(str(p))
