@@ -139,7 +139,7 @@ class Asset(models.Model):
     asset_name = models.CharField(max_length=255, null=True, blank=True)
     asset_model = models.CharField(max_length=255, null=True, blank=True)
     serial_number = models.CharField(max_length=255, null=True, blank=True)
-    cost = models.CharField(max_length=255, null=True, blank=True)
+    cost = models.IntegerField( null=True, blank=True, default=0)
     description = models.CharField(max_length=500, null=True, blank=True)
     date = models.DateTimeField(blank=True, null=True)
     date_sold = models.DateTimeField(blank=True, null=True)

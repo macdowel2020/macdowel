@@ -30,7 +30,7 @@ def dashboard(incoming):
 
         all_assets = Asset.objects.all()
         for k in all_assets:
-            assets_count += int(k.amount_sold)
+            assets_count += int(float(k.cost))
 
         for i in farm_earned:
             all_income += int(i.amount)
