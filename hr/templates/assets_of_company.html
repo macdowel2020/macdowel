@@ -81,6 +81,12 @@
 
                                 <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
                                     class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
+                                    <button class="tablesaw-sortable-btn">PURCHASE DATE<span
+                                            class="tablesaw-sortable-arrow"></span></button>
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="4"
+                                    class="tablesaw-sortable-head" data-tablesaw-sortable-numeric="false">
                                     <button class="tablesaw-sortable-btn">ACTION<span
                                             class="tablesaw-sortable-arrow"></span></button>
                                 </th>
@@ -99,7 +105,13 @@
                                         <td>UGX {{ u.cost |intcomma }}/=</td>
                                         <td>{{ u.location |upper }}</td>
                                         <td>{{ u.purchase_id }}</td>
+                                        <td>{{ u.purchase_date |date |upper}}</td>
                                         <td>
+                                         <a href="/#/?id={{ u.id }}"
+                                                   class="btn btn-primary btn-block btn-xs">
+                                                    <i class="fa fa-eye" title="Delete Project"></i> DETAIL
+                                                </a>
+
                                             {% if request.user.is_superuser %}
                                                 <a href="/delete_asset/?id={{ u.id }}"
                                                    class="btn btn-danger btn-block btn-xs"
@@ -190,6 +202,13 @@
                             <input type="text" class="form-control" id="purchase_id" name="purchase_id"
                                    placeholder="Enter Purchase ID" required>
                         </div>
+
+                          <div class="form-group">
+                            <label for="purchase_date">PURCHASE DATE </label>
+                            <input type="date" class="form-control" id="purchase_date" name="purchase_date"
+                                   placeholder="Enter Purchase Date">
+                        </div>
+
 
                         <div class="form-group">
                             <label for="description">DESCRIPTION*</label>

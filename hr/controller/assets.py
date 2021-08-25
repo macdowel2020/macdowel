@@ -21,6 +21,7 @@ def all_assets_list(incoming):
                 date_sold = incoming.POST['date_sold']
                 location = incoming.POST['location']
                 purchase_id = incoming.POST['purchase_id']
+                purchase_date = incoming.POST['purchase_date']
 
                 staff = Staff.objects.get(user__email__contains=incoming.user.email)
                 Asset.objects.create(
@@ -35,6 +36,7 @@ def all_assets_list(incoming):
                     location=location,
                     purchase_id=purchase_id,
                     added_by=staff,
+                    purchase_date=purchase_date
                 )
                 messages.success(incoming, 'An Asset has been successfully created')
                 return HttpResponseRedirect('/all_assets_list/')

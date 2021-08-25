@@ -14,12 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
-from hr.controller import home, authenticate, register, departments, projects, \
-    project_categories, filter_projects, farms, assets, salaries
-
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path
+
+from hr.controller import home, authenticate, register, departments, projects, \
+    project_categories, filter_projects, farms, assets, salaries
 
 urlpatterns = [
     path('', home.dashboard, name='dashboard'),
@@ -89,6 +89,9 @@ urlpatterns = [
     path('add_salary/', salaries.add_salary, name='add_salary'),
     path('delete_salary/', salaries.delete_salary, name='delete_salary'),
     path('edit_salary/', salaries.edit_salary, name='edit_salary'),
+
+    #     USER
+    path('delete_staff/', register.delete_staff, name='delete_staff'),
 
 ]
 

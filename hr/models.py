@@ -58,6 +58,7 @@ class Staff(models.Model):
     signature = models.ImageField(upload_to="profile/", default="default.png")
     joined_on = models.DateTimeField(auto_now=True)
     staff_responsibilities = models.CharField(max_length=300, null=True, blank=True)
+    position = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -147,6 +148,7 @@ class Asset(models.Model):
     purchase_id = models.CharField(max_length=255, null=True, blank=True)
     added_by = models.ForeignKey(Staff, blank=True, null=True, on_delete=models.SET_NULL)
     created_on = models.DateTimeField(auto_now_add=True)
+    purchase_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.description
